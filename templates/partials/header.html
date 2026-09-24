@@ -2,10 +2,7 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a href="{% url 'pages:home' %}" class="logo" aria-label="Tabuk Haraj Furniture — home">
-      <svg class="logo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-        <polyline points="9 22 9 12 15 12 15 22"/>
-      </svg>
+      <img class="logo__icon" src="{% static 'images/home-icon.svg' %}" alt="" width="30" height="30" aria-hidden="true">
       <span class="logo__text">
         <span class="logo__name">Tabuk Haraj</span>
         <span class="logo__sub">FURNITURE</span>
