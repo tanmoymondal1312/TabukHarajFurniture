@@ -1,0 +1,71 @@
+{% load static %}
+<section class="hero" aria-label="Hero">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Quality Used Furniture • Best Prices in Tabuk</p>
+      <h1 class="hero__title">Find Your Perfect<br>Furniture in <span class="hero__title-gold">Tabuk</span></h1>
+      <p class="hero__desc">
+        Discover high-quality used furniture, home appliances and more.
+        Great deals, trusted sellers, and everything you need — all in one place.
+      </p>
+
+      <form class="search-bar" action="{% url 'pages:home' %}" method="get" role="search">
+        <span class="search-bar__icon" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </span>
+        <input class="search-bar__input" type="search" name="q" value="{{ q }}" placeholder="Search for furniture, appliances, or categories..." aria-label="Search listings">
+        <span class="search-bar__location">
+          <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>Tabuk</span>
+          <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </span>
+        <button type="submit" class="btn btn--gold search-bar__btn">Search</button>
+      </form>
+
+      <div class="popular">
+        <span class="popular__label">Popular searches:</span>
+        <div class="popular__tags">
+          <a href="{% url 'pages:home' %}?q=Used+Sofa" class="chip">Used Sofa</a>
+          <a href="{% url 'pages:home' %}?q=AC" class="chip">AC</a>
+          <a href="{% url 'pages:home' %}?q=Fridge" class="chip">Fridge</a>
+          <a href="{% url 'pages:home' %}?q=Majlis" class="chip">Majlis</a>
+          <a href="{% url 'pages:home' %}?q=Bedroom+Set" class="chip">Bedroom Set</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__media" aria-hidden="false">
+    <div class="hero__slides" data-carousel>
+      <figure class="hero__slide is-active">
+        <img
+          src="{% static 'images/clean-modern-room-with-beautifull-furniture.webp' %}"
+          alt="Modern living room with a cream sofa and wooden coffee table"
+          width="2000"
+          height="847"
+          fetchpriority="high"
+        >
+      </figure>
+    </div>
+    <div class="hero__controls">
+      <div class="hero__dots" data-carousel-dots aria-label="Carousel pagination"></div>
+      <button type="button" class="carousel-btn" data-carousel-prev aria-label="Previous slide">
+        <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
+      <button type="button" class="carousel-btn" data-carousel-next aria-label="Next slide">
+        <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>

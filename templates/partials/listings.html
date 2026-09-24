@@ -1,0 +1,39 @@
+{% load static %}
+<section class="section listings" id="listings">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__left">
+        <p class="section-eyebrow">Featured Listings</p>
+        <h2 class="section-title">Hot Deals Right Now</h2>
+      </div>
+      <a href="#listings" class="section-link">
+        View All Listings
+        <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="listings__grid">
+      {% for item in listings %}
+      <a href="{% url 'pages:home' %}?q={{ item.title|urlencode }}" class="listing-card">
+        <div class="listing-card__media">
+          <img
+            src="{% static 'images/' %}{{ item.image }}"
+            alt="{{ item.title }}"
+            width="296"
+            height="160"
+            loading="lazy"
+            data-fallback="{% static 'images/placeholder.webp' %}"
+          >
+          <span class="listing-card__badge">Used</span>
+        </div>
+        <div class="listing-card__body">
+          <p class="listing-card__title" dir="rtl" lang="ar">{{ item.title }}</p>
+          <p class="listing-card__price">{{ item.price }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
