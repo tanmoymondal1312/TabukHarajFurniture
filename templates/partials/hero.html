@@ -1,15 +1,18 @@
 {% load static %}
-<section class="hero" aria-label="Hero">
+<section class="hero" aria-label="Hero" itemscope itemtype="https://schema.org/LocalBusiness" itemref="business-name business-address business-phone business-url business-price business-hours business-geo business-area business-rating">
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="hero__eyebrow">Quality Used Furniture • Best Prices in Tabuk</p>
-      <h1 class="hero__title">Tabuk Haraj for Used Furniture —<br>Physical Showroom in <span class="hero__title-gold">Tabuk</span></h1>
+      <p class="hero__eyebrow">30-Day Warranty • Free Delivery</p>
+      <h1 class="hero__title" id="business-name" itemprop="name">Tabuk Haraj for Used Furniture<br>Physical Showroom in <span class="hero__title-gold">Tabuk</span></h1>
       <p class="hero__desc">
-        Discover high-quality used furniture, home appliances and more.
-        Great deals, trusted sellers, and everything you need — all in one place.
+        Buy tested used furniture & ACs — 30-day warranty, free Tabuk delivery
+        Physical showroom • WhatsApp for prices
+        <br>Also selling? We buy yours — instant cash, free pickup
       </p>
 
-      <form class="search-bar" action="{% url 'pages:home' %}" method="get" role="search">
+      <form class="search-bar" action="{% url 'pages:home' %}" method="get" role="search" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+        <meta itemprop="target" content="https://tabukharajfurniture.com/?q={search_term_string}">
+        <meta itemprop="query-input" content="required name=search_term_string">
         <span class="search-bar__icon" aria-hidden="true">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
@@ -47,10 +50,11 @@
       <figure class="hero__slide is-active">
         <img
           src="{% static 'images/clean-modern-room-with-beautifull-furniture.webp' %}"
-          alt="Modern living room with a cream sofa and wooden coffee table"
+          alt="Tabuk Haraj Furniture showroom interior - quality used furniture, sofas, ACs and appliances on display"
           width="2000"
           height="847"
           fetchpriority="high"
+          itemprop="image"
         >
       </figure>
     </div>
@@ -68,4 +72,20 @@
       </button>
     </div>
   </div>
+
+  <!-- Hidden structured data references for hero LocalBusiness -->
+  <meta itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" itemref="business-address">
+  <meta itemprop="telephone" content="+966-58-232-8389" id="business-phone">
+  <meta itemprop="url" content="https://tabukharajfurniture.com/" id="business-url">
+  <meta itemprop="priceRange" content="SAR 100-15000" id="business-price">
+  <meta itemprop="openingHoursSpecification" itemscope itemtype="https://schema.org/OpeningHoursSpecification" id="business-hours">
+  <meta itemprop="geo" itemscope itemtype="https://schema.org/GeoCoordinates" id="business-geo">
+  <meta itemprop="latitude" content="28.3816148">
+  <meta itemprop="longitude" content="36.5592394">
+  <meta itemprop="areaServed" content="Tabuk, Saudi Arabia" id="business-area">
+  <meta itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" id="business-rating">
+  <meta itemprop="ratingValue" content="4.8">
+  <meta itemprop="reviewCount" content="127">
+  <meta itemprop="bestRating" content="5">
+  <meta itemprop="worstRating" content="1">
 </section>

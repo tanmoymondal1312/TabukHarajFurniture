@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "partials/breadcrumbs.html" %}
+
+  <!-- FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "أين يقع معرض حراج تبوك للأثاث؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يقع معرضنا في المنشية القديمة، طريق معاوية، تبوك 47914، المملكة العربية السعودية. يمكنكم زيارتنا من السبت للخميس 9 صباحاً - 10 مساءً، والجمعة 4 مساءً - 10 مساءً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل تشترون الأثاث المستعمل من الأفراد؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، نشتري الأثاث والأجهزة المستعملة من الأفراد. نقدم نقد فوري واستلام مجاني من موقعكم. تواصلوا معنا على واتساب 058 232 8389 مع صور القطع للحصول على عرض سعر."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو الضمان المقدم على المنتجات؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نقدم ضمان 30 يوم استبدال على جميع المنتجات المباعة من معرضنا. إذا واجهتم أي مشكلة في القطعة خلال 30 يوماً، نستبدلها لكم مجاناً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل التوصيل مجاني لجميع أنحاء تبوك؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، التوصيل مجاني لجميع أنحاء مدينة تبوك (النخيل، الحصاة، المروج، الشروق، الخالدية، العزيزية، وغيرها). التوصيل يتم في نفس اليوم أو اليوم التالي حسب الطلب."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي أنواع الأجهزة التي تبيعونها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نبيع مكيفات (سبليت، شباك)، ثلاجات (نوفروست، عادية)، غسالات (أوتوماتيك، نصف أوتوماتيك)، فريزرات، أفران، ميكروويف، وغيرها من الأجهزة المنزلية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، جميع الأجهزة مختبرة وتعمل بكفاءة. يمكنكم تجربة المكيف (تبريد/تسخين) والثلاجة (تبريد/تجميد) في المعرض قبل الشراء."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي طرق الدفع المقبولة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نقبل الدفع نقداً، بطاقات مدى/الائتمان، تحويل بنكي، STC Pay، Apple Pay، والتقسيط عبر تمارا أو تمويل."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يمكنني التواصل معكم؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يمكنكم التواصل عبر: الهاتف/واتساب: 058 232 8389، أو زيارة المعرض مباشرة، أو عبر خرائط جوجل: حراج تبوك للأثاث المستعمل."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <section class="section" style="padding: 40px 0;">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__left">
+          <p class="section-eyebrow">الأسئلة الشائعة</p>
+          <h2 class="section-title">أسئلة متكررة</h2>
+        </div>
+      </div>
+
+      <div class="faq" style="max-width: 800px;">
+        <details class="faq__item" open>
+          <summary class="faq__question">أين يقع معرض حراج تبوك للأثاث؟</summary>
+          <div class="faq__answer">يقع معرضنا في المنشية القديمة، طريق معاوية، تبوك 47914، المملكة العربية السعودية. يمكنكم زيارتنا من السبت للخميس 9 صباحاً - 10 مساءً، والجمعة 4 مساءً - 10 مساءً.</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">هل تشترون الأثاث المستعمل من الأفراد؟</summary>
+          <div class="faq__answer">نعم، نشتري الأثاث والأجهزة المستعملة من الأفراد. نقدم نقد فوري واستلام مجاني من موقعكم. تواصلوا معنا على واتساب 058 232 8389 مع صور القطع للحصول على عرض سعر.</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">ما هو الضمان المقدم على المنتجات؟</summary>
+          <div class="faq__answer">نقدم ضمان 30 يوم استبدال على جميع المنتجات المباعة من معرضنا. إذا واجهتم أي مشكلة في القطعة خلال 30 يوماً، نستبدلها لكم مجاناً.</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">هل التوصيل مجاني لجميع أنحاء تبوك؟</summary>
+          <div class="faq__answer">نعم، التوصيل مجاني لجميع أنحاء مدينة تبوك (النخيل، الحصاة، المروج، الشروق، الخالدية، العزيزية، وغيرها). التوصيل يتم في نفس اليوم أو اليوم التالي حسب الطلب.</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">ما هي أنواع الأجهزة التي تبيعونها؟</summary>
+          <div class="faq__answer">نبيع مكيفات (سبليت، شباك)، ثلاجات (نوفروست، عادية)، غسالات (أوتوماتيك، نصف أوتوماتيك)، فريزرات، أفران، ميكروويف، وغيرها من الأجهزة المنزلية.</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟</summary>
+          <div class="faq__answer">نعم، جميع الأجهزة مختبرة وتعمل بكفاءة. يمكنكم تجربة المكيف (تبريد/تسخين) والثلاجة (تبريد/تجميد) في المعرض قبل الشراء.</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">ما هي طرق الدفع المقبولة؟</summary>
+          <div class="faq__answer">نقبل الدفع نقداً، بطاقات مدى/الائتمان، تحويل بنكي، STC Pay، Apple Pay، والتقسيط عبر تمارا أو تمويل.</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">كيف يمكنني التواصل معكم؟</summary>
+          <div class="faq__answer">يمكنكم التواصل عبر: الهاتف/واتساب: 058 232 8389، أو زيارة المعرض مباشرة، أو عبر خرائط جوجل: حراج تبوك للأثاث المستعمل.</div>
+        </details>
+      </div>
+
+      <div style="margin-top: 3rem; text-align: center;">
+        <p style="color: var(--text); margin-bottom: 1rem;">لم تجد إجابتك؟ تواصل معنا مباشرة</p>
+        <a href="https://wa.me/966582328389" class="btn btn--gold" style="background: #25D366;">واتساب الآن</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

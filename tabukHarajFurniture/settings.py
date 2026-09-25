@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'pages',
 ]
 
@@ -63,6 +64,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
+                'pages.context_processors.business_info',
+                'pages.context_processors.seo_context',
             ],
         },
     },
@@ -82,36 +85,25 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ar'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Riyadh'
 
 USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('ar', 'Arabic'),
+    ('en', 'English'),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
@@ -126,6 +118,69 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/6.1/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# SEO & Performance Settings
+# https://docs.djangoproject.com/en/6.1/ref/settings/
+
+# Security headers for SEO
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
+# HSTS (enable in production with SSL)
+# SECURE_HSTS_SECONDS = 31536000
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
+# Cache control for static assets
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+# Site configuration for SEO
+SITE_ID = 1
+SITE_NAME = 'Tabuk Haraj Furniture'
+SITE_DOMAIN = 'tabukharajfurniture.com'
+SITE_URL = 'https://tabukharajfurniture.com'
+
+# Business information for structured data
+BUSINESS_INFO = {
+    'name': 'Tabuk Haraj Furniture',
+    'arabic_name': 'حراج تبوك للأثاث',
+    'phone': '+966-58-232-8389',
+    'whatsapp': '+966582328389',
+    'email': 'info@tabukharajfurniture.com',
+    'address': {
+        'street': 'Muawiyah, Almunshiyah Al Qadimah',
+        'city': 'Tabuk',
+        'region': 'Tabuk Region',
+        'postal_code': '47914',
+        'country': 'SA',
+    },
+    'coordinates': {
+        'latitude': 28.3816148,
+        'longitude': 36.5592394,
+    },
+    'opening_hours': {
+        'monday': '09:00-22:00',
+        'tuesday': '09:00-22:00',
+        'wednesday': '09:00-22:00',
+        'thursday': '09:00-22:00',
+        'friday': '16:00-22:00',
+        'saturday': '09:00-22:00',
+        'sunday': '09:00-22:00',
+    },
+    'price_range': 'SAR 100-15000',
+    'currencies': 'SAR',
+    'payment_methods': 'Cash, Credit Card, Bank Transfer, STC Pay, Apple Pay, Mada',
+    'area_served': 'Tabuk, Saudi Arabia',
+}
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration

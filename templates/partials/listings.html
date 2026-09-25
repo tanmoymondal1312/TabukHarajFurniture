@@ -1,5 +1,7 @@
 {% load static %}
-<section class="section listings" id="listings">
+<section class="section listings" id="listings" itemscope itemtype="https://schema.org/ItemList">
+  <meta itemprop="name" content="Featured Used Furniture & Appliances Listings">
+  <meta itemprop="description" content="Hot deals on quality used furniture, ACs, fridges, washing machines, sofas and bedroom sets in Tabuk. All items tested, warranted 30 days, with free delivery.">
   <div class="container">
     <div class="section-head">
       <div class="section-head__left">
@@ -16,23 +18,36 @@
 
     <div class="listings__grid">
       {% for item in listings %}
-      <a href="{% url 'pages:home' %}?q={{ item.title|urlencode }}" class="listing-card">
-        <div class="listing-card__media">
-          <img
-            src="{% static 'images/' %}{{ item.image }}"
-            alt="{{ item.title }}"
-            width="296"
-            height="160"
-            loading="lazy"
-            data-fallback="{% static 'images/placeholder.webp' %}"
-          >
-          <span class="listing-card__badge">Used</span>
-        </div>
-        <div class="listing-card__body">
-          <p class="listing-card__title" dir="rtl" lang="ar">{{ item.title }}</p>
-          <p class="listing-card__price">{{ item.price }}</p>
-        </div>
-      </a>
+      <article class="listing-card" itemscope itemtype="https://schema.org/Product" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" itemref="listing-image listing-name listing-price listing-condition listing-availability listing-seller" data-position="{{ forloop.counter }}">
+        <meta itemprop="position" content="{{ forloop.counter }}">
+        <a href="{% url 'pages:home' %}?q={{ item.title|urlencode }}" class="listing-card__link" itemprop="url">
+          <div class="listing-card__media">
+            <img
+              src="{% static 'images/' %}{{ item.image }}"
+              alt="{{ item.title }} - Quality used item at Tabuk Haraj Furniture showroom"
+              width="296"
+              height="160"
+              loading="lazy"
+              data-fallback="{% static 'images/placeholder.webp' %}"
+              itemprop="image"
+              id="listing-image"
+            >
+            <span class="listing-card__badge">Used</span>
+          </div>
+          <div class="listing-card__body">
+            <p class="listing-card__title" dir="rtl" lang="ar" itemprop="name" id="listing-name">{{ item.title }}</p>
+            <p class="listing-card__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer" id="listing-price">
+              <meta itemprop="priceCurrency" content="SAR">
+              <meta itemprop="availability" content="https://schema.org/InStock" id="listing-availability">
+              <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" id="listing-condition">
+              <meta itemprop="seller" itemscope itemtype="https://schema.org/LocalBusiness" id="listing-seller">
+              <meta itemprop="name" content="Tabuk Haraj Furniture">
+              <meta itemprop="url" content="https://tabukharajfurniture.com/">
+              {{ item.price }}
+            </p>
+          </div>
+        </a>
+      </article>
       {% endfor %}
     </div>
   </div>

@@ -1,21 +1,59 @@
 {
-  "name": "Tabuk Haraj",
-  "short_name": "Haraj",
+  "name": "Tabuk Haraj Furniture",
+  "short_name": "Tabuk Haraj",
+  "description": "Physical showroom for quality used furniture and appliances in Tabuk, Saudi Arabia. Buy tested ACs, fridges, sofas, bedroom sets with 30-day warranty and free delivery. Sell your used items for instant cash.",
+  "arabic_name": "حراج تبوك للأثاث المستعمل",
+  "arabic_description": "معرض فعلي للأثاث والأجهزة المستعملة في تبوك، السعودية. اشترِ مكيفات وثلاجات وأرائك وغرف نوم بضمان 30 يوم وتوصيل مجاني. بع أثاثك المستعمل واحصل على نقد فوري.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAFAF9",
+  "theme_color": "#BE843F",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "maskable any"
     },
     {
       "src": "web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "maskable any"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "categories": ["shopping", "business", "lifestyle"],
+  "lang": "ar",
+  "dir": "rtl",
+  "shortcuts": [
+    {
+      "name": "Call Us",
+      "short_name": "Call",
+      "description": "Call Tabuk Haraj Furniture",
+      "url": "tel:+966582328389",
+      "icons": [{ "src": "web-app-manifest-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Chat on WhatsApp",
+      "url": "https://wa.me/966582328389",
+      "icons": [{ "src": "web-app-manifest-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Showroom Location",
+      "short_name": "Location",
+      "description": "View showroom on Google Maps",
+      "url": "https://www.google.com/maps/place/%D8%AD%D8%B1%D8%A7%D8%AC+%D8%AA%D8%A8%D9%88%D9%83+%D9%84%D9%84%D8%A3%D8%AB%D8%A7%D8%AB+%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B9%D9%85%E2%80%AD/@28.3815415,36.5593807",
+      "icons": [{ "src": "web-app-manifest-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "short_name_ar": "حراج تبوك",
+  "name_ar": "حراج تبوك للأثاث المستعمل",
+  "description_ar": "معرض فعلي للأثاث والأجهزة المستعملة في تبوك، السعودية. اشترِ مكيفات وثلاجات وأرائك وغرف نوم بضمان 30 يوم وتوصيل مجاني."
 }

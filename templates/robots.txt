@@ -1,0 +1,26 @@
+# Tabuk Haraj Furniture - Robots.txt
+# Allows all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /media/
+Disallow: /static/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*?q=*
+Disallow: /*?lang=*
+Disallow: /?lang=*
+Disallow: /search/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://tabukharajfurniture.com/sitemap.xml
+
+# Host directive for Google
+Host: https://tabukharajfurniture.com
+
+# Crawl-delay for respectful crawling (optional)
+Crawl-delay: 10

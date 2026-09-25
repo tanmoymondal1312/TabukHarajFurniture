@@ -1,5 +1,7 @@
 {% load static %}
-<section class="section categories" id="categories">
+<section class="section categories" id="categories" itemscope itemtype="https://schema.org/ItemList">
+  <meta itemprop="name" content="Used Furniture & Appliances Categories">
+  <meta itemprop="description" content="Browse used furniture and appliance categories at Tabuk Haraj Furniture: Majlis & Sofas, Bedroom Sets, Dining & Tables, Home Appliances, Kitchen Furniture, and more. All items available at our physical Tabuk showroom.">
   <div class="container">
     <div class="section-head">
       <div class="section-head__left">
@@ -16,27 +18,31 @@
 
     <div class="categories__grid">
       {% for cat in categories %}
-      <a href="{% url 'pages:home' %}?q={{ cat.name|urlencode }}" class="category-card">
-        <div class="category-card__media">
-          <img
-            src="{% static 'images/' %}{{ cat.image }}"
-            alt="{{ cat.name }}"
-            width="190"
-            height="92"
-            loading="lazy"
-            data-fallback="{% static 'images/placeholder.webp' %}"
-          >
-        </div>
-        <div class="category-card__body">
-          <p class="category-card__title">{{ cat.name }}</p>
-          <p class="category-card__count">{{ cat.count }}</p>
-          <span class="category-card__arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-            </svg>
-          </span>
-        </div>
-      </a>
+      <article class="category-card" itemscope itemtype="https://schema.org/ItemListElement" itemprop="itemListElement" data-position="{{ forloop.counter }}">
+        <meta itemprop="position" content="{{ forloop.counter }}">
+        <a href="{% url 'pages:home' %}?q={{ cat.name|urlencode }}" class="category-card__link" itemprop="url">
+          <div class="category-card__media">
+            <img
+              src="{% static 'images/' %}{{ cat.image }}"
+              alt="{{ cat.name }} category - quality used items at Tabuk Haraj Furniture"
+              width="190"
+              height="92"
+              loading="lazy"
+              data-fallback="{% static 'images/placeholder.webp' %}"
+              itemprop="image"
+            >
+          </div>
+          <div class="category-card__body">
+            <p class="category-card__title" itemprop="name">{{ cat.name }}</p>
+            <p class="category-card__count">{{ cat.count }}</p>
+            <span class="category-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+      </article>
       {% endfor %}
     </div>
   </div>

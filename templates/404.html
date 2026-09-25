@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>صفحة غير موجودة | حراج تبوك للأثاث</title>
+  <meta name="description" content="الصفحة التي تبحث عنها غير موجودة. تصفح أحدث العروض على الأثاث والأجهزة المستعملة في تبوك مع ضمان 30 يوم وتوصيل مجاني.">
+  <link rel="canonical" href="https://tabukharajfurniture.com/404/">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  {% include "partials/header.html" %}
+  <main>
+    <section class="section" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+      <div class="container">
+        <h1 style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;">404</h1>
+        <h2 style="font-size: 1.75rem; color: var(--ink); margin-bottom: 1rem;">الصفحة غير موجودة</h2>
+        <p style="color: var(--text); max-width: 400px; margin: 0 auto 2rem; line-height: 1.6;">
+          عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. قد يكون الرابط خاطئاً أو تمت إزالة المحتوى.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="{% url 'pages:home' %}" class="btn btn--gold">العودة للرئيسية</a>
+          <a href="https://wa.me/966582328389" class="btn btn--gold" style="background: #25D366;">واتساب للمساعدة</a>
+        </div>
+        <p style="margin-top: 2rem; color: var(--muted); font-size: 0.9rem;">
+          أو تصفح الأقسام: <a href="#categories" style="color: var(--gold);">الأقسام</a> · <a href="#listings" style="color: var(--gold);">العروض</a>
+        </p>
+      </div>
+    </section>
+  </main>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

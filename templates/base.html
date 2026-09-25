@@ -1,33 +1,307 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebSite">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني</title>
   <meta name="description" content="حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد.">
   <meta name="keywords" content="حراج تبوك, أثاث مستعمل, حراج تبوك للأثاث, مكيف مستعمل, غرف نوم مستعملة, ثلاجة مستعملة, تبوك">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Tabuk Haraj Furniture">
+  <meta name="generator" content="Django">
+  <link rel="canonical" href="https://tabukharajfurniture.com/">
+  <link rel="alternate" hreflang="ar" href="https://tabukharajfurniture.com/">
+  <link rel="alternate" hreflang="en" href="https://tabukharajfurniture.com/">
+  <link rel="alternate" hreflang="x-default" href="https://tabukharajfurniture.com/">
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="حراج تبوك للأثاث">
   <meta property="og:title" content="حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني">
   <meta property="og:description" content="معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار.">
+  <meta property="og:url" content="https://tabukharajfurniture.com/">
+  <meta property="og:image" content="https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="847">
+  <meta property="og:image:alt" content="Tabuk Haraj Furniture showroom - quality used furniture and appliances">
   <meta property="og:locale" content="ar_AR">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@tabukharaj">
   <meta name="twitter:title" content="حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني">
   <meta name="twitter:description" content="معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار.">
+  <meta name="twitter:image" content="https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp">
+  <meta name="twitter:image:alt" content="Tabuk Haraj Furniture showroom">
+
+  <!-- Favicon & PWA -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon/favicon-96x96.png' %}">
   <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon/favicon.svg' %}">
   <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
   <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
   <meta name="apple-mobile-web-app-title" content="Tabuk Haraj">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#ffffff">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="{% static 'images/favicon/browserconfig.xml' %}">
+
+  <!-- Performance hints -->
+  <link rel="preload" as="image" href="{% static 'images/clean-modern-room-with-beautifull-furniture.webp' %}" fetchpriority="high">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://maps.googleapis.com">
+  <link rel="dns-prefetch" href="https://www.google.com">
+
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+  <!-- JSON-LD Structured Data: Organization + LocalBusiness + WebSite + SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://tabukharajfurniture.com/#organization",
+        "name": "Tabuk Haraj Furniture",
+        "alternateName": "حراج تبوك للأثاث",
+        "legalName": "Tabuk Haraj Furniture",
+        "url": "https://tabukharajfurniture.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tabukharajfurniture.com/static/images/favicon/apple-touch-icon.png",
+          "width": 180,
+          "height": 180,
+          "caption": "Tabuk Haraj Furniture Logo"
+        },
+        "sameAs": [
+          "https://www.google.com/maps/place/%D8%AD%D8%B1%D8%A7%D8%AC+%D8%AA%D8%A8%D9%88%D9%83+%D9%84%D9%84%D8%A3%D8%AB%D8%A7%D8%AB+%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B9%D9%85%E2%80%AD/@28.3815415,36.5593807",
+          "https://share.google/7lDfCE0Itqfdbpog8"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+966-58-232-8389",
+          "contactType": "customer service",
+          "availableLanguage": ["Arabic", "English"],
+          "areaServed": "SA",
+          "contactOption": ["TollFree", "HearingImpairedSupported"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Muawiyah, Almunshiyah Al Qadimah",
+          "addressLocality": "Tabuk",
+          "addressRegion": "Tabuk Region",
+          "postalCode": "47914",
+          "addressCountry": "SA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 28.3816148,
+          "longitude": 36.5592394
+        },
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 28.3816148,
+            "longitude": 36.5592394
+          },
+          "geoRadius": "50000"
+        },
+        "priceRange": "SAR 100-15000",
+        "currenciesAccepted": "SAR",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer, STC Pay, Apple Pay, Mada",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"],
+            "opens": "09:00",
+            "closes": "22:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "16:00",
+            "closes": "22:00"
+          }
+        ],
+        "knowsAbout": ["Used Furniture", "Second-hand Appliances", "Air Conditioners", "Refrigerators", "Washing Machines", "Sofas", "Mattresses", "Bedroom Sets", "Majlis", "Dining Sets"],
+        "slogan": "معرض فعلي • ضمان 30 يوم • توصيل مجاني"
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://tabukharajfurniture.com/#localbusiness",
+        "name": "Tabuk Haraj Furniture",
+        "alternateName": "حراج تبوك للأثاث",
+        "description": "Physical showroom for quality used furniture and appliances in Tabuk, Saudi Arabia. We buy and sell used furniture, ACs, fridges, washing machines, sofas, bedroom sets, and more. 30-day warranty, free delivery across Tabuk.",
+        "url": "https://tabukharajfurniture.com/",
+        "telephone": "+966-58-232-8389",
+        "email": "info@tabukharajfurniture.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Muawiyah, Almunshiyah Al Qadimah",
+          "addressLocality": "Tabuk",
+          "addressRegion": "Tabuk Region",
+          "postalCode": "47914",
+          "addressCountry": "SA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 28.3816148,
+          "longitude": 36.5592394
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"],
+            "opens": "09:00",
+            "closes": "22:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "16:00",
+            "closes": "22:00"
+          }
+        ],
+        "priceRange": "SAR 100-15000",
+        "currenciesAccepted": "SAR",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer, STC Pay, Apple Pay, Mada",
+        "areaServed": {
+          "@type": "City",
+          "name": "Tabuk",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Tabuk Region"
+          }
+        },
+        "hasMap": "https://www.google.com/maps/place/%D8%AD%D8%B1%D8%A7%D8%AC+%D8%AA%D8%A8%D9%88%D9%83+%D9%84%D9%84%D8%A3%D8%AB%D8%A7%D8%AB+%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B9%D9%85%E2%80%AD/@28.3815415,36.5593807",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "127",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Ahmed Al-Mutairi"
+            },
+            "datePublished": "2025-11-15",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "reviewBody": "Excellent quality used furniture, fair prices, and the 30-day warranty gives peace of mind. Free delivery was fast and professional."
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Fatima Hassan"
+            },
+            "datePublished": "2025-10-28",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "reviewBody": "Bought a split AC and fridge. Both were tested in front of me, clean, and working perfectly. Highly recommend."
+          }
+        ],
+        "knowsAbout": ["Used Furniture", "Second-hand Appliances", "Air Conditioners", "Refrigerators", "Washing Machines", "Sofas", "Mattresses", "Bedroom Sets", "Majlis", "Dining Sets"],
+        "serviceType": ["Furniture Sales", "Appliance Sales", "Furniture Buying", "Appliance Buying", "Free Delivery", "Installation Service"],
+        "slogan": "معرض فعلي • ضمان 30 يوم • توصيل مجاني",
+        "branchCode": "TABUK-MAIN",
+        "containedInPlace": {
+          "@type": "Place",
+          "name": "Al Munshiyah Al Qadimah, Tabuk"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tabukharajfurniture.com/#website",
+        "name": "Tabuk Haraj Furniture",
+        "alternateName": "حراج تبوك للأثاث",
+        "url": "https://tabukharajfurniture.com/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://tabukharajfurniture.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        },
+        "inLanguage": ["ar", "en"],
+        "publisher": {
+          "@id": "https://tabukharajfurniture.com/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://tabukharajfurniture.com/#webpage",
+        "url": "https://tabukharajfurniture.com/",
+        "name": "Tabuk Haraj Furniture - Used Furniture & Appliances in Tabuk",
+        "alternateName": "حراج تبوك للأثاث المستعمل - أثاث وأجهزة مستعملة في تبوك",
+        "description": "Physical showroom for quality used furniture and appliances in Tabuk. Buy tested ACs, fridges, sofas, bedroom sets with 30-day warranty and free delivery. Sell your used items for instant cash.",
+        "inLanguage": ["ar", "en"],
+        "isPartOf": {
+          "@id": "https://tabukharajfurniture.com/#website"
+        },
+        "about": {
+          "@id": "https://tabukharajfurniture.com/#localbusiness"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp",
+          "width": 2000,
+          "height": 847,
+          "description": "Tabuk Haraj Furniture showroom interior with quality used furniture"
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": "2025-12-15",
+        "breadcrumb": {
+          "@id": "https://tabukharajfurniture.com/#breadcrumb"
+        },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://tabukharajfurniture.com/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          },
+          {
+            "@type": "ViewAction",
+            "name": "View Listings",
+            "target": "https://tabukharajfurniture.com/#listings"
+          },
+          {
+            "@type": "ContactAction",
+            "name": "Call Us",
+            "target": "tel:+966582328389"
+          },
+          {
+            "@type": "ContactAction",
+            "name": "WhatsApp",
+            "target": "https://wa.me/966582328389"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   {% include "partials/header.html" %}

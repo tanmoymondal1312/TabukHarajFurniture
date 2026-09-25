@@ -1,0 +1,43 @@
+{% load static %}
+<!-- BreadcrumbList Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://tabukharajfurniture.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Used Furniture & Appliances",
+      "item": "https://tabukharajfurniture.com/#listings"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Categories",
+      "item": "https://tabukharajfurniture.com/#categories"
+    }
+  ]
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList" style="display: none;">
+  <meta itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  <meta itemprop="position" content="1">
+  <meta itemprop="name" content="Home">
+  <meta itemprop="item" content="https://tabukharajfurniture.com/">
+  <meta itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  <meta itemprop="position" content="2">
+  <meta itemprop="name" content="Used Furniture & Appliances">
+  <meta itemprop="item" content="https://tabukharajfurniture.com/#listings">
+  <meta itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  <meta itemprop="position" content="3">
+  <meta itemprop="name" content="Categories">
+  <meta itemprop="item" content="https://tabukharajfurniture.com/#categories">
+</nav>
