@@ -1,160 +1,174 @@
 ==========================================================================
-CATEGORY CARD IMAGE PROMPTS - Tabuk Haraj Furniture
+CATEGORY CARD IMAGE PROMPTS - Tabuk Haraj Furniture  (v2 - product style)
 ==========================================================================
 
-Card size on site: 187 x 92 px  ->  aspect ratio 2:1 (wide banner)
-Generate at: 1536 x 768 px (2:1)
-If the AI tool only offers fixed sizes (3:2 or 16:9), generate the biggest
-landscape size and crop top/bottom to 2:1.
-
-Shared style for every image (already included in each prompt below):
-- Photorealistic professional photo, NOT cartoon, NOT 3D render, NOT AI art
-- Warm cream / beige palette + muted gold accents (site colors #FAFAF9, #BE843F)
-- Soft natural daylight, clean and uncluttered
-- Subject centered so a thin 2:1 crop still looks good
+STYLE RULES FOR ALL 12 IMAGES
+- Studio PRODUCT photography, like an advertising / catalog card
+- PURE WHITE background is the primary color of every image
+- Show the product clearly (1-3 units, angled / staggered for depth)
+  so anyone instantly knows the category
+- Product colors follow the product's own natural look
+  (steel, white, walnut wood, beige fabric etc.)
+- NOT an in-house room scene, NOT cartoon, NOT AI-art look
 - No people, no text, no logos, no watermark
+
+Card size on site: 187 x 92 px  ->  aspect ratio 2:1
+Generate at: 1536 x 768 px (2:1)
+If the tool only gives 3:2 or 16:9, take the biggest landscape size
+and crop top/bottom to 2:1.
 
 --------------------------------------------------------------------------
 1. HOME APPLIANCES
 --------------------------------------------------------------------------
-A tidy showroom shelf displaying small home appliances - a microwave oven,
-an electric kettle, a stainless blender and a canister vacuum cleaner -
-arranged neatly on a light oak shelf against a soft off-white wall.
-Photorealistic professional product photography, warm cream and beige
-palette with muted gold accents, soft natural daylight, clean and
-uncluttered composition, 35mm lens at eye level, gentle shadows, no people,
-no text, no logos, no cartoon, no 3D render, no AI-art look.
-Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph of four small home appliances lined
+up in one row on a pure seamless white background: a stainless steel
+microwave, a brushed metal electric kettle, a glass blender and a compact
+canister vacuum cleaner, evenly spaced and slightly angled toward the
+camera. Soft even studio lighting, gentle contact shadows under each
+product, ultra sharp, catalog quality, photorealistic, no people, no text,
+no logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
+products centered with clean white margins.
 
 --------------------------------------------------------------------------
 2. KITCHEN FURNITURE
 --------------------------------------------------------------------------
-A modern kitchen furniture setup - warm walnut-toned cabinets with slim
-brass handles, a light marble countertop and a small breakfast counter with
-two wooden stools, in a bright clean kitchen. Photorealistic professional
-interior photography, warm cream and beige palette with muted gold accents,
-soft natural daylight from a side window, clean uncluttered composition,
-35mm lens at eye level, no people, no text, no logos, no cartoon, no 3D
-render, no AI-art look. Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph of one modular kitchen set displayed
+as a single product on a pure seamless white background: warm walnut
+cabinets with slim brass handles, a white marble countertop, a small
+breakfast counter with two wooden bar stools, photographed at a slight
+three-quarter angle. Soft even studio lighting, gentle contact shadow on
+the floor, ultra sharp, catalog quality, photorealistic, no people, no
+text, no logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768
+pixels, product centered with clean white margins.
 
 --------------------------------------------------------------------------
 3. OTHER FURNITURE
 --------------------------------------------------------------------------
-A grouped furniture vignette in a bright empty room - a beige upholstered
-armchair, a small wooden side table, a slim floor lamp with warm light and
-a low bookshelf, arranged together like a furniture store display.
-Photorealistic professional interior photography, warm cream and beige
-palette with muted gold accents, soft natural daylight, clean uncluttered
-composition, 35mm lens at eye level, no people, no text, no logos, no
-cartoon, no 3D render, no AI-art look. Aspect ratio 2:1, size 1536x768
-pixels.
+Commercial studio product photograph of a small group of assorted
+furniture on a pure seamless white background: a beige upholstered
+armchair in front, a light oak side table next to it, a slim brass floor
+lamp behind and a low wooden bookshelf at the back, arranged in a tight
+staggered cluster. Soft even studio lighting, gentle contact shadows,
+ultra sharp, catalog quality, photorealistic, no people, no text, no
+logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
+cluster centered with clean white margins.
 
 --------------------------------------------------------------------------
 4. AIR CONDITIONERS
 --------------------------------------------------------------------------
-A white split air conditioner unit mounted high on a clean off-white wall
-in a bright modern living room, with a hint of cool airflow and a beige
-sofa partly visible below, shot slightly from below. Photorealistic
-professional interior photography, warm cream and beige palette with muted
-gold accents, soft natural daylight, clean uncluttered composition, 35mm
-lens, no people, no text, no logos, no cartoon, no 3D render, no AI-art
-look. Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph of three white split air conditioner
+indoor units on a pure seamless white background: one large unit in front
+center facing the camera, two more units behind it on the left and right
+at slight overlapping angles, louvers open, clean glossy white plastic
+finish. Soft even studio lighting, subtle reflections, gentle contact
+shadows, ultra sharp, catalog quality, photorealistic, no people, no
+text, no logos, no brand names, no cartoon, no CGI look. Wide 2:1
+composition, 1536x768 pixels, products centered with clean white margins.
 
 --------------------------------------------------------------------------
 5. REFRIGERATORS & FREEZERS
 --------------------------------------------------------------------------
-A stainless steel double-door refrigerator standing in a bright modern
-kitchen corner, door slightly reflecting warm light, light wooden cabinets
-beside it and a clean tiled floor. Photorealistic professional interior
-photography, warm cream and beige palette with muted gold accents, soft
-natural daylight, clean uncluttered composition, 35mm lens at eye level,
-no people, no text, no logos, no brand names, no cartoon, no 3D render,
-no AI-art look. Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph of three refrigerators on a pure
+seamless white background: a large stainless steel French-door
+refrigerator standing in front center, a smaller white single-door fridge
+behind it to the left at an angle, and a compact freezer unit behind to
+the right, arranged in a staggered row. Soft even studio lighting, soft
+metal reflections, gentle contact shadows on the floor, ultra sharp,
+catalog quality, photorealistic, no people, no text, no logos, no brand
+names, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
+products centered with clean white margins.
 
 --------------------------------------------------------------------------
 6. WASHING MACHINES
 --------------------------------------------------------------------------
-A white front-load washing machine in a tidy laundry corner, with a woven
-basket of neatly folded cream towels on top and soft daylight from a small
-window, light beige wall. Photorealistic professional interior
-photography, warm cream and beige palette with muted gold accents, soft
-natural daylight, clean uncluttered composition, 35mm lens at eye level,
-no people, no text, no logos, no brand names, no cartoon, no 3D render,
-no AI-art look. Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph of three washing machines on a pure
+seamless white background: one stainless steel front-load washing machine
+in front at a slight angle, two white front-load machines behind it one
+after another, overlapping in depth, round glass doors facing the camera.
+Soft even studio lighting, gentle reflections on the metal, contact
+shadows under each machine, ultra sharp, catalog quality, photorealistic,
+no people, no text, no logos, no brand names, no cartoon, no CGI look.
+Wide 2:1 composition, 1536x768 pixels, products centered with clean white
+margins.
 
 --------------------------------------------------------------------------
 7. MATTRESSES & BEDS
 --------------------------------------------------------------------------
-A thick comfortable mattress on a low wooden bed frame, neatly made with
-cream linen sheets, two soft pillows and a folded beige throw blanket, in
-a calm bright bedroom. Photorealistic professional interior photography,
-warm cream and beige palette with muted gold accents, soft natural
-daylight through sheer curtains, clean uncluttered composition, 35mm lens
-at eye level, no people, no text, no logos, no cartoon, no 3D render, no
-AI-art look. Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph on a pure seamless white
+background: a low wooden bed frame with a thick white mattress and neat
+cream bedding in front center, and one bare mattress standing upright
+behind it at an angle showing its quilted edge, like a showroom display.
+Soft even studio lighting, gentle contact shadows, ultra sharp, catalog
+quality, photorealistic, no people, no text, no logos, no cartoon, no CGI
+look. Wide 2:1 composition, 1536x768 pixels, products centered with clean
+white margins.
 
 --------------------------------------------------------------------------
 8. OFFICE FURNITURE
 --------------------------------------------------------------------------
-A minimal home office setup - a light wooden desk, a black ergonomic mesh
-office chair, a small shelf with a few books and a desk lamp, against a
-clean off-white wall. Photorealistic professional interior photography,
-warm cream and beige palette with muted gold accents, soft natural
-daylight, clean uncluttered composition, 35mm lens at eye level, no
-people, no text, no logos, no cartoon, no 3D render, no AI-art look.
-Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph of a home office furniture group on
+a pure seamless white background: a light wooden desk in center, a black
+ergonomic mesh office chair pulled up to it at a slight angle, and a
+small wooden wall shelf floating above behind, arranged as one set. Soft
+even studio lighting, gentle contact shadows, ultra sharp, catalog
+quality, photorealistic, no people, no text, no logos, no cartoon, no CGI
+look. Wide 2:1 composition, 1536x768 pixels, group centered with clean
+white margins.
 
 --------------------------------------------------------------------------
 9. CURTAINS & CARPETS
 --------------------------------------------------------------------------
-Floor-to-ceiling soft beige curtains beside a large sunlit window, with a
-warm-toned patterned area carpet in cream and gold on the wooden floor in
-front, gentle folds and light fabric texture. Photorealistic professional
-interior photography, warm cream and beige palette with muted gold
-accents, soft natural daylight glowing through the fabric, clean
-uncluttered composition, 35mm lens at eye level, no people, no text, no
-logos, no cartoon, no 3D render, no AI-art look. Aspect ratio 2:1, size
-1536x768 pixels.
+Commercial studio product photograph on a pure seamless white
+background: two rolled carpets standing upright on the left at slightly
+different heights, one carpet partly unrolled flat on the floor in front
+showing its warm gold and cream pattern, and one beige linen curtain
+panel hanging from a slim rod on the right side. Soft even studio
+lighting, gentle contact shadows, visible fabric texture, ultra sharp,
+catalog quality, photorealistic, no people, no text, no logos, no
+cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels, products
+centered with clean white margins.
 
 --------------------------------------------------------------------------
 10. MAJLIS & SOFAS
 --------------------------------------------------------------------------
-A traditional Arabic majlis seating area - a long low sofa with plush
-decorative cushions in cream and gold, running along a wall, with a soft
-patterned carpet on the floor and a low wooden coffee table, in a bright
-elegant room. Photorealistic professional interior photography, warm cream
-and beige palette with muted gold accents, soft natural daylight, clean
-uncluttered composition, 35mm lens at eye level, no people, no text, no
-logos, no cartoon, no 3D render, no AI-art look. Aspect ratio 2:1, size
-1536x768 pixels.
+Commercial studio product photograph of an Arabic majlis sofa set on a
+pure seamless white background: a long low L-shaped cream sectional sofa
+with rows of patterned beige and gold cushions, and a dark wooden coffee
+tray table with a brass dallah coffee pot in front of it, arranged like a
+showroom set. Soft even studio lighting, gentle contact shadows, visible
+fabric texture, ultra sharp, catalog quality, photorealistic, no people,
+no text, no logos, no cartoon, no CGI look. Wide 2:1 composition,
+1536x768 pixels, set centered with clean white margins.
 
 --------------------------------------------------------------------------
 11. BEDROOM SETS
 --------------------------------------------------------------------------
-A complete bedroom set in a bright calm room - a bed with a padded beige
-headboard, two matching wooden nightstands with warm lamps on each side,
-and a wardrobe partly visible on the right, all in coordinated cream and
-walnut tones. Photorealistic professional interior photography, warm cream
-and beige palette with muted gold accents, soft natural daylight, clean
-uncluttered composition, 35mm lens at eye level, no people, no text, no
-logos, no cartoon, no 3D render, no AI-art look. Aspect ratio 2:1, size
-1536x768 pixels.
+Commercial studio product photograph of a complete bedroom set on a pure
+seamless white background: a bed with a padded beige headboard and cream
+bedding in the center, a wooden nightstand with a lamp on the left, and
+a tall two-door wardrobe standing on the right, all facing the camera as
+one matching set. Soft even studio lighting, gentle contact shadows, ultra
+sharp, catalog quality, photorealistic, no people, no text, no logos, no
+cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels, set centered
+with clean white margins.
 
 --------------------------------------------------------------------------
 12. DINING & TABLES
 --------------------------------------------------------------------------
-A dining set in a bright dining room - a rectangular warm wooden dining
-table with six upholstered beige chairs, a simple vase as a centerpiece,
-light wooden floor and an off-white wall behind. Photorealistic
-professional interior photography, warm cream and beige palette with muted
-gold accents, soft natural daylight, clean uncluttered composition, 35mm
-lens at eye level, no people, no text, no logos, no cartoon, no 3D render,
-no AI-art look. Aspect ratio 2:1, size 1536x768 pixels.
+Commercial studio product photograph of a dining set on a pure seamless
+white background: a rectangular warm oak dining table in the center with
+six beige upholstered chairs - two chairs at the head and foot of the
+table, four chairs tucked along the sides - arranged symmetrically around
+the table, seen from a slightly raised angle. Soft even studio lighting,
+gentle contact shadows, ultra sharp, catalog quality, photorealistic, no
+people, no text, no logos, no cartoon, no CGI look. Wide 2:1 composition,
+1536x768 pixels, set centered with clean white margins.
 
 ==========================================================================
 AFTER GENERATING
 ==========================================================================
 1. Crop every image to exactly 2:1 (for example 1536x768).
-2. Save as WebP (quality ~85) and name it like the slug, e.g.
+2. Keep the white background clean and pure.
+3. Save as WebP (quality ~85), name it with the slug, e.g.
    category-air-conditioners.webp
-3. Upload in Django admin: Admin > Pages > Categories > (pick one) > Image
+4. Upload in Django admin: Admin > Pages > Categories > (pick one) > Image
