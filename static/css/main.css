@@ -870,6 +870,8 @@ h2 {
 
   .hero {
     height: auto;
+    padding-top: 14px;
+    padding-bottom: 54px;
   }
 
   .hero__inner {
@@ -877,23 +879,32 @@ h2 {
   }
 
   .hero__content {
-    padding-top: 34px;
-    padding-bottom: 30px;
     max-width: 100%;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 14px;
+    padding: 22px 18px 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .hero__media {
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
-    height: 260px;
+    height: auto;
   }
 
   .hero__media::after {
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.55) 0%,
-      rgba(255, 255, 255, 0) 30%
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0) 42%
     );
+  }
+
+  .hero__slide img {
+    object-position: center;
   }
 
   .hero__title {
@@ -958,28 +969,9 @@ h2 {
     letter-spacing: 2px;
   }
 
-  .search-bar {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 10px 12px;
-    border-radius: 18px;
-    gap: 8px;
-  }
-
-  .search-bar__input {
-    width: 100%;
-    flex: 1 1 auto;
-    padding: 4px 0;
-  }
-
-  .search-bar__location {
-    border-left: none;
-    padding: 0 4px;
-  }
-
-  .search-bar__btn {
-    width: 100%;
-    height: 40px;
+  .search-bar,
+  .popular {
+    display: none;
   }
 
   .section-title {
@@ -993,22 +985,6 @@ h2 {
 
   .listing-card__media {
     height: 130px;
-  }
-
-  .popular {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    margin: 16px -24px 0;
-    padding: 0 24px 4px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .popular__tags {
-    flex-wrap: nowrap;
-  }
-
-  .chip {
-    flex-shrink: 0;
   }
 }
 
@@ -1029,10 +1005,6 @@ h2 {
 
   .hero__title {
     font-size: 27px;
-  }
-
-  .hero__media {
-    height: 210px;
   }
 
   .listings__grid {
