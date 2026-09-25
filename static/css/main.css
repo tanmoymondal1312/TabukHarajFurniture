@@ -313,12 +313,12 @@ h2 {
 }
 
 .hero__title {
-  font-size: 41px;
+  font-size: 32px;
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
   color: var(--ink);
-  max-width: 460px;
+  max-width: 560px;
   margin-bottom: 18px;
 }
 
@@ -832,7 +832,7 @@ h2 {
   }
 
   .hero__title {
-    font-size: 36px;
+    font-size: 26px;
   }
 
   .hero__media {
@@ -982,7 +982,7 @@ h2 {
   }
 
   .hero__title {
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .hero__eyebrow {
@@ -1045,7 +1045,7 @@ h2 {
   }
 
   .hero__title {
-    font-size: 27px;
+    font-size: 20px;
   }
 
   .listings__grid {
