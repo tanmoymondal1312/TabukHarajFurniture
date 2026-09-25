@@ -21,17 +21,6 @@
     );
   });
 
-  var headerSearch = document.getElementById("header-search");
-  if (headerSearch) {
-    headerSearch.addEventListener("click", function () {
-      document.body.classList.add("search-open");
-      var hero = document.querySelector(".hero");
-      if (hero) hero.scrollIntoView({ behavior: "smooth", block: "start" });
-      var input = document.querySelector(".search-bar__input");
-      if (input) setTimeout(function () { input.focus(); }, 350);
-    });
-  }
-
   var root = document.querySelector("[data-carousel]");
   if (!root) return;
 
