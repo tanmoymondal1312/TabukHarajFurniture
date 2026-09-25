@@ -1,15 +1,20 @@
 ==========================================================================
-CATEGORY CARD IMAGE PROMPTS - Tabuk Haraj Furniture  (v2 - product style)
+CATEGORY CARD IMAGE PROMPTS - Tabuk Haraj Furniture  (v3 - studio product)
 ==========================================================================
+
+BACKGROUND (same for all 12 images - this is the defined look):
+Warm ivory studio backdrop. Smooth gradient - creamy white glow right
+behind the products, fading to light warm beige at the edges. Light beige
+seamless floor with soft contact shadows. A hint of warm golden light,
+like a premium showroom. NOT flat white, NOT a room scene, NOT cartoon,
+NOT AI-art look.
 
 STYLE RULES FOR ALL 12 IMAGES
 - Studio PRODUCT photography, like an advertising / catalog card
-- PURE WHITE background is the primary color of every image
 - Show the product clearly (1-3 units, angled / staggered for depth)
   so anyone instantly knows the category
 - Product colors follow the product's own natural look
   (steel, white, walnut wood, beige fabric etc.)
-- NOT an in-house room scene, NOT cartoon, NOT AI-art look
 - No people, no text, no logos, no watermark
 
 Card size on site: 187 x 92 px  ->  aspect ratio 2:1
@@ -21,154 +26,166 @@ and crop top/bottom to 2:1.
 1. HOME APPLIANCES
 --------------------------------------------------------------------------
 Commercial studio product photograph of four small home appliances lined
-up in one row on a pure seamless white background: a stainless steel
-microwave, a brushed metal electric kettle, a glass blender and a compact
-canister vacuum cleaner, evenly spaced and slightly angled toward the
-camera. Soft even studio lighting, gentle contact shadows under each
-product, ultra sharp, catalog quality, photorealistic, no people, no text,
-no logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
-products centered with clean white margins.
+up in one row: a stainless steel microwave, a brushed metal electric
+kettle, a glass blender and a compact canister vacuum cleaner, evenly
+spaced and slightly angled toward the camera. Warm ivory studio backdrop
+with creamy white glow behind the products fading to light warm beige at
+the edges, light beige floor with soft contact shadows, a hint of warm
+golden light. Ultra sharp, catalog quality, photorealistic, no people, no
+text, no logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768
+pixels, products centered with clean margins.
 
 --------------------------------------------------------------------------
 2. KITCHEN FURNITURE
 --------------------------------------------------------------------------
 Commercial studio product photograph of one modular kitchen set displayed
-as a single product on a pure seamless white background: warm walnut
-cabinets with slim brass handles, a white marble countertop, a small
-breakfast counter with two wooden bar stools, photographed at a slight
-three-quarter angle. Soft even studio lighting, gentle contact shadow on
-the floor, ultra sharp, catalog quality, photorealistic, no people, no
-text, no logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768
-pixels, product centered with clean white margins.
+as a single product: warm walnut cabinets with slim brass handles, a
+white marble countertop, a small breakfast counter with two wooden bar
+stools, photographed at a slight three-quarter angle. Warm ivory studio
+backdrop with creamy white glow behind the product fading to light warm
+beige at the edges, light beige floor with soft contact shadow, a hint of
+warm golden light. Ultra sharp, catalog quality, photorealistic, no
+people, no text, no logos, no cartoon, no CGI look. Wide 2:1 composition,
+1536x768 pixels, product centered with clean margins.
 
 --------------------------------------------------------------------------
 3. OTHER FURNITURE
 --------------------------------------------------------------------------
 Commercial studio product photograph of a small group of assorted
-furniture on a pure seamless white background: a beige upholstered
-armchair in front, a light oak side table next to it, a slim brass floor
-lamp behind and a low wooden bookshelf at the back, arranged in a tight
-staggered cluster. Soft even studio lighting, gentle contact shadows,
-ultra sharp, catalog quality, photorealistic, no people, no text, no
-logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
-cluster centered with clean white margins.
+furniture: a beige upholstered armchair in front, a light oak side table
+next to it, a slim brass floor lamp behind and a low wooden bookshelf at
+the back, arranged in a tight staggered cluster. Warm ivory studio
+backdrop with creamy white glow behind the group fading to light warm
+beige at the edges, light beige floor with soft contact shadows, a hint
+of warm golden light. Ultra sharp, catalog quality, photorealistic, no
+people, no text, no logos, no cartoon, no CGI look. Wide 2:1
+composition, 1536x768 pixels, group centered with clean margins.
 
 --------------------------------------------------------------------------
 4. AIR CONDITIONERS
 --------------------------------------------------------------------------
 Commercial studio product photograph of three white split air conditioner
-indoor units on a pure seamless white background: one large unit in front
-center facing the camera, two more units behind it on the left and right
-at slight overlapping angles, louvers open, clean glossy white plastic
-finish. Soft even studio lighting, subtle reflections, gentle contact
-shadows, ultra sharp, catalog quality, photorealistic, no people, no
-text, no logos, no brand names, no cartoon, no CGI look. Wide 2:1
-composition, 1536x768 pixels, products centered with clean white margins.
+indoor units: one large unit in front center facing the camera, two more
+units behind it on the left and right at slight overlapping angles,
+louvers open, clean glossy white finish. Warm ivory studio backdrop with
+creamy white glow behind the units fading to light warm beige at the
+edges, light beige floor with soft contact shadows, a hint of warm golden
+light. Ultra sharp, catalog quality, photorealistic, no people, no text,
+no logos, no brand names, no cartoon, no CGI look. Wide 2:1 composition,
+1536x768 pixels, products centered with clean margins.
 
 --------------------------------------------------------------------------
 5. REFRIGERATORS & FREEZERS
 --------------------------------------------------------------------------
-Commercial studio product photograph of three refrigerators on a pure
-seamless white background: a large stainless steel French-door
-refrigerator standing in front center, a smaller white single-door fridge
-behind it to the left at an angle, and a compact freezer unit behind to
-the right, arranged in a staggered row. Soft even studio lighting, soft
-metal reflections, gentle contact shadows on the floor, ultra sharp,
-catalog quality, photorealistic, no people, no text, no logos, no brand
-names, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
-products centered with clean white margins.
+Commercial studio product photograph of three refrigerators: a large
+stainless steel French-door refrigerator standing in front center, a
+smaller white single-door fridge behind it to the left at an angle, and a
+compact freezer unit behind to the right, arranged in a staggered row.
+Warm ivory studio backdrop with creamy white glow behind the fridges
+fading to light warm beige at the edges, light beige floor with soft
+contact shadows, a hint of warm golden light. Ultra sharp, catalog
+quality, photorealistic, no people, no text, no logos, no brand names, no
+cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels, products
+centered with clean margins.
 
 --------------------------------------------------------------------------
 6. WASHING MACHINES
 --------------------------------------------------------------------------
-Commercial studio product photograph of three washing machines on a pure
-seamless white background: one stainless steel front-load washing machine
-in front at a slight angle, two white front-load machines behind it one
-after another, overlapping in depth, round glass doors facing the camera.
-Soft even studio lighting, gentle reflections on the metal, contact
-shadows under each machine, ultra sharp, catalog quality, photorealistic,
-no people, no text, no logos, no brand names, no cartoon, no CGI look.
-Wide 2:1 composition, 1536x768 pixels, products centered with clean white
-margins.
+Commercial studio product photograph of three washing machines: one
+stainless steel front-load washing machine in front at a slight angle,
+two white front-load machines behind it one after another, overlapping in
+depth, round glass doors facing the camera. Warm ivory studio backdrop
+with creamy white glow behind the machines fading to light warm beige at
+the edges, light beige floor with soft contact shadows, a hint of warm
+golden light. Ultra sharp, catalog quality, photorealistic, no people, no
+text, no logos, no brand names, no cartoon, no CGI look. Wide 2:1
+composition, 1536x768 pixels, products centered with clean margins.
 
 --------------------------------------------------------------------------
 7. MATTRESSES & BEDS
 --------------------------------------------------------------------------
-Commercial studio product photograph on a pure seamless white
-background: a low wooden bed frame with a thick white mattress and neat
-cream bedding in front center, and one bare mattress standing upright
-behind it at an angle showing its quilted edge, like a showroom display.
-Soft even studio lighting, gentle contact shadows, ultra sharp, catalog
-quality, photorealistic, no people, no text, no logos, no cartoon, no CGI
-look. Wide 2:1 composition, 1536x768 pixels, products centered with clean
-white margins.
+Commercial studio product photograph: a low wooden bed frame with a
+thick white mattress and neat cream bedding in front center, and one
+bare mattress standing upright behind it at an angle showing its
+quilted edge, like a showroom display. Warm ivory studio backdrop with
+creamy white glow behind the bed fading to light warm beige at the edges,
+light beige floor with soft contact shadows, a hint of warm golden light.
+Ultra sharp, catalog quality, photorealistic, no people, no text, no
+logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
+products centered with clean margins.
 
 --------------------------------------------------------------------------
 8. OFFICE FURNITURE
 --------------------------------------------------------------------------
-Commercial studio product photograph of a home office furniture group on
-a pure seamless white background: a light wooden desk in center, a black
-ergonomic mesh office chair pulled up to it at a slight angle, and a
-small wooden wall shelf floating above behind, arranged as one set. Soft
-even studio lighting, gentle contact shadows, ultra sharp, catalog
-quality, photorealistic, no people, no text, no logos, no cartoon, no CGI
-look. Wide 2:1 composition, 1536x768 pixels, group centered with clean
-white margins.
+Commercial studio product photograph of a home office furniture group: a
+light wooden desk in center, a black ergonomic mesh office chair pulled
+up to it at a slight angle, and a small wooden wall shelf floating above
+behind, arranged as one set. Warm ivory studio backdrop with creamy
+white glow behind the group fading to light warm beige at the edges,
+light beige floor with soft contact shadows, a hint of warm golden
+light. Ultra sharp, catalog quality, photorealistic, no people, no text,
+no logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
+group centered with clean margins.
 
 --------------------------------------------------------------------------
 9. CURTAINS & CARPETS
 --------------------------------------------------------------------------
-Commercial studio product photograph on a pure seamless white
-background: two rolled carpets standing upright on the left at slightly
-different heights, one carpet partly unrolled flat on the floor in front
-showing its warm gold and cream pattern, and one beige linen curtain
-panel hanging from a slim rod on the right side. Soft even studio
-lighting, gentle contact shadows, visible fabric texture, ultra sharp,
-catalog quality, photorealistic, no people, no text, no logos, no
-cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels, products
-centered with clean white margins.
+Commercial studio product photograph: two rolled carpets standing upright
+on the left at slightly different heights, one carpet partly unrolled
+flat on the floor in front showing its warm gold and cream pattern, and
+one beige linen curtain panel hanging from a slim rod on the right side.
+Warm ivory studio backdrop with creamy white glow behind the products
+fading to light warm beige at the edges, light beige floor with soft
+contact shadows, a hint of warm golden light. Visible fabric texture,
+ultra sharp, catalog quality, photorealistic, no people, no text, no
+logos, no cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels,
+products centered with clean margins.
 
 --------------------------------------------------------------------------
 10. MAJLIS & SOFAS
 --------------------------------------------------------------------------
-Commercial studio product photograph of an Arabic majlis sofa set on a
-pure seamless white background: a long low L-shaped cream sectional sofa
-with rows of patterned beige and gold cushions, and a dark wooden coffee
-tray table with a brass dallah coffee pot in front of it, arranged like a
-showroom set. Soft even studio lighting, gentle contact shadows, visible
-fabric texture, ultra sharp, catalog quality, photorealistic, no people,
-no text, no logos, no cartoon, no CGI look. Wide 2:1 composition,
-1536x768 pixels, set centered with clean white margins.
+Commercial studio product photograph of an Arabic majlis sofa set: a
+long low L-shaped cream sectional sofa with rows of patterned beige and
+gold cushions, and a dark wooden coffee tray table with a brass dallah
+coffee pot in front of it, arranged like a showroom set. Warm ivory
+studio backdrop with creamy white glow behind the set fading to light
+warm beige at the edges, light beige floor with soft contact shadows, a
+hint of warm golden light. Visible fabric texture, ultra sharp, catalog
+quality, photorealistic, no people, no text, no logos, no cartoon, no
+CGI look. Wide 2:1 composition, 1536x768 pixels, set centered with clean
+margins.
 
 --------------------------------------------------------------------------
 11. BEDROOM SETS
 --------------------------------------------------------------------------
-Commercial studio product photograph of a complete bedroom set on a pure
-seamless white background: a bed with a padded beige headboard and cream
-bedding in the center, a wooden nightstand with a lamp on the left, and
-a tall two-door wardrobe standing on the right, all facing the camera as
-one matching set. Soft even studio lighting, gentle contact shadows, ultra
-sharp, catalog quality, photorealistic, no people, no text, no logos, no
-cartoon, no CGI look. Wide 2:1 composition, 1536x768 pixels, set centered
-with clean white margins.
+Commercial studio product photograph of a complete bedroom set: a bed
+with a padded beige headboard and cream bedding in the center, a wooden
+nightstand with a lamp on the left, and a tall two-door wardrobe standing
+on the right, all facing the camera as one matching set. Warm ivory
+studio backdrop with creamy white glow behind the set fading to light
+warm beige at the edges, light beige floor with soft contact shadows, a
+hint of warm golden light. Ultra sharp, catalog quality, photorealistic,
+no people, no text, no logos, no cartoon, no CGI look. Wide 2:1
+composition, 1536x768 pixels, set centered with clean margins.
 
 --------------------------------------------------------------------------
 12. DINING & TABLES
 --------------------------------------------------------------------------
-Commercial studio product photograph of a dining set on a pure seamless
-white background: a rectangular warm oak dining table in the center with
-six beige upholstered chairs - two chairs at the head and foot of the
-table, four chairs tucked along the sides - arranged symmetrically around
-the table, seen from a slightly raised angle. Soft even studio lighting,
-gentle contact shadows, ultra sharp, catalog quality, photorealistic, no
-people, no text, no logos, no cartoon, no CGI look. Wide 2:1 composition,
-1536x768 pixels, set centered with clean white margins.
+Commercial studio product photograph of a dining set: a rectangular warm
+oak dining table in the center with six beige upholstered chairs - two
+chairs at the head and foot of the table, four chairs tucked along the
+sides - arranged symmetrically around the table, seen from a slightly
+raised angle. Warm ivory studio backdrop with creamy white glow behind
+the set fading to light warm beige at the edges, light beige floor with
+soft contact shadows, a hint of warm golden light. Ultra sharp, catalog
+quality, photorealistic, no people, no text, no logos, no cartoon, no
+CGI look. Wide 2:1 composition, 1536x768 pixels, set centered with clean
+margins.
 
 ==========================================================================
 AFTER GENERATING
 ==========================================================================
 1. Crop every image to exactly 2:1 (for example 1536x768).
-2. Keep the white background clean and pure.
-3. Save as WebP (quality ~85), name it with the slug, e.g.
+2. Save as WebP (quality ~85), name it with the slug, e.g.
    category-air-conditioners.webp
-4. Upload in Django admin: Admin > Pages > Categories > (pick one) > Image
+3. Upload in Django admin: Admin > Pages > Categories > (pick one) > Image
