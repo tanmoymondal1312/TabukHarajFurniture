@@ -22,8 +22,9 @@
         <meta itemprop="position" content="{{ forloop.counter }}">
         <a href="{% url 'pages:home' %}?q={{ cat.name|urlencode }}" class="category-card__link" itemprop="url">
           <div class="category-card__media">
+            {% if cat.image %}
             <img
-              src="{% static 'images/' %}{{ cat.image }}"
+              src="{{ cat.image.url }}"
               alt="{{ cat.name }} category - quality used items at Tabuk Haraj Furniture"
               width="190"
               height="92"
@@ -31,10 +32,22 @@
               data-fallback="{% static 'images/placeholder.webp' %}"
               itemprop="image"
             >
+            {% else %}
+            <img
+              src="{% static 'images/placeholder.webp' %}"
+              alt="{{ cat.name }} category - quality used items at Tabuk Haraj Furniture"
+              width="190"
+              height="92"
+              loading="lazy"
+              itemprop="image"
+            >
+            {% endif %}
           </div>
           <div class="category-card__body">
             <p class="category-card__title" itemprop="name">{{ cat.name }}</p>
-            <p class="category-card__count">{{ cat.count }}</p>
+            {% if cat.item_count %}
+            <p class="category-card__count">{{ cat.item_count }} items</p>
+            {% endif %}
             <span class="category-card__arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>

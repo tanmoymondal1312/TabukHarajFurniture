@@ -1,15 +1,6 @@
 from django.shortcuts import render
 
-from django.conf import settings
-
-CATEGORIES = [
-    {"name": "Majlis & Sofas", "count": "120+ items", "image": "category-majlis-sofas.webp"},
-    {"name": "Bedroom Sets", "count": "98+ items", "image": "category-bedroom-sets.webp"},
-    {"name": "Dining & Tables", "count": "76+ items", "image": "category-dining-tables.webp"},
-    {"name": "Home Appliances", "count": "210+ items", "image": "category-home-appliances.webp"},
-    {"name": "Kitchen Furniture", "count": "64+ items", "image": "category-kitchen-furniture.webp"},
-    {"name": "Other Furniture", "count": "45+ items", "image": "category-other-furniture.webp"},
-]
+from .models import Category
 
 LISTINGS = [
     {"title": "مجلس عربي فاخر", "price": "SAR 2,500", "image": "placeholder.webp"},
@@ -26,7 +17,7 @@ def home(request):
     request.page_image = "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp"
 
     return render(request, "pages/home.html", {
-        "categories": CATEGORIES,
+        "categories": Category.objects.filter(is_active=True),
         "listings": LISTINGS,
         "q": request.GET.get("q", ""),
     })
