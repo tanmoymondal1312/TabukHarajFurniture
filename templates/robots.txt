@@ -9,6 +9,8 @@ Disallow: /admin/
 Disallow: /media/
 Disallow: /static/
 Disallow: /*.json$
+# Allow the sitemap before the xml disallow
+Allow: /sitemap.xml
 Disallow: /*.xml$
 Disallow: /*?q=*
 Disallow: /*?lang=*
