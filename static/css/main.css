@@ -1499,6 +1499,8 @@ section[id] {
 
   .pdp__btn {
     width: 100%;
+    flex: none;
+    height: 50px;
   }
 
   .pdp__price-main {
