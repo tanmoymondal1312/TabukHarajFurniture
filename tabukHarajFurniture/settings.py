@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dashboard.middleware.DashboardLanguageMiddleware',
+    'dashboard.middleware.VisitorTrackingMiddleware',
 ]
 
 ROOT_URLCONF = 'tabukHarajFurniture.urls'

@@ -1,18 +1,26 @@
+from datetime import date as date_type
+from datetime import datetime, time, timedelta
+
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.core.paginator import Paginator
 from django.db.models import Count, Q, Sum
+from django.db.models.functions import TruncDate
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from pages.models import Category, Product
 
+from .charts import line_chart
 from .forms import CategoryForm, ProductForm
+from .models import VisitorLog
 
 NO_PHOTO_Q = Q(image__isnull=True) | Q(image="")
+MAX_RANGE_DAYS = 366
 
 
 class DashboardLoginView(LoginView):
@@ -230,4 +238,102 @@ def category_delete(request, pk):
     name = category.name
     category.delete()
     messages.success(request, f"Category “{name}” deleted.")
+
+
+@login_required
+def visitors(request):
+    today = timezone.localdate()
+
+    def parse_date(key, default):
+        try:
+            return date_type.fromisoformat(request.GET.get(key, ""))
+        except ValueError:
+            return default
+
+    date_to = parse_date("to", today)
+    date_from = parse_date("from", date_to - timedelta(days=29))
+    if date_from > date_to:
+        date_from, date_to = date_to, date_from
+    if (date_to - date_from).days >= MAX_RANGE_DAYS:
+        date_from = date_to - timedelta(days=MAX_RANGE_DAYS - 1)
+
+    start = timezone.make_aware(datetime.combine(date_from, time.min))
+    end = timezone.make_aware(datetime.combine(date_to + timedelta(days=1), time.min))
+    qs = VisitorLog.objects.filter(created_at__gte=start, created_at__lt=end)
+    path_f = request.GET.get("path", "").strip()
+    if path_f:
+        qs = qs.filter(path=path_f)
+
+    visits = qs.count()
+    unique = qs.values("visitor_key").distinct().count()
+
+    day_rows = (
+        qs.annotate(day=TruncDate("created_at"))
+        .values("day")
+        .annotate(n=Count("id"), u=Count("visitor_key", distinct=True))
+        .order_by()
+    )
+    per_day = {r["day"]: r for r in day_rows}
+    days = [date_from + timedelta(d) for d in range((date_to - date_from).days + 1)]
+    visits_by_day = [per_day.get(d, {}).get("n", 0) for d in days]
+    unique_by_day = [per_day.get(d, {}).get("u", 0) for d in days]
+
+    busiest_n = max(visits_by_day) if visits_by_day else 0
+    busiest_day = days[visits_by_day.index(busiest_n)] if visits and busiest_n else None
+
+    top_pages = list(
+        qs.values("path").annotate(n=Count("id")).order_by("-n", "path")[:10]
+    )
+    distinct_pages = qs.values_list("path", flat=True).distinct().count()
+
+    chart = ""
+    if visits:
+        chart = line_chart(
+            days,
+            [
+                {"name": "Visits", "color": "#BE843F", "values": visits_by_day, "fill": True},
+                {"name": "Unique visitors", "color": "#2563EB", "values": unique_by_day},
+            ],
+        )
+
+    rows = Paginator(qs, 25).get_page(request.GET.get("page"))
+    keys = {r.visitor_key for r in rows}
+    repeat = dict(
+        qs.filter(visitor_key__in=keys)
+        .values_list("visitor_key")
+        .annotate(n=Count("id"))
+        .order_by()
+    )
+    for r in rows:
+        r.repeat_n = repeat.get(r.visitor_key, 1)
+
+    params = request.GET.copy()
+    params.pop("page", None)
+    all_pages = (
+        VisitorLog.objects.values_list("path", flat=True).distinct().order_by("path")
+    )
+
+    context = {
+        "active": "visitors",
+        "page": rows,
+        "date_from_s": date_from.isoformat(),
+        "date_to_s": date_to.isoformat(),
+        "default_from_s": (today - timedelta(days=29)).isoformat(),
+        "default_to_s": today.isoformat(),
+        "path_f": path_f,
+        "paths": all_pages,
+        "visits": visits,
+        "unique": unique,
+        "distinct_pages": distinct_pages,
+        "busiest_n": busiest_n,
+        "busiest_day": busiest_day,
+        "chart": chart,
+        "top_pages": top_pages,
+        "max_top": top_pages[0]["n"] if top_pages else 1,
+        "pager_qs": params.urlencode(),
+        "has_filters": bool(path_f)
+        or date_from.isoformat() != (today - timedelta(days=29)).isoformat()
+        or date_to.isoformat() != today.isoformat(),
+    }
+    return render(request, "dashboard/visitor_list.html", context)
     return redirect("dashboard:category_list")
