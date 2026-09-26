@@ -96,3 +96,7 @@ class Product(models.Model):
     @property
     def has_discount(self):
         return self.old_price is not None and self.old_price > self.price
+
+    @property
+    def price_display(self):
+        return f"SAR {self.price:,.0f}"

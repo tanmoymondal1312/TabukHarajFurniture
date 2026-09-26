@@ -1,13 +1,6 @@
 from django.shortcuts import render
 
-from .models import Category
-
-LISTINGS = [
-    {"title": "مجلس عربي فاخر", "price": "SAR 2,500", "image": "placeholder.webp"},
-    {"title": "مكيف سبليت 18000 وحدة", "price": "SAR 1,800", "image": "placeholder.webp"},
-    {"title": "ثلاجة سامسونج", "price": "SAR 2,200", "image": "placeholder.webp"},
-    {"title": "غرفة نوم كاملة", "price": "SAR 3,500", "image": "placeholder.webp"},
-]
+from .models import Category, Product
 
 
 def home(request):
@@ -16,9 +9,13 @@ def home(request):
     request.page_description = "حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد."
     request.page_image = "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp"
 
+    listings = (
+        Product.objects.filter(is_active=True, status=Product.STATUS_AVAILABLE)
+        .order_by("-is_featured", "-created_at")[:8]
+    )
     return render(request, "pages/home.html", {
         "categories": Category.objects.filter(is_active=True),
-        "listings": LISTINGS,
+        "listings": listings,
         "q": request.GET.get("q", ""),
     })
 

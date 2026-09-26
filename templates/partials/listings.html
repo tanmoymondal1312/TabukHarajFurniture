@@ -1,4 +1,5 @@
 {% load static %}
+{% if listings %}
 <section class="section listings" id="listings" itemscope itemtype="https://schema.org/ItemList">
   <meta itemprop="name" content="Featured Used Furniture & Appliances Listings">
   <meta itemprop="description" content="Hot deals on quality used furniture, ACs, fridges, washing machines, sofas and bedroom sets in Tabuk. All items tested, warranted 30 days, with free delivery.">
@@ -23,7 +24,7 @@
         <a href="{% url 'pages:home' %}?q={{ item.title|urlencode }}" class="listing-card__link" itemprop="url">
           <div class="listing-card__media">
             <img
-              src="{% static 'images/' %}{{ item.image }}"
+              src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/placeholder.webp' %}{% endif %}"
               alt="{{ item.title }} - Quality used item at Tabuk Haraj Furniture showroom"
               width="296"
               height="160"
@@ -32,7 +33,7 @@
               itemprop="image"
               id="listing-image"
             >
-            <span class="listing-card__badge">Used</span>
+            <span class="listing-card__badge">{{ item.get_condition_display }}</span>
           </div>
           <div class="listing-card__body">
             <p class="listing-card__title" dir="rtl" lang="ar" itemprop="name" id="listing-name">{{ item.title }}</p>
@@ -43,7 +44,7 @@
               <meta itemprop="seller" itemscope itemtype="https://schema.org/LocalBusiness" id="listing-seller">
               <meta itemprop="name" content="Tabuk Haraj Furniture">
               <meta itemprop="url" content="https://tabukharajfurniture.com/">
-              {{ item.price }}
+              {{ item.price_display }}
             </p>
           </div>
         </a>
@@ -52,3 +53,4 @@
     </div>
   </div>
 </section>
+{% endif %}
