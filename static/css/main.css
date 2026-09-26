@@ -1177,7 +1177,8 @@ section[id] {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px;
-  padding: 18px 0 40px;
+  padding-top: 18px;
+  padding-bottom: 40px;
 }
 
 .pdp__media {
@@ -1327,6 +1328,7 @@ section[id] {
   color: #fff;
   flex: 1;
   max-width: 235px;
+  white-space: nowrap;
 }
 
 .pdp__btn .icon {
@@ -1515,7 +1517,8 @@ section[id] {
 }
 
 .pp-hero__inner {
-  padding: 12px 24px 28px;
+  padding-top: 12px;
+  padding-bottom: 28px;
 }
 
 .pp-hero__title {
