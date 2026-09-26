@@ -1,0 +1,29 @@
+{% load static %}
+<a href="{% url 'pages:products' %}" class="pp-cat{% if not active_category %} is-active{% endif %}">
+  <span class="pp-cat__img pp-cat__img--all" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+      <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+      <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+      <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+    </svg>
+  </span>
+  <span class="pp-cat__name">All Products</span>
+  <span class="pp-cat__count">{{ total_count }}</span>
+</a>
+{% for cat in categories %}
+<a href="{% url 'pages:products' %}?cat={{ cat.slug }}" class="pp-cat{% if active_category and active_category.pk == cat.pk %} is-active{% endif %}">
+  <span class="pp-cat__img">
+    <img
+      src="{% if cat.image %}{{ cat.image.url }}{% else %}{% static 'images/placeholder.webp' %}{% endif %}"
+      data-fallback="{% static 'images/placeholder.webp' %}"
+      alt=""
+      width="48"
+      height="48"
+      loading="lazy"
+    >
+  </span>
+  <span class="pp-cat__name">{{ cat.name }}</span>
+  <span class="pp-cat__count">{{ cat.item_count }}</span>
+</a>
+{% endfor %}

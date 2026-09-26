@@ -31,6 +31,38 @@ def faq(request):
     return render(request, "pages/faq.html", {})
 
 
+def products(request):
+    request.page_title = "كل المنتجات | حراج تبوك للأثاث المستعمل"
+    request.page_description = "تصفح جميع المنتجات في حراج تبوك للأثاث المستعمل: أثاث، مكيفات، ثلاجات، غسالات وأكثر. كل قطعة مختبرة بضمان 30 يوم وتوصيل مجاني في تبوك."
+    request.page_image = "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp"
+
+    categories = Category.objects.filter(is_active=True)
+
+    active_category = None
+    cat_slug = request.GET.get("cat", "")
+    if cat_slug:
+        active_category = get_object_or_404(Category, slug=cat_slug, is_active=True)
+
+    items = Product.objects.filter(
+        is_active=True, status=Product.STATUS_AVAILABLE
+    )
+    if active_category:
+        items = items.filter(category=active_category)
+    items = items.order_by("-is_featured", "-created_at")
+
+    total = Product.objects.filter(
+        is_active=True, status=Product.STATUS_AVAILABLE
+    ).count()
+
+    return render(request, "pages/products.html", {
+        "categories": categories,
+        "active_category": active_category,
+        "products": items,
+        "showing_count": items.count(),
+        "total_count": total,
+    })
+
+
 def product_detail(request, slug):
     product = get_object_or_404(
         Product.objects.select_related("category"), slug=slug, is_active=True

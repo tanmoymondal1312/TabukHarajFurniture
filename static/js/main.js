@@ -21,6 +21,38 @@
     );
   });
 
+  var catToggle = document.querySelector("[data-cat-toggle]");
+  var catDrawer = document.querySelector("[data-cat-drawer]");
+  var catOverlay = document.querySelector("[data-cat-overlay]");
+  var catClose = document.querySelector("[data-cat-close]");
+
+  if (catToggle && catDrawer) {
+    var setCatOpen = function (open) {
+      catDrawer.classList.toggle("is-open", open);
+      if (catOverlay) catOverlay.classList.toggle("is-open", open);
+      document.body.classList.toggle("no-scroll", open);
+      catToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      catDrawer.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+
+    catToggle.addEventListener("click", function () {
+      setCatOpen(!catDrawer.classList.contains("is-open"));
+    });
+    if (catOverlay) {
+      catOverlay.addEventListener("click", function () {
+        setCatOpen(false);
+      });
+    }
+    if (catClose) {
+      catClose.addEventListener("click", function () {
+        setCatOpen(false);
+      });
+    }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setCatOpen(false);
+    });
+  }
+
   var root = document.querySelector("[data-carousel]");
   if (!root) return;
 
