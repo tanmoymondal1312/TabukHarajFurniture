@@ -25,6 +25,7 @@ from pages.sitemaps import sitemaps
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('dashboard/', include('dashboard.urls')),
     path('', include('pages.urls')),
 
     # SEO URLs

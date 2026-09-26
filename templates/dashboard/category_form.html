@@ -1,0 +1,93 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+{% block page_actions %}
+  <a class="btn btn--ghost btn--sm" href="{% url 'dashboard:category_list' %}">&larr; Back to categories</a>
+{% endblock %}
+
+{% block content %}
+  <form class="form-layout" method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="alert alert--error" role="alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg>
+        <span>{{ form.non_field_errors|striptags }}</span>
+      </div>
+    {% endif %}
+
+    <div class="form-layout__main">
+      <section class="panel">
+        <header class="panel__head"><h2>Details</h2></header>
+
+        <div class="field-row">
+          <label class="field">
+            <span class="field__label">Name *</span>
+            {{ form.name }}
+            {% if form.name.errors %}<span class="field__error">{{ form.name.errors|striptags }}</span>{% endif %}
+          </label>
+          <label class="field">
+            <span class="field__label">Arabic name</span>
+            {{ form.ar_name }}
+          </label>
+        </div>
+
+        <div class="field-row">
+          <label class="field">
+            <span class="field__label">Slug</span>
+            {{ form.slug }}
+            {% if form.slug.errors %}<span class="field__error">{{ form.slug.errors|striptags }}</span>{% endif %}
+            <span class="field__hint">Used in the web address. Leave empty to fill it from the name.</span>
+          </label>
+          <label class="field">
+            <span class="field__label">Order</span>
+            {{ form.ordering }}
+            <span class="field__hint">Lower numbers show first.</span>
+          </label>
+        </div>
+
+        <label class="field">
+          <span class="field__label">Description</span>
+          {{ form.description }}
+        </label>
+      </section>
+    </div>
+
+    <aside class="form-layout__side">
+      <section class="panel">
+        <header class="panel__head"><h2>Image</h2></header>
+        <div class="photo-box">
+          <div class="photo-box__preview" id="photo-preview">
+            {% if category and category.image %}
+              <img src="{{ category.image.url }}" alt="{{ category.name }}">
+            {% else %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m5 17 4.5-4.5 3 3L16 12l3 3"/></svg>
+            {% endif %}
+          </div>
+          {{ form.image }}
+          {% if form.image.errors %}<span class="field__error">{{ form.image.errors|striptags }}</span>{% endif %}
+          <p class="photo-box__hint">Best: 2:1 photo, up to 150 KB (WebP)</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head"><h2>Publish</h2></header>
+
+        <label class="switch">
+          {{ form.is_active }}
+          <span class="switch__ui"></span>
+          <span class="switch__text">
+            <strong>Active</strong>
+            <small>Show this category on the site</small>
+          </span>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--gold btn--block">Save category</button>
+          <a class="btn btn--ghost btn--block" href="{% url 'dashboard:category_list' %}">Cancel</a>
+        </div>
+      </section>
+    </aside>
+  </form>
+{% endblock %}

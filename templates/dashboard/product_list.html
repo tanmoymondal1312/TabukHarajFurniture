@@ -1,0 +1,116 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Products{% endblock %}
+{% block page_title %}Products{% endblock %}
+{% block page_actions %}
+  <a class="btn btn--gold btn--sm" href="{% url 'dashboard:product_create' %}">+ Add product</a>
+{% endblock %}
+
+{% block content %}
+  <form class="filters" method="get">
+    <input class="input input--search" type="search" name="q" value="{{ q }}" placeholder="Search products..." aria-label="Search products">
+    <select class="input input--select" name="status" aria-label="Status">
+      <option value="">All statuses</option>
+      {% for value, label in status_choices %}
+        <option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+    <select class="input input--select" name="category" aria-label="Category">
+      <option value="">All categories</option>
+      {% for c in categories %}
+        <option value="{{ c.pk }}" {% if cat_id == c.pk|stringformat:"s" %}selected{% endif %}>{{ c.name }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn btn--ghost" type="submit">Filter</button>
+    {% if q or status or cat_id %}
+      <a class="link" href="{% url 'dashboard:product_list' %}">Clear</a>
+    {% endif %}
+  </form>
+
+  <section class="panel">
+    {% if page.object_list %}
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Condition</th>
+              <th>Status</th>
+              <th>Featured</th>
+              <th class="num">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in page %}
+              <tr>
+                <td>
+                  <a class="cell-product" href="{% url 'dashboard:product_edit' p.pk %}">
+                    <span class="thumb">
+                      {% if p.image %}<img src="{{ p.image.url }}" alt="">{% else %}<span class="thumb__none">?</span>{% endif %}
+                    </span>
+                    <span>
+                      <strong>{{ p.title }}</strong>
+                      <small>{{ p.category.name }} · {{ p.location }} · {{ p.created_at|date:"d M Y" }}</small>
+                    </span>
+                  </a>
+                </td>
+                <td class="nowrap">
+                  {{ p.price|floatformat:0 }} SAR
+                  {% if p.has_discount %}<small class="old-price">{{ p.old_price|floatformat:0 }}</small>{% endif %}
+                </td>
+                <td class="nowrap">{{ p.get_condition_display }}</td>
+                <td><span class="pill pill--{{ p.status }}">{{ p.get_status_display }}</span>{% if not p.is_active %} <span class="pill pill--hidden">Hidden</span>{% endif %}</td>
+                <td>
+                  <form method="post" action="{% url 'dashboard:product_action' p.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="toggle_featured" class="star-btn{% if p.is_featured %} is-on{% endif %}" title="Toggle hot deal" aria-label="Toggle hot deal">
+                      &#9733;
+                    </button>
+                  </form>
+                </td>
+                <td class="num nowrap">
+                  <div class="row-actions">
+                    {% if p.status == 'sold' %}
+                      <form method="post" action="{% url 'dashboard:product_action' p.pk %}">{% csrf_token %}<button class="btn btn--ghost btn--xs" name="action" value="mark_available">Reopen</button></form>
+                    {% elif p.status == 'available' %}
+                      <form method="post" action="{% url 'dashboard:product_action' p.pk %}">{% csrf_token %}<button class="btn btn--ghost btn--xs" name="action" value="mark_sold">Sold</button></form>
+                    {% else %}
+                      <form method="post" action="{% url 'dashboard:product_action' p.pk %}">{% csrf_token %}<button class="btn btn--ghost btn--xs" name="action" value="mark_available">Available</button></form>
+                    {% endif %}
+                    <a class="btn btn--ghost btn--xs" href="{% url 'dashboard:product_edit' p.pk %}">Edit</a>
+                    <form method="post" action="{% url 'dashboard:product_delete' p.pk %}" data-confirm="Delete “{{ p.title }}”? This cannot be undone.">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn--danger-ghost btn--xs">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      {% if page.paginator.num_pages > 1 %}
+        <nav class="pager" aria-label="Pagination">
+          {% if page.has_previous %}
+            <a class="pager__btn" href="?q={{ q }}&status={{ status }}&category={{ cat_id }}&page={{ page.previous_page_number }}">&larr;</a>
+          {% endif %}
+          {% for n in page.paginator.page_range %}
+            <a class="pager__btn{% if n == page.number %} is-current{% endif %}" href="?q={{ q }}&status={{ status }}&category={{ cat_id }}&page={{ n }}">{{ n }}</a>
+          {% endfor %}
+          {% if page.has_next %}
+            <a class="pager__btn" href="?q={{ q }}&status={{ status }}&category={{ cat_id }}&page={{ page.next_page_number }}">&rarr;</a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    {% else %}
+      <div class="empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <h3>{% if q or status or cat_id %}Nothing matches{% else %}No products yet{% endif %}</h3>
+        <p>{% if q or status or cat_id %}Try other search words or clear the filters.{% else %}Add your first product to the shop.{% endif %}</p>
+        <a class="btn btn--gold" href="{% url 'dashboard:product_create' %}">+ Add product</a>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}

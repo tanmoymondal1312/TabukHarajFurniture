@@ -1,0 +1,84 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Categories{% endblock %}
+{% block page_title %}Categories{% endblock %}
+{% block page_actions %}
+  <a class="btn btn--gold btn--sm" href="{% url 'dashboard:category_create' %}">+ Add category</a>
+{% endblock %}
+
+{% block content %}
+  <section class="panel">
+    {% if categories %}
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="num">Order</th>
+              <th>Category</th>
+              <th>Slug</th>
+              <th>Products</th>
+              <th>Active</th>
+              <th class="num">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for c in categories %}
+              <tr>
+                <td class="num">
+                  <div class="order-btns">
+                    <form method="post" action="{% url 'dashboard:category_action' c.pk %}">
+                      {% csrf_token %}
+                      <button type="submit" name="action" value="up" class="order-btn" {% if forloop.first %}disabled{% endif %} aria-label="Move up">&uarr;</button>
+                    </form>
+                    <form method="post" action="{% url 'dashboard:category_action' c.pk %}">
+                      {% csrf_token %}
+                      <button type="submit" name="action" value="down" class="order-btn" {% if forloop.last %}disabled{% endif %} aria-label="Move down">&darr;</button>
+                    </form>
+                    <span class="order-num">{{ forloop.counter }}</span>
+                  </div>
+                </td>
+                <td>
+                  <a class="cell-product" href="{% url 'dashboard:category_edit' c.pk %}">
+                    <span class="thumb">
+                      {% if c.image %}<img src="{{ c.image.url }}" alt="">{% else %}<span class="thumb__none">?</span>{% endif %}
+                    </span>
+                    <span>
+                      <strong>{{ c.name }}</strong>
+                      {% if c.ar_name %}<small dir="rtl">{{ c.ar_name }}</small>{% endif %}
+                    </span>
+                  </a>
+                </td>
+                <td><code>{{ c.slug }}</code></td>
+                <td>{{ c.n }}</td>
+                <td>
+                  <form method="post" action="{% url 'dashboard:category_action' c.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="toggle_active" class="pill pill--click{% if c.is_active %} pill--available{% else %} pill--hidden{% endif %}">
+                      {% if c.is_active %}Active{% else %}Hidden{% endif %}
+                    </button>
+                  </form>
+                </td>
+                <td class="num nowrap">
+                  <div class="row-actions">
+                    <a class="btn btn--ghost btn--xs" href="{% url 'dashboard:category_edit' c.pk %}">Edit</a>
+                    <form method="post" action="{% url 'dashboard:category_delete' c.pk %}" data-confirm="Delete category “{{ c.name }}”?">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn--danger-ghost btn--xs">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>
+        <h3>No categories yet</h3>
+        <p>Create the first category for your shop.</p>
+        <a class="btn btn--gold" href="{% url 'dashboard:category_create' %}">+ Add category</a>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}

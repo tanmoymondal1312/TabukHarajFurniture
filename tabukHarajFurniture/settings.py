@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'pages',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -148,6 +149,11 @@ SITE_ID = 1
 SITE_NAME = 'Tabuk Haraj Furniture'
 SITE_DOMAIN = 'tabukharajfurniture.com'
 SITE_URL = 'https://tabukharajfurniture.com'
+
+# Custom dashboard auth
+LOGIN_URL = '/dashboard/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_REDIRECT_URL = '/dashboard/login/'
 
 # Business information for structured data
 BUSINESS_INFO = {
