@@ -21,7 +21,7 @@
       {% for item in listings %}
       <article class="listing-card" itemscope itemtype="https://schema.org/Product" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" itemref="listing-image listing-name listing-price listing-condition listing-availability listing-seller" data-position="{{ forloop.counter }}">
         <meta itemprop="position" content="{{ forloop.counter }}">
-        <a href="{% url 'pages:home' %}?q={{ item.title|urlencode }}" class="listing-card__link" itemprop="url">
+        <a href="{% url 'pages:product' item.slug %}" class="listing-card__link" itemprop="url">
           <div class="listing-card__media">
             <img
               src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/placeholder.webp' %}{% endif %}"

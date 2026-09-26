@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.utils import timezone
 
 from .models import Category, Product
+
+CANONICAL = "https://tabukharajfurniture.com"
 
 
 def home(request):
@@ -26,3 +29,63 @@ def faq(request):
     request.page_image = "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp"
 
     return render(request, "pages/faq.html", {})
+
+
+def product_detail(request, slug):
+    product = get_object_or_404(
+        Product.objects.select_related("category"), slug=slug, is_active=True
+    )
+
+    description = (product.description or "").strip()
+    if not description:
+        description = f"{product.title} — متجر حراج تبوك للأثاث المستعمل. تواصل معنا للسؤال عن هذه القطعة."
+
+    request.page_title = f"{product.title} | حراج تبوك للأثاث المستعمل"
+    request.page_description = description[:155]
+    if product.image:
+        request.page_image = CANONICAL + product.image.url
+
+    related = list(
+        Product.objects.filter(
+            is_active=True,
+            status=Product.STATUS_AVAILABLE,
+            category_id=product.category_id,
+        )
+        .exclude(pk=product.pk)[:4]
+    )
+    if len(related) < 4:
+        related += list(
+            Product.objects.filter(
+                is_active=True, status=Product.STATUS_AVAILABLE
+            )
+            .exclude(pk=product.pk)
+            .exclude(pk__in=[p.pk for p in related])[: 4 - len(related)]
+        )
+
+    product_url = CANONICAL + product.get_absolute_url()
+    if product.image:
+        product_image_url = CANONICAL + product.image.url
+    else:
+        product_image_url = CANONICAL + "/static/images/placeholder.webp"
+
+    wa_text = (
+        "السلام عليكم، أريد الاستفسار عن هذا المنتج:\n"
+        f"{product.title} — {product.price_display}\n{product_url}"
+    )
+
+    discount = 0
+    if product.has_discount:
+        discount = round(
+            float((product.old_price - product.price) / product.old_price) * 100
+        )
+
+    return render(request, "pages/product.html", {
+        "product": product,
+        "related": related,
+        "description": description,
+        "listed_date": timezone.localtime(product.created_at).strftime("%d %b %Y"),
+        "product_url": product_url,
+        "product_image_url": product_image_url,
+        "wa_text": wa_text,
+        "discount": discount,
+    })

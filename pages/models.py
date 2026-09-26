@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -90,8 +91,17 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            base = slugify(self.title) or "product"
+            slug = base
+            n = 2
+            while Product.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base}-{n}"
+                n += 1
+            self.slug = slug
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("pages:product", kwargs={"slug": self.slug})
 
     @property
     def has_discount(self):
@@ -100,3 +110,7 @@ class Product(models.Model):
     @property
     def price_display(self):
         return f"SAR {self.price:,.0f}"
+
+    @property
+    def old_price_display(self):
+        return f"SAR {self.old_price:,.0f}"
