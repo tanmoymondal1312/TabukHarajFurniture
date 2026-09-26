@@ -14,7 +14,7 @@ def home(request):
 
     listings = (
         Product.objects.filter(is_active=True, status=Product.STATUS_AVAILABLE)
-        .order_by("-is_featured", "-created_at")[:8]
+        .order_by("-is_featured", "-created_at")
     )
     return render(request, "pages/home.html", {
         "categories": Category.objects.filter(is_active=True),
