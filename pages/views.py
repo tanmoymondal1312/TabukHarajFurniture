@@ -5,13 +5,14 @@ from django.utils import timezone
 from .models import Category, Product
 
 CANONICAL = "https://tabukharajfurniture.com"
+OG_COVER = CANONICAL + "/static/images/og-cover.jpg"
 
 
 def home(request):
     # Set SEO context for the homepage
     request.page_title = "حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني"
     request.page_description = "حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد."
-    request.page_image = "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp"
+    request.page_image = OG_COVER
 
     listings = (
         Product.objects.filter(is_active=True, status=Product.STATUS_AVAILABLE)
@@ -27,7 +28,7 @@ def home(request):
 def faq(request):
     request.page_title = "الأسئلة الشائعة | حراج تبوك للأثاث"
     request.page_description = "إجابات على الأسئلة الشائعة حول حراج تبوك للأثاث: الموقع، الضمان، التوصيل، الشراء، البيع، طرق الدفع، وأنواع الأجهزة المتوفرة."
-    request.page_image = "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp"
+    request.page_image = OG_COVER
 
     return render(request, "pages/faq.html", {})
 
@@ -35,7 +36,7 @@ def faq(request):
 def products(request):
     request.page_title = "كل المنتجات | حراج تبوك للأثاث المستعمل"
     request.page_description = "تصفح جميع المنتجات في حراج تبوك للأثاث المستعمل: أثاث، مكيفات، ثلاجات، غسالات وأكثر. كل قطعة مختبرة بضمان 30 يوم وتوصيل مجاني في تبوك."
-    request.page_image = "https://tabukharajfurniture.com/static/images/clean-modern-room-with-beautifull-furniture.webp"
+    request.page_image = OG_COVER
 
     categories = Category.objects.filter(is_active=True)
 
@@ -43,6 +44,11 @@ def products(request):
     cat_slug = request.GET.get("cat", "")
     if cat_slug:
         active_category = get_object_or_404(Category, slug=cat_slug, is_active=True)
+        if active_category.image:
+            request.page_title = (
+                f"{active_category.ar_name or active_category.name} | حراج تبوك للأثاث"
+            )
+            request.page_image = CANONICAL + active_category.image.url
 
     items = Product.objects.filter(
         is_active=True, status=Product.STATUS_AVAILABLE
@@ -87,6 +93,8 @@ def product_detail(request, slug):
     request.page_description = description[:155]
     if product.image:
         request.page_image = CANONICAL + product.image.url
+    else:
+        request.page_image = OG_COVER
 
     related = list(
         Product.objects.filter(
