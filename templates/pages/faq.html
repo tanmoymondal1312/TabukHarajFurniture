@@ -1,137 +1,482 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block html_lang %}ar{% endblock %}
+{% block html_dir %}rtl{% endblock %}
+{% block title %}الأسئلة الشائعة | حراج تبوك للأثاث المستعمل{% endblock %}
+{% block meta_description %}أسئلة وأجوبة كاملة عن حراج تبوك للأثاث المستعمل في تبوك: موقع المعرض وساعات العمل، ضمان 30 يوم، التوصيل المجاني، طرق الدفع، تجربة الأجهزة قبل الشراء، والبيع والشراء.{% endblock %}
+{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}
+{% block canonical %}https://tabukharajfurniture.com/faq/{% endblock %}
 
 {% block content %}
-  {% include "partials/breadcrumbs.html" %}
-
-  <!-- FAQPage Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "أين يقع معرض حراج تبوك للأثاث؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "يقع معرضنا في المنشية القديمة، طريق معاوية، تبوك 47914، المملكة العربية السعودية. يمكنكم زيارتنا من السبت للخميس 9 صباحاً - 10 مساءً، والجمعة 4 مساءً - 10 مساءً."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "هل تشترون الأثاث المستعمل من الأفراد؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نعم، نشتري الأثاث والأجهزة المستعملة من الأفراد. نقدم نقد فوري واستلام مجاني من موقعكم. تواصلوا معنا على واتساب 058 232 8389 مع صور القطع للحصول على عرض سعر."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "ما هو الضمان المقدم على المنتجات؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نقدم ضمان 30 يوم استبدال على جميع المنتجات المباعة من معرضنا. إذا واجهتم أي مشكلة في القطعة خلال 30 يوماً، نستبدلها لكم مجاناً."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "هل التوصيل مجاني لجميع أنحاء تبوك؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نعم، التوصيل مجاني لجميع أنحاء مدينة تبوك (النخيل، الحصاة، المروج، الشروق، الخالدية، العزيزية، وغيرها). التوصيل يتم في نفس اليوم أو اليوم التالي حسب الطلب."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "ما هي أنواع الأجهزة التي تبيعونها؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نبيع مكيفات (سبليت، شباك)، ثلاجات (نوفروست، عادية)، غسالات (أوتوماتيك، نصف أوتوماتيك)، فريزرات، أفران، ميكروويف، وغيرها من الأجهزة المنزلية."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نعم، جميع الأجهزة مختبرة وتعمل بكفاءة. يمكنكم تجربة المكيف (تبريد/تسخين) والثلاجة (تبريد/تجميد) في المعرض قبل الشراء."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "ما هي طرق الدفع المقبولة؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نقبل الدفع نقداً، بطاقات مدى/الائتمان، تحويل بنكي، STC Pay، Apple Pay، والتقسيط عبر تمارا أو تمويل."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "كيف يمكنني التواصل معكم؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "يمكنكم التواصل عبر: الهاتف/واتساب: 058 232 8389، أو زيارة المعرض مباشرة، أو عبر خرائط جوجل: حراج تبوك للأثاث المستعمل."
-        }
-      }
-    ]
+<style>
+  .faq-hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
   }
-  </script>
+  .faq-hero__cta .btn,
+  .faq-cta__actions .btn {
+    padding: 12px 24px;
+    font-size: 13.5px;
+  }
+  .faq-list {
+    max-width: 800px;
+  }
+  .faq-section {
+    padding-bottom: 86px;
+  }
+  .btn--wa {
+    background: #25D366;
+    color: var(--ink);
+    border-radius: var(--radius-cta);
+  }
+  .btn--wa:hover {
+    background: #1EBE60;
+  }
+  .faq-cta {
+    max-width: 800px;
+    margin-top: 26px;
+    padding: 26px 22px;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+  }
+  .faq-cta__title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .faq-cta__text {
+    margin-top: 7px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .faq-cta__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .faq-cta__hours {
+    margin-top: 14px;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .wa-float {
+    position: fixed;
+    inset-inline-end: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 17px;
+    border-radius: 999px;
+    background: #25D366;
+    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 700;
+    border: 1px solid rgba(23, 35, 51, 0.12);
+    box-shadow: 0 8px 22px rgba(23, 35, 51, 0.25);
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  .wa-float:hover {
+    background: #1EBE60;
+    transform: translateY(-2px);
+  }
+  .wa-float .icon {
+    width: 20px;
+    height: 20px;
+  }
+  a:focus-visible,
+  summary:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+  @media (max-width: 520px) {
+    .faq-hero__cta .btn,
+    .faq-cta__actions .btn {
+      width: 100%;
+    }
+  }
+</style>
 
-  <section class="section" style="padding: 40px 0;">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-head__left">
-          <p class="section-eyebrow">الأسئلة الشائعة</p>
-          <h2 class="section-title">أسئلة متكررة</h2>
-        </div>
-      </div>
+<!-- BreadcrumbList Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "الرئيسية",
+      "item": "https://tabukharajfurniture.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "الأسئلة الشائعة",
+      "item": "https://tabukharajfurniture.com/faq/"
+    }
+  ]
+}
+</script>
 
-      <div class="faq" style="max-width: 800px;">
-        <details class="faq__item" open>
-          <summary class="faq__question">أين يقع معرض حراج تبوك للأثاث؟</summary>
-          <div class="faq__answer">يقع معرضنا في المنشية القديمة، طريق معاوية، تبوك 47914، المملكة العربية السعودية. يمكنكم زيارتنا من السبت للخميس 9 صباحاً - 10 مساءً، والجمعة 4 مساءً - 10 مساءً.</div>
-        </details>
+<!-- FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "الأسئلة الشائعة | حراج تبوك للأثاث المستعمل",
+  "inLanguage": "ar",
+  "image": "https://tabukharajfurniture.com{% static 'images/og-cover.jpg' %}",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "أين يقع المعرض؟ وما هي ساعات العمل؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يقع معرضنا في المنشية القديمة، طريق معاوية، تبوك 47914، السعودية. ساعات العمل: السبت–الخميس من 9:00 صباحاً حتى 10:00 مساءً، والجمعة من 4:00 مساءً حتى 10:00 مساءً."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل المعرض مرخص رسميًا؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، معرضنا مرخص رسميًا. رقم الرخصة التجارية 470220635950 ونوعها رخصة نشاط تجاري، لتشتتروا وتبيعوا بثقة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هي فئات المنتجات المتوفرة لديكم؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "تجدون لدينا مجالس وأرائك، غرف نوم، طاولات وكراسي، مطابخ، وأجهزة كهربائية مثل المكيفات والثلاجات والغسالات والفريزرات والأفران، إضافة إلى قطع أخرى للمنزل والمكتب."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل القطع المتوفرة مستعملة؟ وما حالتها؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، جميع القطع مستعملة لكنها مفحوصة ونظيفة. كل قطعة تُختبر قبل عرضها للبيع، وتكون جاهزة للاستخدام مع ضمان 30 يوم."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هو الضمان المقدم على المنتجات؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "الضمان 30 يوم استبدال فقط ولا يوجد استرداد نقدي. إذا ظهرت مشكلة في القطعة خلال 30 يوماً، تحضرها إلى المعرض أو نأتي نحن لاستلامها للإصلاح أو الاستبدال."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل التوصيل مجاني؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، التوصيل مجاني لجميع أحياء تبوك مثل النخيل والحصاة والمروج والشروق والخالدية والعزيزية والمنشية وغيرها، ويكون في نفس اليوم أو اليوم التالي حسب الطلب."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل توصلون خارج مدينة تبوك؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "لا، خدمة التوصيل والاستلام داخل مدينة تبوك فقط."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هي طرق الدفع المقبولة؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نقبل النقد، مدى وفيزا، التحويل البنكي، STC Pay، Apple Pay، مدي، والدفع عبر تمارا."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يمكن الدفع بالتقسيط؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، نوفر خيار التقسيط عبر تمارا عند الشراء."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، يمكنكم تجربة المكيف (تبريد وتسخين) والثلاجة (تبريد وتجميد) داخل المعرض قبل الشراء."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كم نطاق الأسعار في المعرض؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "تبدأ أسعارنا من 100 ريال وتصل إلى 15,000 ريال حسب نوع القطعة وحالتها."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل تتعاملون مع الشركات والجهات؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، نخدم الفنادق والمكاتب ومخيمات العمال وتأثيث الشقق المفروشة والمطاعم، ونرحب بطلبات التأثيث الكبيرة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل تشترون الأثاث والأجهزة المستعملة من الأفراد؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، نشتري من الأفراد بعرض نقد فوري واستلام مجاني من موقعكم. أرسل صور القطع على واتساب 058 232 8389 لتحصل على عرض السعر."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف أبيع قطعتي؟ ما هي خطوات البيع؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "أرسل صور القطعة مع موقعها على واتساب 058 232 8389، نرسل لك عرض السعر، وبعد موافقتك نستلم القطعة من موقعك وندفع لك نقداً في نفس وقت الاستلام."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف أتواصل معكم؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "بالهاتف أو واتساب على 058 232 8389، أو بالبريد الإلكتروني info@tabukharajfurniture.com، أو بزيارة المعرض في المنشية القديمة، طريق معاوية، تبوك. وللوصول عبر خرائط جوجل ابحثوا عن حراج تبوك للأثاث المستعمل."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ماذا في المواسم والمناسبات؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "حركتنا تقوى في المواسم مثل رمضان وفترات الانتقالات، والقطع تتجدد يومياً وتختلف المتوفرة من وقت لآخر. تواصل معنا على واتساب لمعرفة المتوفر قبل زيارتك."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "لماذا أثق بمعرض حراج تبوك للأثاث؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "معرض فعلي له موقع محدد ورخصة تجارية، وجميع القطع مختبرة قبل البيع، مع ضمان 30 يوم وتقييمات من العملاء على خرائط جوجل، وإمكانية تجربة القطعة قبل الدفع."
+      }
+    }
+  ]
+}
+</script>
 
-        <details class="faq__item">
-          <summary class="faq__question">هل تشترون الأثاث المستعمل من الأفراد؟</summary>
-          <div class="faq__answer">نعم، نشتري الأثاث والأجهزة المستعملة من الأفراد. نقدم نقد فوري واستلام مجاني من موقعكم. تواصلوا معنا على واتساب 058 232 8389 مع صور القطع للحصول على عرض سعر.</div>
-        </details>
+<div class="container">
+  <nav class="crumb" aria-label="مسار التنقل" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <span itemscope itemtype="https://schema.org/ListItem">
+      <meta itemprop="position" content="1">
+      <meta itemprop="item" content="https://tabukharajfurniture.com/">
+      <a itemprop="name" href="{% url 'pages:home' %}">الرئيسية</a>
+    </span>
+    <span class="crumb__sep" aria-hidden="true">/</span>
+    <span class="crumb__current" itemscope itemtype="https://schema.org/ListItem">
+      <meta itemprop="position" content="2">
+      <meta itemprop="item" content="https://tabukharajfurniture.com/faq/">
+      <span itemprop="name">الأسئلة الشائعة</span>
+    </span>
+  </nav>
+</div>
 
-        <details class="faq__item">
-          <summary class="faq__question">ما هو الضمان المقدم على المنتجات؟</summary>
-          <div class="faq__answer">نقدم ضمان 30 يوم استبدال على جميع المنتجات المباعة من معرضنا. إذا واجهتم أي مشكلة في القطعة خلال 30 يوماً، نستبدلها لكم مجاناً.</div>
-        </details>
+<section class="pp-hero">
+  <div class="container pp-hero__inner">
+    <p class="section-eyebrow">الأسئلة الشائعة</p>
+    <h1 class="pp-hero__title">الأسئلة الشائعة عن حراج تبوك للأثاث المستعمل</h1>
+    <p class="pp-hero__sub">معرض فعلي في تبوك للأثاث والأجهزة المستعملة. هنا تجد إجابات واضحة عن الموقع، الضمان، التوصيل، الدفع، البيع والشراء، وتجربة القطع قبل الشراء.</p>
+    <span class="pp-hero__count">معرض فعلي • ضمان 30 يوم • توصيل مجاني</span>
+    <div class="faq-hero__cta">
+      <a href="tel:+966582328389" class="btn btn--gold">اتصل بنا</a>
+      <a href="https://wa.me/966582328389" target="_blank" rel="noopener noreferrer" class="btn btn--wa">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+        </svg>
+        واتساب الآن
+      </a>
+    </div>
+  </div>
+</section>
 
-        <details class="faq__item">
-          <summary class="faq__question">هل التوصيل مجاني لجميع أنحاء تبوك؟</summary>
-          <div class="faq__answer">نعم، التوصيل مجاني لجميع أنحاء مدينة تبوك (النخيل، الحصاة، المروج، الشروق، الخالدية، العزيزية، وغيرها). التوصيل يتم في نفس اليوم أو اليوم التالي حسب الطلب.</div>
-        </details>
-
-        <details class="faq__item">
-          <summary class="faq__question">ما هي أنواع الأجهزة التي تبيعونها؟</summary>
-          <div class="faq__answer">نبيع مكيفات (سبليت، شباك)، ثلاجات (نوفروست، عادية)، غسالات (أوتوماتيك، نصف أوتوماتيك)، فريزرات، أفران، ميكروويف، وغيرها من الأجهزة المنزلية.</div>
-        </details>
-
-        <details class="faq__item">
-          <summary class="faq__question">هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟</summary>
-          <div class="faq__answer">نعم، جميع الأجهزة مختبرة وتعمل بكفاءة. يمكنكم تجربة المكيف (تبريد/تسخين) والثلاجة (تبريد/تجميد) في المعرض قبل الشراء.</div>
-        </details>
-
-        <details class="faq__item">
-          <summary class="faq__question">ما هي طرق الدفع المقبولة؟</summary>
-          <div class="faq__answer">نقبل الدفع نقداً، بطاقات مدى/الائتمان، تحويل بنكي، STC Pay، Apple Pay، والتقسيط عبر تمارا أو تمويل.</div>
-        </details>
-
-        <details class="faq__item">
-          <summary class="faq__question">كيف يمكنني التواصل معكم؟</summary>
-          <div class="faq__answer">يمكنكم التواصل عبر: الهاتف/واتساب: 058 232 8389، أو زيارة المعرض مباشرة، أو عبر خرائط جوجل: حراج تبوك للأثاث المستعمل.</div>
-        </details>
-      </div>
-
-      <div style="margin-top: 3rem; text-align: center;">
-        <p style="color: var(--text); margin-bottom: 1rem;">لم تجد إجابتك؟ تواصل معنا مباشرة</p>
-        <a href="https://wa.me/966582328389" class="btn btn--gold" style="background: #25D366;">واتساب الآن</a>
+<section class="section faq-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__left">
+        <p class="section-eyebrow">إجابات سريعة</p>
+        <h2 class="section-title">أسئلة متكررة</h2>
       </div>
     </div>
-  </section>
+
+    <div class="faq faq-list" itemscope itemtype="https://schema.org/FAQPage">
+      <meta itemprop="name" content="الأسئلة الشائعة | حراج تبوك للأثاث المستعمل">
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" open>
+        <summary class="faq__question" itemprop="name" aria-controls="a1">أين يقع المعرض؟ وما هي ساعات العمل؟</summary>
+        <div class="faq__answer" id="a1" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">يقع معرضنا في المنشية القديمة، طريق معاوية، تبوك 47914، السعودية. ساعات العمل: السبت–الخميس من 9:00 صباحاً حتى 10:00 مساءً، والجمعة من 4:00 مساءً حتى 10:00 مساءً.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a2">هل المعرض مرخص رسميًا؟</summary>
+        <div class="faq__answer" id="a2" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نعم، معرضنا مرخص رسميًا. رقم الرخصة التجارية 470220635950 ونوعها رخصة نشاط تجاري، لتشتتروا وتبيعوا بثقة.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a3">ما هي فئات المنتجات المتوفرة لديكم؟</summary>
+        <div class="faq__answer" id="a3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">تجدون لدينا مجالس وأرائك، غرف نوم، طاولات وكراسي، مطابخ، وأجهزة كهربائية مثل المكيفات والثلاجات والغسالات والفريزرات والأفران، إضافة إلى قطع أخرى للمنزل والمكتب.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a4">هل القطع المتوفرة مستعملة؟ وما حالتها؟</summary>
+        <div class="faq__answer" id="a4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نعم، جميع القطع مستعملة لكنها مفحوصة ونظيفة. كل قطعة تُختبر قبل عرضها للبيع، وتكون جاهزة للاستخدام مع ضمان 30 يوم.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a5">ما هو الضمان المقدم على المنتجات؟</summary>
+        <div class="faq__answer" id="a5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">الضمان 30 يوم استبدال فقط ولا يوجد استرداد نقدي. إذا ظهرت مشكلة في القطعة خلال 30 يوماً، تحضرها إلى المعرض أو نأتي نحن لاستلامها للإصلاح أو الاستبدال.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a6">هل التوصيل مجاني؟</summary>
+        <div class="faq__answer" id="a6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نعم، التوصيل مجاني لجميع أحياء تبوك مثل النخيل والحصاة والمروج والشروق والخالدية والعزيزية والمنشية وغيرها، ويكون في نفس اليوم أو اليوم التالي حسب الطلب.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a7">هل توصلون خارج مدينة تبوك؟</summary>
+        <div class="faq__answer" id="a7" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">لا، خدمة التوصيل والاستلام داخل مدينة تبوك فقط.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a8">ما هي طرق الدفع المقبولة؟</summary>
+        <div class="faq__answer" id="a8" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نقبل النقد، مدى وفيزا، التحويل البنكي، STC Pay، Apple Pay، مدي، والدفع عبر تمارا.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a9">هل يمكن الدفع بالتقسيط؟</summary>
+        <div class="faq__answer" id="a9" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نعم، نوفر خيار التقسيط عبر تمارا عند الشراء.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a10">هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟</summary>
+        <div class="faq__answer" id="a10" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نعم، يمكنكم تجربة المكيف (تبريد وتسخين) والثلاجة (تبريد وتجميد) داخل المعرض قبل الشراء.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a11">كم نطاق الأسعار في المعرض؟</summary>
+        <div class="faq__answer" id="a11" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">تبدأ أسعارنا من 100 ريال وتصل إلى 15,000 ريال حسب نوع القطعة وحالتها.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a12">هل تتعاملون مع الشركات والجهات؟</summary>
+        <div class="faq__answer" id="a12" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نعم، نخدم الفنادق والمكاتب ومخيمات العمال وتأثيث الشقق المفروشة والمطاعم، ونرحب بطلبات التأثيث الكبيرة.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a13">هل تشترون الأثاث والأجهزة المستعملة من الأفراد؟</summary>
+        <div class="faq__answer" id="a13" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">نعم، نشتري من الأفراد بعرض نقد فوري واستلام مجاني من موقعكم. أرسل صور القطع على واتساب 058 232 8389 لتحصل على عرض السعر.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a14">كيف أبيع قطعتي؟ ما هي خطوات البيع؟</summary>
+        <div class="faq__answer" id="a14" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">أرسل صور القطعة مع موقعها على واتساب 058 232 8389، نرسل لك عرض السعر، وبعد موافقتك نستلم القطعة من موقعك وندفع لك نقداً في نفس وقت الاستلام.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a15">كيف أتواصل معكم؟</summary>
+        <div class="faq__answer" id="a15" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">بالهاتف أو واتساب على 058 232 8389، أو بالبريد الإلكتروني info@tabukharajfurniture.com، أو بزيارة المعرض في المنشية القديمة، طريق معاوية، تبوك. وللوصول عبر خرائط جوجل ابحثوا عن حراج تبوك للأثاث المستعمل.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a16">ماذا في المواسم والمناسبات؟</summary>
+        <div class="faq__answer" id="a16" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">حركتنا تقوى في المواسم مثل رمضان وفترات الانتقالات، والقطع تتجدد يومياً وتختلف المتوفرة من وقت لآخر. تواصل معنا على واتساب لمعرفة المتوفر قبل زيارتك.</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="a17">لماذا أثق بمعرض حراج تبوك للأثاث؟</summary>
+        <div class="faq__answer" id="a17" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">معرض فعلي له موقع محدد ورخصة تجارية، وجميع القطع مختبرة قبل البيع، مع ضمان 30 يوم وتقييمات من العملاء على خرائط جوجل، وإمكانية تجربة القطعة قبل الدفع.</div>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-cta">
+      <p class="faq-cta__title">لم تجد إجابتك؟</p>
+      <p class="faq-cta__text">تواصل معنا مباشرة وسنرد عليك خلال ساعات العمل.</p>
+      <div class="faq-cta__actions">
+        <a href="tel:+966582328389" class="btn btn--gold">اتصل بنا</a>
+        <a href="https://wa.me/966582328389" target="_blank" rel="noopener noreferrer" class="btn btn--wa">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+          </svg>
+          واتساب الآن
+        </a>
+      </div>
+      <p class="faq-cta__hours">السبت–الخميس 9:00–22:00 • الجمعة 16:00–22:00 — المنشية القديمة، طريق معاوية، تبوك 47914</p>
+    </div>
+  </div>
+</section>
+
+<a class="wa-float" href="https://wa.me/966582328389" target="_blank" rel="noopener noreferrer" aria-label="راسلنا على واتساب" title="واتساب">
+  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+  </svg>
+  <span>واتساب</span>
+</a>
+
+<script>
+(function () {
+  document.querySelectorAll(".faq__item").forEach(function (item) {
+    var btn = item.querySelector(".faq__question");
+    if (!btn) return;
+    btn.setAttribute("aria-expanded", item.open ? "true" : "false");
+    item.addEventListener("toggle", function () {
+      btn.setAttribute("aria-expanded", item.open ? "true" : "false");
+    });
+  });
+})();
+</script>
 {% endblock %}

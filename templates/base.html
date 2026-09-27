@@ -1,16 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="https://schema.org/WebSite">
+<html lang="{% block html_lang %}en{% endblock %}" dir="{% block html_dir %}ltr{% endblock %}" itemscope itemtype="https://schema.org/WebSite">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني</title>
-  <meta name="description" content="حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد.">
+  <title>{% block title %}حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد.{% endblock %}">
   <meta name="keywords" content="حراج تبوك, أثاث مستعمل, حراج تبوك للأثاث, مكيف مستعمل, غرف نوم مستعملة, ثلاجة مستعملة, تبوك">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}">
   <meta name="author" content="Tabuk Haraj Furniture">
   <meta name="generator" content="Django">
-  <link rel="canonical" href="https://tabukharajfurniture.com/">
+  <link rel="canonical" href="{% block canonical %}https://tabukharajfurniture.com/{% endblock %}">
   <link rel="alternate" hreflang="ar" href="https://tabukharajfurniture.com/">
   <link rel="alternate" hreflang="en" href="https://tabukharajfurniture.com/">
   <link rel="alternate" hreflang="x-default" href="https://tabukharajfurniture.com/">
