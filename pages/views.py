@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 
@@ -48,6 +49,15 @@ def products(request):
     )
     if active_category:
         items = items.filter(category=active_category)
+
+    q = request.GET.get("q", "").strip()[:60]
+    if q:
+        items = items.filter(
+            Q(title__icontains=q)
+            | Q(description__icontains=q)
+            | Q(category__name__icontains=q)
+            | Q(category__ar_name__icontains=q)
+        )
     items = items.order_by("-is_featured", "-created_at")
 
     total = Product.objects.filter(
@@ -58,6 +68,7 @@ def products(request):
         "categories": categories,
         "active_category": active_category,
         "products": items,
+        "q": q,
         "showing_count": items.count(),
         "total_count": total,
     })

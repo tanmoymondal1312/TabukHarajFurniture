@@ -73,6 +73,15 @@
           </svg>
         </button>
         <p class="pp-tools__count">Showing <strong>{{ showing_count }}</strong> of {{ total_count }} product{{ total_count|pluralize }}</p>
+        <form class="pp-search" action="{% url 'pages:products' %}" method="get" role="search">
+          {% if active_category %}<input type="hidden" name="cat" value="{{ active_category.slug }}">{% endif %}
+          <input class="pp-search__input" type="search" name="q" value="{{ q }}" placeholder="Search…" aria-label="Search products" maxlength="60">
+          <button class="pp-search__btn" type="submit" aria-label="Search">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+          </button>
+        </form>
       </div>
 
       {% if products %}
@@ -110,8 +119,8 @@
             <path d="M8 12h8"/><circle cx="8.5" cy="8.5" r="0.5" fill="currentColor"/>
           </svg>
         </span>
-        <h2 class="pp-empty__title">No products in this category yet</h2>
-        <p class="pp-empty__text">This category is empty right now. Browse all products instead.</p>
+        <h2 class="pp-empty__title">{% if q %}No products found{% else %}No products in this category yet{% endif %}</h2>
+        <p class="pp-empty__text">{% if q %}Nothing matches “{{ q }}”. Try another word, or browse all products.{% else %}This category is empty right now. Browse all products instead.{% endif %}</p>
         <a href="{% url 'pages:products' %}" class="btn btn--gold pp-empty__btn">View All Products</a>
       </div>
       {% endif %}
