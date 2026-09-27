@@ -20,7 +20,7 @@
       {% for cat in categories %}
       <article class="category-card" itemscope itemtype="https://schema.org/ItemListElement" itemprop="itemListElement" data-position="{{ forloop.counter }}">
         <meta itemprop="position" content="{{ forloop.counter }}">
-        <a href="{% url 'pages:home' %}?q={{ cat.name|urlencode }}" class="category-card__link" itemprop="url">
+        <a href="{% url 'pages:products' %}?cat={{ cat.slug }}" class="category-card__link" itemprop="url">
           <div class="category-card__media">
             {% if cat.image %}
             <img
