@@ -720,6 +720,18 @@ section[id] {
   gap: 19px;
 }
 
+.listings__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.listings__more .btn {
+  height: 46px;
+  padding: 0 30px;
+  font-size: 13.5px;
+}
+
 .listing-card {
   display: flex;
   flex-direction: column;
