@@ -10,6 +10,7 @@
   <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}">
   <meta name="author" content="Tabuk Haraj Furniture">
   <meta name="generator" content="Django">
+  <meta name="generator" content="Mediaghor">
   <link rel="canonical" href="{% block canonical %}https://tabukharajfurniture.com/{% endblock %}">
   <link rel="alternate" hreflang="ar" href="https://tabukharajfurniture.com/">
   <link rel="alternate" hreflang="en" href="https://tabukharajfurniture.com/">
@@ -269,6 +270,7 @@
   <main>
     {% block content %}{% endblock %}
   </main>
+  {% include "partials/footer.html" %}
   <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
