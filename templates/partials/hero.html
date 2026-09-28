@@ -9,8 +9,8 @@
         <br>Also selling? We buy yours — instant cash, free pickup
       </p>
 
-      <form class="search-bar" action="{% url 'pages:home' %}" method="get" role="search" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-        <meta itemprop="target" content="https://tabukharajfurniture.com/?q={search_term_string}">
+      <form class="search-bar" action="{% url 'pages:products' %}" method="get" role="search" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+        <meta itemprop="target" content="https://tabukharajfurniture.com/products/?q={search_term_string}">
         <meta itemprop="query-input" content="required name=search_term_string">
         <span class="search-bar__icon" aria-hidden="true">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -34,11 +34,11 @@
       <div class="popular">
         <span class="popular__label">Popular searches:</span>
         <div class="popular__tags">
-          <a href="{% url 'pages:home' %}?q=Used+Sofa" class="chip">Used Sofa</a>
-          <a href="{% url 'pages:home' %}?q=AC" class="chip">AC</a>
-          <a href="{% url 'pages:home' %}?q=Fridge" class="chip">Fridge</a>
-          <a href="{% url 'pages:home' %}?q=Majlis" class="chip">Majlis</a>
-          <a href="{% url 'pages:home' %}?q=Bedroom+Set" class="chip">Bedroom Set</a>
+          <a href="{% url 'pages:products' %}?q=Used+Sofa" class="chip">Used Sofa</a>
+          <a href="{% url 'pages:products' %}?q=AC" class="chip">AC</a>
+          <a href="{% url 'pages:products' %}?q=Fridge" class="chip">Fridge</a>
+          <a href="{% url 'pages:products' %}?q=Majlis" class="chip">Majlis</a>
+          <a href="{% url 'pages:products' %}?q=Bedroom+Set" class="chip">Bedroom Set</a>
         </div>
       </div>
     </div>
