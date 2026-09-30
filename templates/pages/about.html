@@ -1,0 +1,676 @@
+{% extends "base.html" %}
+
+{% block title %}من نحن | حراج تبوك للأثاث المستعمل{% endblock %}
+{% block meta_description %}قصة حراج تبوك للأثاث: من معرض فارغ نهاية 2023 إلى ثقة 800+ عائلة. كيف نعمل، من أين نجلب الأثاث، خدماتنا الكاملة، ضمان 30 يوم خدمة، وفريقنا.{% endblock %}
+
+{% block content %}
+  {% include "partials/breadcrumbs.html" %}
+
+  <!-- AboutPage + Organization + Service + FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://tabukharajfurniture.com/about/#aboutpage",
+        "name": "من نحن - حراج تبوك للأثاث المستعمل",
+        "description": "قصة حراج تبوك للأثاث: من معرض فارغ نهاية 2023 إلى خدمة 800+ عائلة. كيف نعمل، من أين نجلب الأثاث، ولماذا نضمن 30 يوم خدمة.",
+        "mainEntity": {
+          "@id": "https://tabukharajfurniture.com/#organization"
+        },
+        "breadcrumb": {
+          "@id": "https://tabukharajfurniture.com/#breadcrumb"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://tabukharajfurniture.com/#organization",
+        "name": "حراج تبوك للأثاث المستعمل",
+        "legalName": "مؤسسة منى محمد ال طه التجارية",
+        "alternateName": "Tabuk Haraj Furniture",
+        "url": "https://tabukharajfurniture.com/",
+        "logo": "https://tabukharajfurniture.com/static/images/favicon/apple-touch-icon.png",
+        "foundingDate": "2023-12",
+        "founders": [
+          {
+            "@type": "Person",
+            "name": "منى محمد ال طه"
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "المنشية القديمة، طريق معاوية",
+          "addressLocality": "تبوك",
+          "addressRegion": "منطقة تبوك",
+          "postalCode": "47914",
+          "addressCountry": "SA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 28.3816148,
+          "longitude": 36.5592394
+        },
+        "telephone": "+966-58-232-8389",
+        "email": "info@tabukharajfurniture.com",
+        "description": "معرض فعلي للأثاث والأجهزة المستعملة في تبوك. نشتري من العائلات والمحلات، نختبر وننظف، نبيع بضمان 30 يوم خدمة مجانية وتوصيل مجاني لجميع أحياء تبوك.",
+        "areaServed": {
+          "@type": "City",
+          "name": "تبوك",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "منطقة تبوك"
+          }
+        },
+        "priceRange": "100-15000 SAR",
+        "currenciesAccepted": "SAR",
+        "paymentAccepted": "نقدي، مدى، فيزا، تحويل بنكي، STC Pay، Apple Pay، تمارا",
+        "numberOfEmployees": 4,
+        "knowsAbout": [
+          "أثاث مستعمل",
+          "أجهزة كهربائية مستعملة",
+          "مكيفات",
+          "ثلاجات",
+          "غسالات",
+          "مجالس",
+          "غرف نوم",
+          "خدمة ما بعد البيع"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/tabuk_used_furniture/",
+          "https://www.tiktok.com/@tabuk_100",
+          "https://www.snapchat.com/@t_abuj100",
+          "https://www.facebook.com/people/Tabuk-Used-Furniture/61585131995515/",
+          "https://www.google.com/maps/place/%D8%AD%D8%B1%D8%A7%D8%AC+%D8%AA%D8%A8%D9%88%D9%83+%D9%84%D9%84%D8%A3%D8%AB%D8%A7%D8%AB+%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B9%D9%85%E2%80%AD/@28.3816175,36.5591715,21z/data=!4m6!3m5!1s0x15a9ad3dc0a4ef8b:0x8d7c12f750a94059!8m2!3d28.3816148!4d36.5592394!16s%2Fg%2F11zcjfx9k0"
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://tabukharajfurniture.com/#services",
+        "name": "خدمات حراج تبوك للأثاث",
+        "provider": {
+          "@id": "https://tabukharajfurniture.com/#organization"
+        },
+        "areaServed": "تبوك، السعودية",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "قائمة الخدمات",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "شراء الأثاث المستعمل من الأفراد",
+                "description": "نشتري أثاثك وأجهزتك المستعملة: نقد فوري، استلام مجاني من موقعك، تقييم شفاف عبر واتساب."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "بيع أثاث وأجهزة مضمونة",
+                "description": "معرض فعلي بتبوك: مكيفات، ثلاجات، غسالات، مجالس، غرف نوم — كلها مختبرة، منظفة، مضمونة 30 يوم خدمة."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "توصيل مجاني لجميع أحياء تبوك",
+                "description": "نوصّل مشترياتك مجاناً في نفس اليوم أو اليوم التالي: النخيل، الحصاة، المروج، الشروق، الخالدية، العزيزية، المنشية، وغيرها."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "ضمان 30 يوم خدمة (إصلاح/صيانة)",
+                "description": "أي عطل خلال 30 يوم: تواصل واتساب → فيديو للعطل → نستلم ونصلح خلال 48 ساعة — بدون تكلفة عليك."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "تركيب مكيفات وأجهزة",
+                "description": "فنيون معتمدون لتركيب المكيفات (سبليت/شباك)، الثلاجات، الغسالات — مع التجربة أمامك."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "فك وتركيب ونقل أثاث",
+                "description": "خدمة نقل كاملة: فك، تغليف، نقل، تركيب — للمنازل والمكاتب والشقق المفروشة."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "تأثيث B2B: فنادق، مكاتب، مخيمات عمالة",
+                "description": "عقود سنوية وأسعار حجم لتأثيث الشقق الفندقية، المكاتب، سكن العمال — مع صيانة دورية."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "تقسيط تمارا / مدى / بنك",
+                "description": "اشترِ الآن وادفع لاحقاً: تمارا، تمويل، بطاقات مدى/فيزا — موافقة فورية."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tabukharajfurniture.com/about/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "من أين تجدون كل هذه القطع المستعملة؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "مصادرنا ثلاثة: ٦٠٪ من عائلات تنتقل/تسافر تبيع أثاثها، ٣٠٪ من محلات تغلق أو تجدد عرضها، ١٠٪ من إرجاعات B2B ومخازن. كل قطعة تمر باختبار وتنظيف قبل العرض."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "كيف تعملون؟ هل تشترون فقط أم تبيعون أيضاً؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نحن نشتري ونبيع. نشتري من الأفراد نقداً ونستلم مجاناً. نبيع من معرضنا بتبوك بضمان 30 يوم خدمة وتوصيل مجاني. المعرض هو حلقة الوصل: نشتري، نختبر، ننظف، نضمن، نبيع."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ما معنى ضمان 30 يوم خدمة؟ هل تستبدلون القطعة؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "الضمان خدمة إصلاح/صيانة مجانية خلال 30 يوماً من الشراء. إذا ظهر عطل: ترسل فيديو على واتساب، نستلم القطعة، يصلحها فنيونا خلال 48 ساعة، ونعيدها — لا استبدال نقدي، بل إصلاح مضمون."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نعم، بكل تأكيد. كل مكيف يشتغل أمامك (تبريد/تسخين)، وكل ثلاجة/فريزر يعمل (تبريد/تجميد). نعطيك قراءة الغاز وضغط التشغيل قبل ما تدفع ريال واحد."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "كم تستغرقون للتوصيل والتركيب؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نفس اليوم أو اليوم التالي كحد أقصى داخل تبوك. عندنا شاحنتان مجهزتان وفريق ٤ أشخاص. التركيب مشمول في السعر — فك، نقل، تركيب، تجربة، تنظيف المكان."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <div class="about-main">
+    <!-- Hero Section - Documentary Opening -->
+    <section class="about-hero" aria-labelledby="about-hero-title">
+      <div class="container">
+        <div class="about-hero__content">
+          <p class="about-hero__eyebrow">قصتنا</p>
+          <h1 id="about-hero-title" class="about-hero__title">
+            من معرض فارغ<br>إلى ثقة <span class="about-hero__highlight">٨٠٠+ عائلة</span> في تبوك
+          </h1>
+          <p class="about-hero__lead">
+            لم نبدأ بعلامة تجارية كبيرة. بدأنا بمؤسسة صغيرة، وشاحنة واحدة، وإيمان بسيط:
+            <br>الناس في تبوك تستحق أثاثاً مستعملاً تثق فيه — لا مجرد "عفش مستعمل".
+          </p>
+          <div class="about-hero__stats" role="list" aria-label="إحصائيات سريعة">
+            <div class="stat" role="listitem">
+              <span class="stat__number">٨٠٠+</span>
+              <span class="stat__label">عائلة خدمت</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__number">٢٠٠٠+</span>
+              <span class="stat__label">قطعة بيعت (١٢ شهر)</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__number">٧٧٪</span>
+              <span class="stat__label">عملاء يعودون</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__number">٣٠ د</span>
+              <span class="stat__label">ضمان خدمة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 1: The Beginning -->
+    <section class="about-chapter" aria-labelledby="chapter-1-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠١</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-1-title" class="about-chapter__title">البداية: نهاية ٢٠٢٣، معرض فارغ، وفرصة ضائعة</h2>
+            <div class="about-chapter__text">
+              <p>
+    <strong>أسستُ "مؤسسة منى محمد ال طه التجارية"</strong> نهاية ٢٠٢٣، ليس لأن السوق كان فارغاً — بل لأن <em>الثقة</em> كانت مفقودة.
+              </p>
+              <p>
+    تبوك مدينة مؤقتة بطبيعتها: عقود عمل ٢-٣ سنوات، طلاب جامعة، مواسم حج، مشاريع بنية تحتية. الناس تيجي، تشتري جديد، بعد سنتين تبيعه بنصف السعر أو ترميه. وبين البائع والمشتري؟ <em>فراغ</em>. حراج.كوم فيه إعلانات، لكن لا ضمان، لا تجربة، لا توصيل. المحلات الصغيرة تثق فيها بس اللي يعرف صاحبها.
+              </p>
+              <p>
+    أول ٦ أشهر: معرض ٢٠×١٠ متر في المنشية القديمة، شاحنة واحدة، صفر زبائن في أول أسبوعين. كنت أقعد في المعرض أقرأ قرآن، وأفكر: "هل الناس محتاجة أثاث، ولا محتاجة <em>أمان</em>؟"
+              </p>
+              <p>
+    الجواب جاء من أول صفقة B2B: مقاول مقاولات عمالة طلب ٥٠ مكيف + ٣٠ ثلاجة + ٤٠ سرير لمخيم عمالة. ما سأل عن السعر أولاً. سأل: "تضمنونهم؟ تركبونها؟ لو عطّل واحد تجونه؟" وقتها فهمت: <strong>السوق ما محتاج تاجر، محتاج شريك.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 2: How We Work - Sourcing -->
+    <section class="about-chapter about-chapter--reverse" aria-labelledby="chapter-2-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٢</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-2-title" class="about-chapter__title">من أين نأتي بكل هذه القطع؟ (الحقيقة كاملة)</h2>
+            <div class="about-chapter__text">
+              <p>كثير يسألنا على واتساب: "يا أستاذ، كل هالمكيفات والثلاجات من وين تجيبونها؟"</p>
+              <p>الجواب المباشر، بلا لف:</p>
+              <ul class="about-source-list">
+                <li>
+                  <span class="about-source__percent">٦٠٪</span>
+                  <strong>عائلات تنتقل أو تسافر:</strong> موظف يُنقل، طالب يتخرج، عائلة تهاجر. يبيعون أثاثهم كله مرة واحدة. نحن نروح نقيّم، ندفع نقدي فوري، نستلم بنفس اليوم. هم يرتاحون، ونحن نجيب قطع بحالة ممتازة — مستعملة ١-٣ سنوات بس.
+                </li>
+                <li>
+                  <span class="about-source__percent">٣٠٪</span>
+                  <strong>محلات ومصانع تغلق أو تجدّد:</strong> معارض أثاث جديدة تستبدل موديلات، فنادق تجدّد نجوميتها، مطاعم تقفل. نشتري "الاستوك" كاملاً بأسعار جملة، نفرز، نصلح، ننظف، نبيع بالتجزئة.
+                </li>
+                <li>
+                  <span class="about-source__percent">١٠٪</span>
+                  <strong>إرجاعات B2B ومخازن:</strong> طلبات كميات كبيرة يلغى بعضها، أو قطع بفتح علبة فقط. نشتريها بسعر ممتاز، نتأكد إنها جديدة ١٠٠٪، نبيعها "حالة جديدة".
+                </li>
+              </ul>
+              <p class="about-chapter__note">
+    <strong>مهم:</strong> ما نأخذ أي قطعة "على العمياء". كل قطعة تدخل مستودعنا تمر بـ: (١) فحص بصري، (٢) اختبار تشغيل ٣٠ دقيقة للأجهزة، (٣) تنظيف بخار/كيميائي/أوزون، (٤) تصوير توثيقي، (٥) تسعير شفاف. اللي ما يمشي المعايير — نعيده للبائع أو نتبرع به.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 3: The Process - Testing & Cleaning -->
+    <section class="about-chapter" aria-labelledby="chapter-3-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٣</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-3-title" class="about-chapter__title">ما يحدث بين "الاستلام" و"العرض" — التفاصيل اللي ما يقولها غيرنا</h2>
+            <div class="about-chapter__text">
+              <p>الناس تشوف القطعة في المعرض نظيفة لامعة. ما تشوف اللي صار قبلها:</p>
+              <div class="about-process-grid">
+                <article class="process-step">
+                  <span class="process-step__num">١</span>
+                  <h3 class="process-step__title">اختبار الغاز والضغط (للمكيفات)</h3>
+                  <p>نفك الوحدة الخارجية، نقيس ضغط الفريون، نشوف القراءة على المانومتر. لو ناقص — نشحن غاز أصلي (R410A/R22). نشغّل ٣٠ دقيقة: نقرأ استهلاك أمبير، حرارة خروج، صوت كمبروسور. نصور القراءة ونرسلها للعميل على واتساب قبل ما يجي.</p>
+                </article>
+                <article class="process-step">
+                  <span class="process-step__num">٢</span>
+                  <h3 class="process-step__title">اختبار التبريد/التجميد (للثلاجات والفريزرات)</h3>
+                  <p>نشغّل ٤٥ دقيقة. نضع ترمومتر داخل الفريزر والثلاجة. نقرأ درجة الحرارة كل ١٠ دقايق. نتأكد الكمبروسور يفصل ويشتغل طبيعي. نتحقق من مطاط الباب، إضاءة، رفوف، صوت. أي تسريب بسيط — نرفض القطعة.</p>
+                </article>
+                <article class="process-step">
+                  <span class="process-step__num">٣</span>
+                  <h3 class="process-step__title">تنظيف بخار + أوزون (للأثاث والأجهزة)</h3>
+                  <p>المجالس والأرائك: بخار ١٢٠°م يقتل البكتيريا والعثة، بعدين شفط عميق. الأجهزة: تنظيف كيميائي متخصص للمبخرات والمكثفات، بعدين جهاز أوزون ٣٠ دقيقة يزيل أي روائح. القطع تخرج برائحة "جديد".</p>
+                </article>
+                <article class="process-step">
+                  <span class="process-step__num">٤</span>
+                  <h3 class="process-step__title">توثيق وتصوير لكل زاوية</h3>
+                  <p>٨ صور لكل قطعة: واجهات، جوانب، ظهر، ملصق الموديل، عيوب (لو فيه)، قراءة اختبار، تغليف. الصور ترفع على النظام وتربط بالباركود. العميل يشوف نفس الصور على واتساب أو في المعرض — ما في مفاجآت.</p>
+                </article>
+              </div>
+              <p class="about-chapter__closing">
+    هذا الإجراء يكلّفنا وقتاً ومالاً (تقريباً ٤٥-٦٠ دقيقة للقطعة). بس هو <em>الفرق بين "تاجر حراج" و"شريك أثاث"</em>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 4: Warranty & Service -->
+    <section class="about-chapter about-chapter--reverse" aria-labelledby="chapter-4-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٤</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-4-title" class="about-chapter__title">ضمان ٣٠ يوم: وعدنا اللي ما نكسره</h2>
+            <div class="about-chapter__text">
+              <p>كتير محلات تكتب "ضمان سنة" على الفاتورة. يوم العطل يطلع، تلاقي: "الضمان على الكمبروسور بس"، "العمالة عليك"، "تجيب القطعة للمعرض".</p>
+              <p>نحن اخترنا طريق أصعب:</p>
+              <div class="warranty-flow">
+                <div class="warranty-step">
+                  <span class="warranty-step__num">١</span>
+                  <div>
+                    <h4>العميل يكتشف عطل</h4>
+                    <p>خلال ٣٠ يوم من الاستلام</p>
+                  </div>
+                </div>
+                <div class="warranty-step">
+                  <span class="warranty-step__num">٢</span>
+                  <div>
+                    <h4>يرسل فيديو على واتساب</h4>
+                    <p>٣٠ ثانية تكفي — الصوت، التبريد، الشاشة</p>
+                  </div>
+                </div>
+                <div class="warranty-step">
+                  <span class="warranty-step__num">٣</span>
+                  <div>
+                    <h4>نحدد موعد استلام</h4>
+                    <p>نفس اليوم أو اليوم التالي — شاحنتنا تجيك</p>
+                  </div>
+                </div>
+                <div class="warranty-step">
+                  <span class="warranty-step__num">٤</span>
+                  <div>
+                    <h4>فنيونا يصلحون في الورشة</h4>
+                    <p>خلال ٤٨ ساعة كحد أقصى — قطع غيار أصلية</p>
+                  </div>
+                </div>
+                <div class="warranty-step">
+                  <span class="warranty-step__num">٥</span>
+                  <div>
+                    <h4>نعيدها تركب وتجرب</h4>
+                    <p>مجاني بالكامل — لا ريال واحد على العميل</p>
+                  </div>
+                </div>
+              </div>
+              <p class="warranty-note">
+    <strong>ملاحظة:</strong> الضمان <em>خدمة إصلاح/صيانة</em>، ما فيه استبدال نقدي ولا استرجاع فلوس. لو القطعة تلفها كامل (نادر جداً) — نتفق على حل عادل. ٧٧٪ من عملائنا رجعوا يتعاملون معنا، والسبب الأكبر: "أنتم الوحيدين اللي جيبتوا المكيف أصلحته بعد شهر".
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 5: Services Overview -->
+    <section class="about-chapter" aria-labelledby="chapter-5-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٥</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-5-title" class="about-chapter__title">كل الخدمات في مكان واحد — لأن وقتك أغلى</h2>
+            <div class="about-chapter__text">
+              <p>ما نبيك تدور على فني مكيفات، ولا نقل عفش، ولا تركيب ثلاجة. كل شيء عندنا:</p>
+              <div class="services-grid">
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">🛒</span>
+                  <h3 itemprop="name">نشتري منك</h3>
+                  <p itemprop="description">نقد فوري، استلام مجاني، تقييم شفاف — صور على واتساب = سعر في ١٠ دقايق</p>
+                </article>
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">🏪</span>
+                  <h3 itemprop="name">معرض فعلي بتبوك</h3>
+                  <p itemprop="description">تجي، تشوف، تجرب، تاخذ — المنشية القديمة، طريق معاوية، مفتوح ٩ص-١٠م (ج ٤م-١٠م)</p>
+                </article>
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">🚚</span>
+                  <h3 itemprop="name">توصيل مجاني</h3>
+                  <p itemprop="description">كل أحياء تبوك، نفس اليوم/التالي، شاحنتان مجهزتان، فريق ٤ أشخاص</p>
+                </article>
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">🔧</span>
+                  <h3 itemprop="name">ضمان ٣٠ يوم خدمة</h3>
+                  <p itemprop="description">إصلاح مجاني، استلام وإعادة، ٤٨ ساعة، قطع أصلية — لا فلوس منك</p>
+                </article>
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">⚙️</span>
+                  <h3 itemprop="name">تركيب مكيفات وأجهزة</h3>
+                  <p itemprop="description">فنيون معتمدون، سبليت/شباك، ثلاجات، غسالات — تجربة أمامك قبل ما نمشي</p>
+                </article>
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">📦</span>
+                  <h3 itemprop="name">فك، نقل، تركيب</h3>
+                  <p itemprop="description">منزل كامل، مكتب، شقة مفروشة — تغليف، نقل، تركيب، تنظيف المكان</p>
+                </article>
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">🏢</span>
+                  <h3 itemprop="name">B2B: فنادق، مكاتب، مخيمات</h3>
+                  <p itemprop="description">عقود سنوية، أسعار حجم، صيانة دورية، تأثيث تسليم مفتاح</p>
+                </article>
+                <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                  <span class="service-card__icon" aria-hidden="true">💳</span>
+                  <h3 itemprop="name">تقسيط تمارا / مدى / بنك</h3>
+                  <p itemprop="description">اشترِ الآن، ادفع لاحقاً — موافقة فورية، بدون فوائد (تمارا)</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 6: B2B & Scale -->
+    <section class="about-chapter about-chapter--reverse" aria-labelledby="chapter-6-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٦</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-6-title" class="about-chapter__title">ما نخدم الأفراد فقط — شركاء للمشاريع الكبيرة</h2>
+            <div class="about-chapter__text">
+              <p>أول صفقة B2B غيرت نظرتنا. اليوم، جزء كبير من شغلنا مع:</p>
+              <ul class="b2b-list">
+                <li><strong>فنادق وشقق مفروشة:</strong> تأثيث غرف كاملة (سرير، مجلس، ثلاجة، مكيف، تلفزيون) — تسليم مفتاح، مواصفات موحدة، صيانة سنوية.</li>
+                <li><strong>مكاتب وشركات:</strong> مكاتب، كراسي، خزائن، أجهزة — كميات كبيرة، تركيب سريع، عقود صيانة.</li>
+                <li><strong>مخيمات عمالة ومشاريع نيوم/البحر الأحمر:</strong> ٥٠-٢٠٠ وحدة سكنية، مكيفات شباك/سبليت، ثلاجات، غسالات، أسرة — جداول تسليم مرحلة بمرحلة.</li>
+                <li><strong>مستثمرون عقاريون (تأثيث للايجار):</strong> باقات "استديو/غرفة/صالة" جاهزة، عائد إيجار أعلى، صيانة مشمولة.</li>
+              </ul>
+              <p>
+    عندنا مرونة: نشتري كميات، نخزن في مستودعاتنا، نسلم حسب جدول مشروعك. الأسعار تنزل ١٥-٢٥٪ عن التجزئة. تواصلنا مباشر: واتساب المؤسس أو مدير المشاريع.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 7: The Team -->
+    <section class="about-chapter" aria-labelledby="chapter-7-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٧</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-7-title" class="about-chapter__title">فريق صغير، قلب كبير</h2>
+            <div class="about-chapter__text">
+              <p>نحن ٤ أشخاص فقط. بس كل واحد يساوي ١٠:</p>
+              <div class="team-grid">
+                <article class="team-member">
+                  <div class="team-member__role">المؤسسة / المالكة</div>
+                  <h3 class="team-member__name">منى محمد ال طه</h3>
+                  <p>الرؤية، القرارات الصعبة، العلاقة مع العملاء الكبار، والجودة النهائية. ما توقع أي قطعة تخرج المعرض إلا لو هي راضية عنها.</p>
+                </article>
+                <article class="team-member">
+                  <div class="team-member__role">مدير العمليات / الفني الأول</div>
+                  <h3 class="team-member__name">أبو محمد</h3>
+                  <p>٢٠ سنة خبرة مكيفات وتبريد. هو اللي يختبر كل وحدة، يصلح كل عطل، يدرب الفريق. "الكمبروسور يتكلم معه" — عملاؤنا.</p>
+                </article>
+                <article class="team-member">
+                  <div class="team-member__role">مشرف المستودع والتوصيل</div>
+                  <h3 class="team-member__name">أحمد</h3>
+                  <p>يدير الشاحنتين، جدولة التوصيل، تغليف القطع، تنظيف المكان بعد التركيب. "الرجل الخفي" اللي يخلي العملية تمشي بسلاسة.</p>
+                </article>
+                <article class="team-member">
+                  <div class="team-member__role">خدمة العملاء / واتساب</div>
+                  <h3 class="team-member__name">فاطمة</h3>
+                  <p>أول صوت تسمعه على ٠٥٨ ٢٣٢ ٨٣٨٩. تقيّم القطع من الصور، تحدد مواعيد، تتابع الضمان، وترد خلال ٣٠ دقيقة — حتى بعد منتصف الليل أحياناً.</p>
+                </article>
+              </div>
+              <p class="team-note">
+    ما في "موظف Reception" و"فني" منفصلين. الكل يركب، الكل ينظف، الكل يجاوب العميل. هذا سر سرعة استجابتنا.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 8: Numbers That Matter -->
+    <section class="about-chapter about-chapter--numbers" aria-labelledby="chapter-8-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٨</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-8-title" class="about-chapter__title">أرقام لا تكذب</h2>
+            <div class="numbers-grid">
+              <div class="number-card">
+                <span class="number-card__value">٨٠٠+</span>
+                <span class="number-card__label">عائلة وثقت فينا</span>
+              </div>
+              <div class="number-card">
+                <span class="number-card__value">٢٠٠٠+</span>
+                <span class="number-card__label">قطعة بيعت خلال ١٢ شهر</span>
+              </div>
+              <div class="number-card">
+                <span class="number-card__value">٧٧٪</span>
+                <span class="number-card__label">عملاء كرروا التعامل</span>
+              </div>
+              <div class="number-card">
+                <span class="number-card__value">٣٠ د</span>
+                <span class="number-card__label">متوسط رد واتساب</span>
+              </div>
+              <div class="number-card">
+                <span class="number-card__value">٢</span>
+                <span class="number-card__label">شاحنة مجهزة</span>
+              </div>
+              <div class="number-card">
+                <span class="number-card__value">٤</span>
+                <span class="number-card__label">فريق أساسي</span>
+              </div>
+              <div class="number-card">
+                <span class="number-card__value">١٤+</span>
+                <span class="number-card__label">تقييم قوقل (٤.٨★)</span>
+              </div>
+              <div class="number-card">
+                <span class="number-card__value">٢٠٠</span>
+                <span class="number-card__label">م² معرض + مستودع</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 9: Our Promise -->
+    <section class="about-chapter about-chapter--promise" aria-labelledby="chapter-9-title">
+      <div class="container">
+        <div class="about-chapter__inner">
+          <div class="about-chapter__number">٠٩</div>
+          <div class="about-chapter__content">
+            <h2 id="chapter-9-title" class="about-chapter__title">وعدنا لك — مكتوب، مش مجرد كلام</h2>
+            <div class="about-chapter__text">
+              <div class="promise-grid">
+                <article class="promise-item">
+                  <h3>نبيع فقط اللي نثق به</h3>
+                  <p>لو ما نشتريه لبيتنا — ما نبيعه لك. قاعدة بسيطة، ما فيها استثناء.</p>
+                </article>
+                <article class="promise-item">
+                  <h3>السعر شفاف من أول دقيقة</h3>
+                  <p>لا مفاوضات مخفية، لا "رسوم إضافية" وقت التوصيل. السعر اللي على القطعة = السعر اللي تدفعه.</p>
+                </article>
+                <article class="promise-item">
+                  <h3>نرد عليك خلال ٣٠ دقيقة</h3>
+                  <p>واتساب، اتصال، زيارة معرض — فريقنا موجود. لو تأخرنا، حقك تعاتبنا.</p>
+                </article>
+                <article class="promise-item">
+                  <h3>الضمان خدمة، مش ورقة</h3>
+                  <p>نجي نصلح، ما نطالبك تجيب القطعة. ٤٨ ساعة والقطعة راجعة تشتغل.</p>
+                </article>
+                <article class="promise-item">
+                  <h3>نشتري منك بعدين</h3>
+                  <p>لما ترحل أو تجدد، نقدر أثاثك بعدل، ندفع نقدي، نستلم مجاني. العلاقة ما تنتهي بالبيع.</p>
+                </article>
+                <article class="promise-item">
+                  <h3>محليين، هنا للبقاء</h3>
+                  <p>مؤسسة سعودية، سجل تجاري، معرض ثابت، سمعة نبنيها يومياً. ما نروح بكره.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="about-cta__content">
+          <h2 id="cta-title" class="about-cta__title">خلونا نخدمك</h2>
+          <p class="about-cta__text">سواء تبي تشتري، تبيع، تسأل، أو حتى تشوف المعرض — الباب مفتوح، والقهوة جاهزة.</p>
+          <div class="about-cta__actions">
+            <a href="https://wa.me/966582328389" class="btn btn--wa about-cta__btn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              واتساب الآن
+            </a>
+            <a href="tel:+966582328389" class="btn btn--outline about-cta__btn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              اتصل: ٠٥٨ ٢٣٢ ٨٣٨٩
+            </a>
+            <a href="https://www.google.com/maps/place/%D8%AD%D8%B1%D8%A7%D8%AC+%D8%AA%D8%A8%D9%88%D9%83+%D9%84%D9%84%D8%A3%D8%AB%D8%A7%D8%AB+%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B9%D9%85%E2%80%AD/@28.3816175,36.5591715,21z/data=!4m6!3m5!1s0x15a9ad3dc0a4ef8b:0x8d7c12f750a94059!8m2!3d28.3816148!4d36.5592394!16s%2Fg%2F11zcjfx9k0" target="_blank" rel="noopener" class="btn btn--outline about-cta__btn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              موقع المعرض على الخريطة
+            </a>
+          </div>
+          <p class="about-cta__hours">
+            <strong>أوقات العمل:</strong> السبت–الخميس ٩:٠٠–٢٢:٠٠ | الجمعة ١٦:٠٠–٢٢:٠٠
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section (mirror from FAQ page) -->
+    <section class="about-faq" aria-labelledby="about-faq-title">
+      <div class="container">
+        <h2 id="about-faq-title" class="about-faq__title">أسئلة دايماً تسألوناها</h2>
+        <div class="faq">
+          <details class="faq__item" open>
+            <summary class="faq__question">من أين تجدون كل هذه القطع المستعملة؟</summary>
+            <div class="faq__answer">مصادرنا ثلاثة: ٦٠٪ من عائلات تنتقل/تسافر تبيع أثاثها، ٣٠٪ من محلات تغلق أو تجدّد عرضها، ١٠٪ من إرجاعات B2B ومخازن. كل قطعة تمر باختبار وتنظيف قبل العرض.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">كيف تعملون؟ هل تشترون فقط أم تبيعون أيضاً؟</summary>
+            <div class="faq__answer">نحن نشتري ونبيع. نشتري من الأفراد نقداً ونستلم مجاناً. نبيع من معرضنا بتبوك بضمان 30 يوم خدمة وتوصيل مجاني. المعرض هو حلقة الوصل: نشتري، نختبر، ننظف، نضمن، نبيع.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">ما معنى ضمان ٣٠ يوم خدمة؟ هل تستبدلون القطعة؟</summary>
+            <div class="faq__answer">الضمان خدمة إصلاح/صيانة مجانية خلال ٣٠ يوماً من الشراء. إذا ظهر عطل: ترسل فيديو على واتساب، نستلم القطعة، يصلحها فنيونا خلال ٤٨ ساعة، ونعيدها — لا استبدال نقدي، بل إصلاح مضمون.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">هل يمكن تجربة المكيف أو الثلاجة قبل الشراء؟</summary>
+            <div class="faq__answer">نعم، بكل تأكيد. كل مكيف يشتغل أمامك (تبريد/تسخين)، وكل ثلاجة/فريزر يعمل (تبريد/تجميد). نعطيك قراءة الغاز وضغط التشغيل قبل ما تدفع ريال واحد.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">كم تستغرقون للتوصيل والتركيب؟</summary>
+            <div class="faq__answer">نفس اليوم أو اليوم التالي كحد أقصى داخل تبوك. عندنا شاحنتان مجهزتان وفريق ٤ أشخاص. التركيب مشمول في السعر — فك، نقل، تركيب، تجربة، تنظيف المكان.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

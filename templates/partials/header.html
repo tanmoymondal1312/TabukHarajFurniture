@@ -26,8 +26,8 @@
       <meta itemprop="name" content="Main Navigation">
       <a href="{% url 'pages:home' %}" class="nav__link{% if request.resolver_match.url_name == 'home' %} is-active{% endif %}" itemprop="url"><span itemprop="name">Home</span></a>
       <a href="{% url 'pages:products' %}" class="nav__link{% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product' %} is-active{% endif %}" itemprop="url"><span itemprop="name">Products</span></a>
+      <a href="{% url 'pages:about' %}" class="nav__link{% if request.resolver_match.url_name == 'about' %} is-active{% endif %}" itemprop="url"><span itemprop="name">About</span></a>
       <a href="{% url 'pages:faq' %}" class="nav__link{% if request.resolver_match.url_name == 'faq' %} is-active{% endif %}" itemprop="url"><span itemprop="name">FAQ</span></a>
-      <a href="{% url 'pages:home' %}#about" class="nav__link" itemprop="url"><span itemprop="name">About Us</span></a>
       <a href="{% url 'pages:home' %}#contact" class="nav__link" itemprop="url"><span itemprop="name">Contact</span></a>
     </nav>
 

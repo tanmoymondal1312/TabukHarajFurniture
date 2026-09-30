@@ -33,6 +33,14 @@ def faq(request):
     return render(request, "pages/faq.html", {})
 
 
+def about(request):
+    request.page_title = "من نحن | حراج تبوك للأثاث المستعمل"
+    request.page_description = "قصة حراج تبوك للأثاث: من معرض فارغ نهاية 2023 إلى ثقة 800+ عائلة. كيف نعمل، من أين نجلب الأثاث، خدماتنا الكاملة، ضمان 30 يوم خدمة، وفريقنا."
+    request.page_image = OG_COVER
+
+    return render(request, "pages/about.html", {})
+
+
 def products(request):
     request.page_title = "كل المنتجات | حراج تبوك للأثاث المستعمل"
     request.page_description = "تصفح جميع المنتجات في حراج تبوك للأثاث المستعمل: أثاث، مكيفات، ثلاجات، غسالات وأكثر. كل قطعة مختبرة بضمان 30 يوم وتوصيل مجاني في تبوك."
