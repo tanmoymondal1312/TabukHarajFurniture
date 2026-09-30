@@ -44,6 +44,11 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.8"/></svg>
           <span>Visitors</span>
         </a>
+        <a class="side-link{% if active == 'inbox' %} is-active{% endif %}" href="{% url 'dashboard:inbox' %}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          <span>Messages</span>
+          {% if inbox_unread %}<span class="side-link__badge">{{ inbox_unread }}</span>{% endif %}
+        </a>
 
         <p class="side-nav__label">Site</p>
         <a class="side-link" href="{% url 'pages:home' %}" target="_blank" rel="noopener">

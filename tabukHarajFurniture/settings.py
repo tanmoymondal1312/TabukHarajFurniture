@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'pages.context_processors.business_info',
                 'pages.context_processors.seo_context',
+                'dashboard.context_processors.inbox_unread',
             ],
         },
     },

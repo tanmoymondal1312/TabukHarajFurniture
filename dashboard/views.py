@@ -13,7 +13,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
-from pages.models import Category, Product
+from pages.models import Category, ContactMessage, Product
 
 from .charts import line_chart
 from .forms import CategoryForm, ProductForm
@@ -336,4 +336,42 @@ def visitors(request):
         or date_to.isoformat() != today.isoformat(),
     }
     return render(request, "dashboard/visitor_list.html", context)
-    return redirect("dashboard:category_list")
+
+
+@login_required
+def inbox(request):
+    qs = ContactMessage.objects.all()
+    paginator = Paginator(qs, 20)
+    page = paginator.get_page(request.GET.get("page"))
+    context = {
+        "active": "inbox",
+        "page": page,
+        "total": qs.count(),
+        "unread": qs.filter(is_read=False).count(),
+        "today": qs.filter(created_at__date=timezone.localdate()).count(),
+        "with_phone": qs.exclude(phone="").count(),
+    }
+    return render(request, "dashboard/inbox.html", context)
+
+
+@require_POST
+@login_required
+def inbox_action(request, pk):
+    msg = get_object_or_404(ContactMessage, pk=pk)
+    action = request.POST.get("action")
+
+    if action == "read":
+        msg.is_read = True
+        msg.save(update_fields=["is_read"])
+        messages.success(request, "Message marked as handled.")
+    elif action == "unread":
+        msg.is_read = False
+        msg.save(update_fields=["is_read"])
+        messages.success(request, "Message marked as new.")
+    elif action == "delete":
+        msg.delete()
+        messages.success(request, "Message deleted.")
+    else:
+        messages.error(request, "Unknown action.")
+
+    return redirect("dashboard:inbox")

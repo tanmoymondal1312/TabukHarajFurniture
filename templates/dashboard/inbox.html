@@ -1,0 +1,96 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Messages{% endblock %}
+{% block page_title %}Messages{% endblock %}
+{% block page_actions %}
+  {% if unread %}<span class="pill pill--reserved">{{ unread }} new</span>{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="stat-grid">
+    <div class="stat">
+      <span class="stat__icon stat__icon--gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+      </span>
+      <div><strong>{{ total }}</strong><small>Total messages</small></div>
+    </div>
+    <div class="stat">
+      <span class="stat__icon stat__icon--amber">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg>
+      </span>
+      <div><strong>{{ unread }}</strong><small>Waiting for reply</small></div>
+    </div>
+    <div class="stat">
+      <span class="stat__icon stat__icon--green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </span>
+      <div><strong>{{ today }}</strong><small>New today</small></div>
+    </div>
+    <div class="stat">
+      <span class="stat__icon stat__icon--purple">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+      </span>
+      <div><strong>{{ with_phone }}</strong><small>With phone number</small></div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <header class="panel__head">
+      <h2>Inbox</h2>
+      <span class="panel__meta">{{ total }} message{{ total|pluralize }}</span>
+    </header>
+
+    {% if page.object_list %}
+      <div class="inbox-list">
+        {% for m in page %}
+          <article class="msg-card{% if not m.is_read %} is-new{% endif %}">
+            <header class="msg-card__head">
+              <div class="msg-card__who">
+                <strong>{{ m.name }}</strong>
+                {% if m.subject %}<span class="pill">{{ m.subject }}</span>{% endif %}
+                {% if not m.is_read %}<span class="msg-card__new">New</span>{% endif %}
+              </div>
+              <div class="msg-card__meta">
+                {% if m.phone %}<a class="msg-card__phone" href="tel:{{ m.phone }}" dir="ltr">{{ m.phone }}</a>{% endif %}
+                <time>{{ m.created_at|date:"d M Y" }} · {{ m.created_at|date:"H:i" }}</time>
+              </div>
+            </header>
+            <p class="msg-card__body">{{ m.body|linebreaksbr }}</p>
+            <footer class="msg-card__actions">
+              <form method="post" action="{% url 'dashboard:inbox_action' m.pk %}">
+                {% csrf_token %}
+                {% if m.is_read %}
+                  <button type="submit" name="action" value="unread" class="btn btn--ghost btn--sm">Mark as new</button>
+                {% else %}
+                  <button type="submit" name="action" value="read" class="btn btn--gold btn--sm">Mark handled</button>
+                {% endif %}
+                <button type="submit" name="action" value="delete" class="btn btn--danger-ghost btn--sm">Delete</button>
+              </form>
+            </footer>
+          </article>
+        {% endfor %}
+      </div>
+
+      {% if page.paginator.num_pages > 1 %}
+        <nav class="pager" aria-label="Pagination">
+          {% if page.has_previous %}
+            <a class="pager__btn" href="?page={{ page.previous_page_number }}">&larr;</a>
+          {% endif %}
+          {% for n in page.paginator.page_range %}
+            <a class="pager__btn{% if n == page.number %} is-current{% endif %}" href="?page={{ n }}">{{ n }}</a>
+          {% endfor %}
+          {% if page.has_next %}
+            <a class="pager__btn" href="?page={{ page.next_page_number }}">&rarr;</a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    {% else %}
+      <div class="empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+        <h3>No messages yet</h3>
+        <p>Messages sent from the contact page will appear here.</p>
+        <a class="btn btn--gold" href="{% url 'pages:contact' %}" target="_blank" rel="noopener">Open contact page</a>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}

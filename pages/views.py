@@ -1,8 +1,11 @@
+import re
+
 from django.db.models import Q
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils import timezone
 
-from .models import Category, Product
+from .models import Category, ContactMessage, Product
 
 CANONICAL = "https://tabukharajfurniture.com"
 OG_COVER = CANONICAL + "/static/images/og-cover.jpg"
@@ -39,6 +42,50 @@ def about(request):
     request.page_image = OG_COVER
 
     return render(request, "pages/about.html", {})
+
+
+def contact(request):
+    request.page_title = "اتصل بنا | حراج تبوك للأثاث المستعمل"
+    request.page_description = (
+        "تواصل مع حراج تبوك للأثاث المستعمل: اتصال مباشر 0582328389، واتساب، "
+        "بريد إلكتروني، ونموذج رسالة يصلك مباشرة. معرضنا في المنشية القديمة، تبوك — "
+        "السبت–الخميس 9:00–22:00."
+    )
+    request.page_image = OG_COVER
+
+    errors = {}
+    form = {"name": "", "phone": "", "subject": "", "body": ""}
+
+    if request.method == "POST":
+        if request.POST.get("website"):
+            # Honeypot: bots fill the hidden field — pretend success.
+            return redirect(reverse("pages:contact") + "?sent=1")
+
+        for key in form:
+            form[key] = (request.POST.get(key) or "").strip()[:2000]
+
+        if len(form["name"]) < 2:
+            errors["name"] = "اكتب اسمك من فضلك."
+        if len(form["body"]) < 5:
+            errors["body"] = "اكتب رسالتك (5 أحرف على الأقل)."
+        if form["phone"] and not re.fullmatch(r"[0-9+\s\-]{8,20}", form["phone"]):
+            errors["phone"] = "رقم الجوال غير صحيح. مثال: 0582328389"
+
+        if not errors:
+            ContactMessage.objects.create(
+                name=form["name"][:120],
+                phone=form["phone"][:30],
+                subject=form["subject"][:60],
+                body=form["body"][:2000],
+            )
+            return redirect(reverse("pages:contact") + "?sent=1")
+
+    return render(request, "pages/contact.html", {
+        "sent": request.GET.get("sent") == "1",
+        "errors": errors,
+        "form": form,
+        "has_errors": bool(errors),
+    })
 
 
 def products(request):

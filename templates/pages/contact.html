@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block html_lang %}ar{% endblock %}
+{% block html_dir %}rtl{% endblock %}
+{% block title %}اتصل بنا | حراج تبوك للأثاث المستعمل{% endblock %}
+{% block meta_description %}تواصل مع حراج تبوك للأثاث المستعمل: اتصال مباشر 0582328389، واتساب، بريد إلكتروني، ونموذج رسالة يصلك مباشرة. معرضنا في المنشية القديمة، تبوك — السبت–الخميس 9:00–22:00.{% endblock %}
+{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}
+{% block canonical %}https://tabukharajfurniture.com/contact/{% endblock %}
+
+{% block content %}
+<!-- ContactPage + FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://tabukharajfurniture.com/contact/#contactpage",
+      "url": "https://tabukharajfurniture.com/contact/",
+      "name": "اتصل بنا | حراج تبوك للأثاث المستعمل",
+      "inLanguage": "ar",
+      "description": "صفحة تواصل مع حراج تبوك للأثاث المستعمل: اتصال مباشر 0582328389، واتساب، بريد إلكتروني، عنوان المعرض، ساعات العمل، ونموذج رسالة.",
+      "about": { "@id": "https://tabukharajfurniture.com/#organization" },
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://tabukharajfurniture.com/#organization",
+        "name": "حراج تبوك للأثاث المستعمل",
+        "telephone": "+966582328389",
+        "email": "info@tabukharajfurniture.com",
+        "url": "https://tabukharajfurniture.com/",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "المنشية القديمة، طريق معاوية",
+          "addressLocality": "تبوك",
+          "postalCode": "47914",
+          "addressCountry": "SA"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+966582328389",
+            "contactType": "customer service",
+            "availableLanguage": ["Arabic", "English"],
+            "areaServed": "SA",
+            "contactOption": "TollFree"
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+966582328389",
+            "contactType": "sales",
+            "availableLanguage": "Arabic",
+            "areaServed": "SA"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"],
+            "opens": "09:00",
+            "closes": "22:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "16:00",
+            "closes": "22:00"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tabukharajfurniture.com/contact/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "كم تستغرقون للرد على الرسائل؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نرد عادة خلال ساعة في أوقات العمل (السبت–الخميس 9:00–22:00، الجمعة 16:00–22:00). رسائل واتساب أسرع — أحياناً خلال دقائق. خارج أوقات العمل نرد في بداية اليوم التالي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن زيارة المعرض قبل الشراء؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، زيارتنا مجانية وبدون التزام. تعال شوف القطعة، جربها، واسأل كل ما تريد قبل ما تدفع ريال واحد. المعرض في المنشية القديمة، طريق معاوية، تبوك."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أستفسار عن سعر منتج معين؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "الطريقة الأسهل: اتصل على 0582328389 أو راسلنا واتساب مع اسم المنتج أو رابطه، أو اكتب في نموذج الرسالة في هذه الصفحة. نرد عليك بالسعر والتوفر والمواصفات كاملة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "عندي شكوى أو مشكلة في الضمان، ماذا أفعل؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "اتصل على 0582328389 واذكر رقم فاتورتك، أو أرسل رسالة هنا واختر موضوع 'ضمان وإرجاع'. الضمان 30 يوم خدمة — نرسل فني أو نستلم القطعة ونصلحها خلال 48 ساعة."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Contact Hero -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="contact-hero__content">
+      <span class="contact-hero__eyebrow">تواصل معنا</span>
+      <h1 class="contact-hero__title">نسعد بخدمتك — <span class="contact-hero__highlight">قبل الشراء وبعده</span></h1>
+      <p class="contact-hero__lead">
+        فريق حراج تبوك للأثاث المستعمل يرد على استفساراتك بسرعة. اتصل مباشرة على
+        <a href="tel:+966582328389" class="contact-hero__phone">٠٥٨٢٣٢٨٣٨٩</a>
+        أو أرسل رسالة، وسنعود إليك في أقرب وقت.
+      </p>
+      <div class="contact-hero__chips">
+        <a href="tel:+966582328389" class="contact-chip contact-chip--call">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          اتصال
+        </a>
+        <a href="https://wa.me/966582328389" target="_blank" rel="noopener" class="contact-chip contact-chip--wa">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          واتساب
+        </a>
+        <a href="mailto:info@tabukharajfurniture.com" class="contact-chip contact-chip--mail">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          بريد إلكتروني
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Main -->
+<section class="contact-main">
+  <div class="container contact-grid">
+
+    <!-- Form -->
+    <div class="contact-form-card" id="send-message">
+      <div class="contact-form-card__head">
+        <h2>أرسل لنا رسالة</h2>
+        <p>تصلك رسالتك مباشرة — نرد عادة خلال ساعة في أوقات العمل.</p>
+      </div>
+
+      {% if sent %}
+      <div class="contact-alert contact-alert--ok" role="status">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <div>
+          <strong>تم إرسال رسالتك بنجاح</strong>
+          <span>شكراً لتواصلك معنا — سنعود إليك في أقرب وقت.</span>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if has_errors %}
+      <div class="contact-alert contact-alert--err" role="alert">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+        <div><strong>راجع الحقول المطلوبة</strong></div>
+      </div>
+      {% endif %}
+
+      <form method="post" class="contact-form" novalidate>
+        {% csrf_token %}
+        <input type="text" name="website" value="" tabindex="-1" autocomplete="off" class="contact-hp" aria-hidden="true">
+
+        <div class="contact-form__row">
+          <div class="contact-field">
+            <label for="cf-name">الاسم <span class="req">*</span></label>
+            <input type="text" id="cf-name" name="name" value="{{ form.name }}" placeholder="اكتب اسمك" maxlength="120" {% if errors.name %}aria-invalid="true"{% endif %} required>
+            {% if errors.name %}<small class="field-err">{{ errors.name }}</small>{% endif %}
+          </div>
+          <div class="contact-field">
+            <label for="cf-phone">رقم الجوال</label>
+            <input type="tel" id="cf-phone" name="phone" value="{{ form.phone }}" placeholder="05XXXXXXXX" dir="ltr" maxlength="30" {% if errors.phone %}aria-invalid="true"{% endif %}>
+            {% if errors.phone %}<small class="field-err">{{ errors.phone }}</small>{% endif %}
+          </div>
+        </div>
+
+        <div class="contact-field">
+          <label for="cf-subject">الموضوع</label>
+          <select id="cf-subject" name="subject">
+            <option value="" {% if not form.subject %}selected{% endif %}>اختر موضوع الرسالة</option>
+            <option value="استفسار عن منتج" {% if form.subject == "استفسار عن منتج" %}selected{% endif %}>استفسار عن منتج</option>
+            <option value="التوصيل والتركيب" {% if form.subject == "التوصيل والتركيب" %}selected{% endif %}>التوصيل والتركيب</option>
+            <option value="البيع لدينا" {% if form.subject == "البيع لدينا" %}selected{% endif %}>البيع لدينا (نريد بيع أثاث)</option>
+            <option value="ضمان وإرجاع" {% if form.subject == "ضمان وإرجاع" %}selected{% endif %}>ضمان وإرجاع</option>
+            <option value="أمر آخر" {% if form.subject == "أمر آخر" %}selected{% endif %}>أمر آخر</option>
+          </select>
+        </div>
+
+        <div class="contact-field">
+          <label for="cf-body">الرسالة <span class="req">*</span></label>
+          <textarea id="cf-body" name="body" rows="6" placeholder="اكتب رسالتك هنا…" maxlength="2000" {% if errors.body %}aria-invalid="true"{% endif %} required>{{ form.body }}</textarea>
+          {% if errors.body %}<small class="field-err">{{ errors.body }}</small>{% endif %}
+        </div>
+
+        <button type="submit" class="btn btn--gold contact-form__submit">
+          إرسال الرسالة
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+        </button>
+        <p class="contact-form__note">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          بياناتك تصل إلينا فقط — لا نشاركها مع أي جهة.
+        </p>
+      </form>
+    </div>
+
+    <!-- Methods -->
+    <aside class="contact-side" aria-label="طرق التواصل">
+      <a href="tel:+966582328389" class="contact-card contact-card--call">
+        <span class="contact-card__icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        </span>
+        <span class="contact-card__body">
+          <span class="contact-card__label">اتصال مباشر</span>
+          <span class="contact-card__value" dir="ltr">058 232 8389</span>
+          <span class="contact-card__sub" dir="ltr">+966 58 232 8389</span>
+        </span>
+        <span class="contact-card__go">اتصل الآن</span>
+      </a>
+
+      <a href="https://wa.me/966582328389" target="_blank" rel="noopener" class="contact-card contact-card--wa">
+        <span class="contact-card__icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </span>
+        <span class="contact-card__body">
+          <span class="contact-card__label">واتساب</span>
+          <span class="contact-card__value">رد سريع على رسائلك</span>
+          <span class="contact-card__sub">من 9 صباحاً حتى 10 مساءً</span>
+        </span>
+        <span class="contact-card__go">راسلنا الآن</span>
+      </a>
+
+      <a href="mailto:info@tabukharajfurniture.com" class="contact-card">
+        <span class="contact-card__icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </span>
+        <span class="contact-card__body">
+          <span class="contact-card__label">بريد إلكتروني</span>
+          <span class="contact-card__value contact-card__value--sm" dir="ltr">info@tabukharajfurniture.com</span>
+          <span class="contact-card__sub">للعقود والشركات والطلبات الكبيرة</span>
+        </span>
+        <span class="contact-card__go">أرسل بريداً</span>
+      </a>
+
+      <a href="https://www.google.com/maps/place/%D8%AD%D8%B1%D8%A7%D8%AC+%D8%AA%D8%A8%D9%88%D9%83+%D9%84%D9%84%D8%A3%D8%AB%D8%A7%D8%AB+%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B9%D9%85%D9%84%E2%80%AD/@28.3816175,36.5591715,21z/data=!4m6!3m5!1s0x15a9ad3dc0a4ef8b:0x8d7c12f750a94059!8m2!3d28.3816148!4d36.5592394!16s%2Fg%2F11zcjfx9k0" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-card__icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <span class="contact-card__body">
+          <span class="contact-card__label">موقع المعرض</span>
+          <span class="contact-card__value contact-card__value--sm">المنشية القديمة، طريق معاوية، تبوك 47914</span>
+          <span class="contact-card__sub">معرض فعلي — تعال شوف قبل ما تشتري</span>
+        </span>
+        <span class="contact-card__go">افتح الخريطة</span>
+      </a>
+
+      <div class="contact-card contact-card--hours">
+        <span class="contact-card__icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        <div class="contact-card__body">
+          <span class="contact-card__label">ساعات العمل</span>
+          <ul class="contact-hours">
+            <li><span>السبت–الخميس</span><strong dir="ltr">9:00 – 22:00</strong></li>
+            <li><span>الجمعة</span><strong dir="ltr">16:00 – 22:00</strong></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Response promise strip -->
+<section class="contact-promise" aria-label="وعودنا">
+  <div class="container contact-promise__grid">
+    <div class="contact-promise__item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><strong>رد سريع</strong><span>عادة خلال ساعة في أوقات العمل</span></div>
+    </div>
+    <div class="contact-promise__item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+      <div><strong>استشارة مجانية</strong><span>قبل الشراء — بدون أي التزام</span></div>
+    </div>
+    <div class="contact-promise__item">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div><strong>خدمة بعد البيع</strong><span>ضمان 30 يوم على كل قطعة</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="about-faq contact-faq" aria-labelledby="contact-faq-title">
+  <div class="container">
+    <h2 id="contact-faq-title" class="about-faq__title">أسئلة عن التواصل معنا</h2>
+    <div class="faq">
+      <details class="faq__item" open>
+        <summary class="faq__question">كم تستغرقون للرد على الرسائل؟</summary>
+        <div class="faq__answer">نرد عادة خلال ساعة في أوقات العمل (السبت–الخميس ٩:٠٠–٢٢:٠٠، الجمعة ١٦:٠٠–٢٢:٠٠). رسائل واتساب أسرع — أحياناً خلال دقائق. خارج أوقات العمل نرد في بداية اليوم التالي.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__question">هل يمكن زيارة المعرض قبل الشراء؟</summary>
+        <div class="faq__answer">نعم، زيارتنا مجانية وبدون التزام. تعال شوف القطعة، جربها، واسأل كل ما تريد قبل ما تدفع ريال واحد. المعرض في المنشية القديمة، طريق معاوية، تبوك.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__question">كيف أستفسار عن سعر منتج معين؟</summary>
+        <div class="faq__answer">الطريقة الأسهل: اتصل على <a href="tel:+966582328389">٠٥٨٢٣٢٨٣٨٩</a> أو راسلنا واتساب مع اسم المنتج أو رابطه، أو اكتب في نموذج الرسالة في هذه الصفحة. نرد عليك بالسعر والتوفر والمواصفات كاملة.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__question">عندي شكوى أو مشكلة في الضمان، ماذا أفعل؟</summary>
+        <div class="faq__answer">اتصل على <a href="tel:+966582328389">٠٥٨٢٣٢٨٣٨٩</a> واذكر رقم فاتورتك، أو أرسل رسالة هنا واختر موضوع "ضمان وإرجاع". الضمان 30 يوم خدمة — نرسل فني أو نستلم القطعة ونصلحها خلال 48 ساعة.</div>
+      </details>
+    </div>
+  </div>
+</section>
+{% endblock %}

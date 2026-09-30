@@ -23,4 +23,7 @@ urlpatterns = [
     path("categories/<int:pk>/delete/", views.category_delete, name="category_delete"),
 
     path("visitors/", views.visitors, name="visitors"),
+
+    path("inbox/", views.inbox, name="inbox"),
+    path("inbox/<int:pk>/action/", views.inbox_action, name="inbox_action"),
 ]

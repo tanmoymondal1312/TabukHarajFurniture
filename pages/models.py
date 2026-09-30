@@ -114,3 +114,27 @@ class Product(models.Model):
     @property
     def old_price_display(self):
         return f"SAR {self.old_price:,.0f}"
+
+class ContactMessage(models.Model):
+    SUBJECT_CHOICES = [
+        ("استفسار عن منتج", "استفسار عن منتج"),
+        ("التوصيل والتركيب", "التوصيل والتركيب"),
+        ("البيع لدينا", "البيع لدينا"),
+        ("ضمان وإرجاع", "ضمان وإرجاع"),
+        ("أمر آخر", "أمر آخر"),
+    ]
+
+    name = models.CharField(max_length=120)
+    phone = models.CharField(max_length=30, blank=True)
+    subject = models.CharField(max_length=60, blank=True, choices=SUBJECT_CHOICES)
+    body = models.TextField()
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Contact message"
+        verbose_name_plural = "Contact messages"
+
+    def __str__(self):
+        return f"{self.name} - {self.subject or 'message'}"
