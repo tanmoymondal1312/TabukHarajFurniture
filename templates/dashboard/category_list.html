@@ -24,7 +24,7 @@
           <tbody>
             {% for c in categories %}
               <tr>
-                <td class="num">
+                <td class="num" data-label="Order">
                   <div class="order-btns">
                     <form method="post" action="{% url 'dashboard:category_action' c.pk %}">
                       {% csrf_token %}
@@ -48,9 +48,9 @@
                     </span>
                   </a>
                 </td>
-                <td><code>{{ c.slug }}</code></td>
-                <td>{{ c.n }}</td>
-                <td>
+                <td data-label="Slug"><code>{{ c.slug }}</code></td>
+                <td data-label="Products">{{ c.n }}</td>
+                <td data-label="Active">
                   <form method="post" action="{% url 'dashboard:category_action' c.pk %}">
                     {% csrf_token %}
                     <button type="submit" name="action" value="toggle_active" class="pill pill--click{% if c.is_active %} pill--available{% else %} pill--hidden{% endif %}">
@@ -58,7 +58,7 @@
                     </button>
                   </form>
                 </td>
-                <td class="num nowrap">
+                <td class="num nowrap" data-label="Actions">
                   <div class="row-actions">
                     <a class="btn btn--ghost btn--xs" href="{% url 'dashboard:category_edit' c.pk %}">Edit</a>
                     <form method="post" action="{% url 'dashboard:category_delete' c.pk %}" data-confirm="Delete category “{{ c.name }}”?">

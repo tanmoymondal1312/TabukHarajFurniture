@@ -3,7 +3,7 @@
 {% block title %}Overview{% endblock %}
 {% block page_title %}Overview{% endblock %}
 {% block page_actions %}
-  <a class="btn btn--ghost btn--sm" href="{% url 'dashboard:category_create' %}">+ Category</a>
+  <a class="btn btn--ghost btn--sm hide-xs" href="{% url 'dashboard:category_create' %}">+ Category</a>
   <a class="btn btn--gold btn--sm" href="{% url 'dashboard:product_create' %}">+ Add product</a>
 {% endblock %}
 
@@ -57,6 +57,7 @@
       </header>
 
       {% if recent %}
+        <div class="table-wrap">
         <table class="table">
           <thead>
             <tr><th>Product</th><th>Price</th><th>Status</th><th>Featured</th></tr>
@@ -75,13 +76,14 @@
                     </span>
                   </a>
                 </td>
-                <td class="nowrap">{{ p.price|floatformat:0 }} SAR</td>
-                <td><span class="pill pill--{{ p.status }}">{{ p.get_status_display }}</span></td>
-                <td>{% if p.is_featured %}<span class="star">&#9733;</span>{% else %}<span class="star star--off">&#9734;</span>{% endif %}</td>
+                <td data-label="Price" class="nowrap">{{ p.price|floatformat:0 }} SAR</td>
+                <td data-label="Status"><span class="pill pill--{{ p.status }}">{{ p.get_status_display }}</span></td>
+                <td data-label="Featured">{% if p.is_featured %}<span class="star">&#9733;</span>{% else %}<span class="star star--off">&#9734;</span>{% endif %}</td>
               </tr>
             {% endfor %}
           </tbody>
         </table>
+        </div>
       {% else %}
         <div class="empty">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5"/></svg>

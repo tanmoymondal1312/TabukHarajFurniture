@@ -93,14 +93,14 @@
             <tbody>
               {% for r in page %}
                 <tr>
-                  <td class="nowrap">{{ r.created_at|date:"d M Y" }}<small class="cell-sub">{{ r.created_at|date:"H:i" }}</small></td>
-                  <td class="nowrap">
+                  <td class="nowrap" data-label="Time">{{ r.created_at|date:"d M Y" }}<small class="cell-sub">{{ r.created_at|date:"H:i" }}</small></td>
+                  <td class="nowrap" data-label="Visitor">
                     <span class="vkey">{{ r.short_key }}</span>
                     {% if r.repeat_n > 1 %}<span class="vkey__x">&times;{{ r.repeat_n }}</span>{% endif %}
                   </td>
-                  <td><a class="path-link" href="{{ r.path }}" target="_blank" rel="noopener">{{ r.path }}</a></td>
-                  <td class="nowrap">{{ r.referrer }}</td>
-                  <td class="num nowrap"><span class="pill pill--{{ r.device }}">{{ r.get_device_display }}</span></td>
+                  <td data-label="Page"><a class="path-link" href="{{ r.path }}" target="_blank" rel="noopener">{{ r.path }}</a></td>
+                  <td data-label="Referrer">{{ r.referrer }}</td>
+                  <td class="num nowrap" data-label="Device"><span class="pill pill--{{ r.device }}">{{ r.get_device_display }}</span></td>
                 </tr>
               {% endfor %}
             </tbody>

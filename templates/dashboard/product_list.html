@@ -55,13 +55,13 @@
                     </span>
                   </a>
                 </td>
-                <td class="nowrap">
+                <td data-label="Price" class="nowrap">
                   {{ p.price|floatformat:0 }} SAR
                   {% if p.has_discount %}<small class="old-price">{{ p.old_price|floatformat:0 }}</small>{% endif %}
                 </td>
-                <td class="nowrap">{{ p.get_condition_display }}</td>
-                <td><span class="pill pill--{{ p.status }}">{{ p.get_status_display }}</span>{% if not p.is_active %} <span class="pill pill--hidden">Hidden</span>{% endif %}</td>
-                <td>
+                <td data-label="Condition" class="nowrap">{{ p.get_condition_display }}</td>
+                <td data-label="Status"><span class="pill pill--{{ p.status }}">{{ p.get_status_display }}</span>{% if not p.is_active %} <span class="pill pill--hidden">Hidden</span>{% endif %}</td>
+                <td data-label="Featured">
                   <form method="post" action="{% url 'dashboard:product_action' p.pk %}">
                     {% csrf_token %}
                     <button type="submit" name="action" value="toggle_featured" class="star-btn{% if p.is_featured %} is-on{% endif %}" title="Toggle hot deal" aria-label="Toggle hot deal">
@@ -69,7 +69,7 @@
                     </button>
                   </form>
                 </td>
-                <td class="num nowrap">
+                <td class="num nowrap" data-label="Actions">
                   <div class="row-actions">
                     {% if p.status == 'sold' %}
                       <form method="post" action="{% url 'dashboard:product_action' p.pk %}">{% csrf_token %}<button class="btn btn--ghost btn--xs" name="action" value="mark_available">Reopen</button></form>

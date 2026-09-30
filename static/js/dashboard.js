@@ -11,6 +11,7 @@
     sidebar.classList.toggle("is-open", open);
     if (overlay) overlay.hidden = !open;
     if (toggle) toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.classList.toggle("sidebar-open", open);
   }
 
   if (toggle) {
