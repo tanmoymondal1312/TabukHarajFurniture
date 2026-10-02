@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}من نحن | حراج تبوك للأثاث المستعمل{% endblock %}
-{% block meta_description %}قصة حراج تبوك للأثاث: من معرض فارغ نهاية 2023 إلى ثقة 800+ عائلة. كيف نعمل، من أين نجلب الأثاث، خدماتنا الكاملة، ضمان 30 يوم خدمة، وفريقنا.{% endblock %}
+{% block html_lang %}ar{% endblock %}
+{% block html_dir %}rtl{% endblock %}
+{% block title %}من نحن | شراء وبيع الأثاث والمكيفات والثلاجات المستعملة في تبوك{% endblock %}
+{% block meta_description %}حراج تبوك للأثاث: نشتري ونبيع الأثاث والمكيفات والثلاجات والغسالات المستعملة في تبوك. قصة معرضنا، فحص القطع قبل البيع، ضمان 30 يوم، توصيل مجاني، وفريقنا.{% endblock %}
+{% block keywords %}حراج تبوك, أثاث مستعمل, بيع أثاث مستعمل, شراء أثاث مستعمل, مكيف مستعمل, مكيفات مستعملة, ثلاجة مستعملة, فريزر مستعمل, غسالة مستعملة, أجهزة منزلية مستعملة, صالونات, مجالس, غرف نوم, تبوك{% endblock %}
+{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}
+{% block canonical %}https://tabukharajfurniture.com/about/{% endblock %}
 
 {% block content %}
   {% include "partials/breadcrumbs.html" %}
@@ -14,8 +19,12 @@
       {
         "@type": "AboutPage",
         "@id": "https://tabukharajfurniture.com/about/#aboutpage",
-        "name": "من نحن - حراج تبوك للأثاث المستعمل",
-        "description": "قصة حراج تبوك للأثاث: من معرض فارغ نهاية 2023 إلى خدمة 800+ عائلة. كيف نعمل، من أين نجلب الأثاث، ولماذا نضمن 30 يوم خدمة.",
+        "name": "من نحن - حراج تبوك للأثاث والأجهزة المستعملة",
+        "url": "https://tabukharajfurniture.com/about/",
+        "inLanguage": "ar",
+        "description": "قصة حراج تبوك للأثاث والأجهزة: نشتري ونبيع الأثاث والمكيفات والثلاجات والغسالات المستعملة في تبوك — من معرض فارغ نهاية 2023 إلى خدمة 800+ عائلة. كيف نعمل، من أين نجلب القطع، ولماذا نضمن 30 يوم خدمة.",
+        "keywords": "شراء أثاث مستعمل, بيع مكيفات مستعملة, شراء ثلاجات مستعملة, غسالات مستعملة, حراج تبوك, أجهزة منزلية مستعملة",
+        "dateModified": "2026-10-02",
         "mainEntity": {
           "@id": "https://tabukharajfurniture.com/#organization"
         },
@@ -164,6 +173,23 @@
         }
       },
       {
+        "@type": "ItemList",
+        "@id": "https://tabukharajfurniture.com/about/#catalog",
+        "name": "ما نبيعه ونشتريه في تبوك",
+        "description": "أثاث وأجهزة منزلية مستعملة مختبرة ومضونة: مكيفات، ثلاجات وفريزر، غسالات، صالونات ومجالس، غرف نوم، مطابخ وأكثر.",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "مكيفات مستعملة", "url": "https://tabukharajfurniture.com/products/?cat=air-conditioners"},
+          {"@type": "ListItem", "position": 2, "name": "ثلاجات وفريزر مستعملة", "url": "https://tabukharajfurniture.com/products/?cat=refrigerators-freezers"},
+          {"@type": "ListItem", "position": 3, "name": "غسالات مستعملة", "url": "https://tabukharajfurniture.com/products/?cat=washing-machines"},
+          {"@type": "ListItem", "position": 4, "name": "أجهزة منزلية مستعملة", "url": "https://tabukharajfurniture.com/products/?cat=home-appliances"},
+          {"@type": "ListItem", "position": 5, "name": "صالونات ومجالس مستعملة", "url": "https://tabukharajfurniture.com/products/?cat=majlis-sofas"},
+          {"@type": "ListItem", "position": 6, "name": "غرف نوم مستعملة", "url": "https://tabukharajfurniture.com/products/?cat=bedroom-sets"},
+          {"@type": "ListItem", "position": 7, "name": "غرف طعام وطاولات", "url": "https://tabukharajfurniture.com/products/?cat=dining-tables"},
+          {"@type": "ListItem", "position": 8, "name": "أثاث مكتبي", "url": "https://tabukharajfurniture.com/products/?cat=office-furniture"},
+          {"@type": "ListItem", "position": 9, "name": "أثاث متنوع", "url": "https://tabukharajfurniture.com/products/?cat=other-furniture"}
+        ]
+      },
+      {
         "@type": "FAQPage",
         "@id": "https://tabukharajfurniture.com/about/#faq",
         "mainEntity": [
@@ -206,6 +232,14 @@
               "@type": "Answer",
               "text": "نفس اليوم أو اليوم التالي كحد أقصى داخل تبوك. عندنا شاحنتان مجهزتان وفريق ٤ أشخاص. التركيب مشمول في السعر — فك، نقل، تركيب، تجربة، تنظيف المكان."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "هل تشترون مكيفات وثلاجات وغسالات مستعملة من الأفراد؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نعم. نشتري مكيفات وثلاجات وفريزر وغسالات وأي أجهزة كهربائية أخرى، وكذلك الأثاث والغرف والمجالس — من الأفراد والشركات. ارسل صور القطعة على واتساب، نرد عليك بسعر واضح خلال ١٠ دقائق، ندفع نقداً ونستلم مجاناً من موقعك داخل تبوك."
+            }
           }
         ]
       }
@@ -224,7 +258,8 @@
           </h1>
           <p class="about-hero__lead">
             لم نبدأ بعلامة تجارية كبيرة. بدأنا بمؤسسة صغيرة، وشاحنة واحدة، وإيمان بسيط:
-            <br>الناس في تبوك تستحق أثاثاً مستعملاً تثق فيه — لا مجرد "عفش مستعمل".
+            <br>الناس في تبوك تستحق أثاثاً وأجهزة مستعملة تثق فيها — لا مجرد "عفش مستعمل".
+            <br>من المجالس وغرف النوم إلى <strong>المكيفات والثلاجات والغسالات</strong>، كل قطعة نبيعها نختبرها ونضمنها ٣٠ يوماً.
           </p>
           <div class="about-hero__stats" role="list" aria-label="إحصائيات سريعة">
             <div class="stat" role="listitem">
@@ -244,6 +279,40 @@
               <span class="stat__label">ضمان خدمة</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Sell & Buy: Furniture + Appliances -->
+    <section class="about-catalog" aria-labelledby="catalog-title">
+      <div class="container">
+        <div class="about-catalog__head">
+          <p class="about-catalog__eyebrow">ماذا نبيع ونشتري</p>
+          <h2 id="catalog-title" class="about-catalog__title">أثاث وأجهزة منزلية — نبيعها مضمونة، ونشتريها منك</h2>
+          <p class="about-catalog__lead">
+            معرض واحد في تبوك يغطي بيتك كله: <strong>صالونات ومجالس، غرف نوم، مطابخ، أثاث مكتبي</strong>،
+            و<strong>مكيفات وثلاجات وفريزر وغسالات وأجهزة كهربائية</strong> مستعملة.
+            كل قطعة تمر بفحص واختبار وتنظيف قبل العرض، وتخرج بضمان ٣٠ يوم وتوصيل مجاني في تبوك.
+            ومعك زائد عندك؟ نشتريه منك نقداً ونستلمه مجاناً — من أثاث البيت إلى المكيف والثلاجة.
+          </p>
+        </div>
+
+        <ul class="catalog-grid" role="list">
+          {% for cat in categories %}
+          <li role="listitem">
+            <a class="catalog-card" href="{% url 'pages:products' %}?cat={{ cat.slug }}">
+              <span class="catalog-card__name">{{ cat.ar_name|default:cat.name }}</span>
+              <span class="catalog-card__count">
+                {% if cat.item_count == 1 %}قطعة واحدة متاحة{% elif cat.item_count == 2 %}قطعتان متاحتان{% elif cat.item_count %}{{ cat.item_count }} قطعة متاحة{% else %}عرض الكل{% endif %}
+              </span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <div class="about-catalog__actions">
+          <a href="{% url 'pages:products' %}" class="btn btn--gold">تصفح كل المنتجات</a>
+          <a href="https://wa.me/966582328389?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A8%D9%8A%D8%B9%20%D8%A3%D8%AB%D8%A7%D8%AB%20%D8%A3%D9%88%20%D8%AC%D9%87%D8%A7%D8%B2%20%D9%85%D8%B3%D8%AA%D8%B9%D9%85%20%D9%84%D8%AF%D9%8A%D9%86%D9%8A" class="btn btn--wa">بِع أثاثك أو جهازك لنا</a>
         </div>
       </div>
     </section>
@@ -668,6 +737,10 @@
           <details class="faq__item">
             <summary class="faq__question">كم تستغرقون للتوصيل والتركيب؟</summary>
             <div class="faq__answer">نفس اليوم أو اليوم التالي كحد أقصى داخل تبوك. عندنا شاحنتان مجهزتان وفريق ٤ أشخاص. التركيب مشمول في السعر — فك، نقل، تركيب، تجربة، تنظيف المكان.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">هل تشترون مكيفات وثلاجات وغسالات مستعملة من الأفراد؟</summary>
+            <div class="faq__answer">نعم. نشتري مكيفات وثلاجات وفريزر وغسالات وأي أجهزة كهربائية أخرى، وكذلك الأثاث والغرف والمجالس — من الأفراد والشركات. ارسل صور القطعة على واتساب، نرد عليك بسعر واضح خلال ١٠ دقائق، ندفع نقداً ونستلم مجاناً من موقعك داخل تبوك.</div>
           </details>
         </div>
       </div>

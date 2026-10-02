@@ -37,11 +37,16 @@ def faq(request):
 
 
 def about(request):
-    request.page_title = "من نحن | حراج تبوك للأثاث المستعمل"
-    request.page_description = "قصة حراج تبوك للأثاث: من معرض فارغ نهاية 2023 إلى ثقة 800+ عائلة. كيف نعمل، من أين نجلب الأثاث، خدماتنا الكاملة، ضمان 30 يوم خدمة، وفريقنا."
+    request.page_title = "من نحن | شراء وبيع الأثاث والمكيفات والثلاجات المستعملة في تبوك"
+    request.page_description = (
+        "حراج تبوك للأثاث: نشتري ونبيع الأثاث والمكيفات والثلاجات والغسالات المستعملة في تبوك. "
+        "قصة معرضنا، فحص القطع قبل البيع، ضمان 30 يوم، توصيل مجاني، وخدماتنا للمنازل والشركات."
+    )
     request.page_image = OG_COVER
 
-    return render(request, "pages/about.html", {})
+    return render(request, "pages/about.html", {
+        "categories": Category.objects.filter(is_active=True),
+    })
 
 
 def contact(request):
