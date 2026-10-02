@@ -1,6 +1,6 @@
 {% load static site_lang %}
 <!DOCTYPE html>
-<html lang="{% block html_lang %}{% current_language %}{% endblock %}" dir="{% block html_dir %}ltr{% endblock %}" itemscope itemtype="https://schema.org/WebSite">
+<html lang="{% block html_lang %}{% current_language %}{% endblock %}" dir="{% block html_dir %}{% current_direction %}{% endblock %}" itemscope itemtype="https://schema.org/WebSite">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +58,7 @@
   <link rel="dns-prefetch" href="https://maps.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google.com">
 
-  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20261002f">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20261002g">
 
   <!-- JSON-LD Structured Data: Organization + LocalBusiness + WebSite + SearchAction -->
   <script type="application/ld+json">
