@@ -48,6 +48,22 @@ def tf(msgid, **kwargs):
         return text
 
 
+@register.simple_tag(takes_context=True)
+def lang_url(context, target):
+    """Link to the same page in another language without stacking params.
+
+    Keeps the other query params (cat, q, ...) and replaces any old
+    lang value with the target one, so ?lang= never grows. Arabic is
+    the default language, so the middleware strips its param again.
+    """
+    request = context.get("request")
+    if request is None:
+        return "?lang=%s" % target
+    params = request.GET.copy()
+    params["lang"] = str(target)
+    return "?%s" % params.urlencode()
+
+
 @register.simple_tag
 def current_language():
     return current_lang()

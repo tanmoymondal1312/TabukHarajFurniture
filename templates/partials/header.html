@@ -33,7 +33,7 @@
 
     <div class="site-header__actions">
       {% current_language as current_lang %}
-      <a href="?{% if request.GET %}{{ request.GET.urlencode }}&{% endif %}lang={% if current_lang == 'ar' %}en{% else %}ar{% endif %}"
+      <a href="{% if current_lang == 'ar' %}{% lang_url "en" %}{% else %}{% lang_url "ar" %}{% endif %}"
          class="header-util header-util--lang"
          hreflang="{% if current_lang == 'ar' %}en{% else %}ar{% endif %}"
          title="{% if current_lang == 'ar' %}Switch to English{% else %}التبديل إلى العربية{% endif %}">
