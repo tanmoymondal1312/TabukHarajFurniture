@@ -9,8 +9,8 @@
   <meta name="keywords" content="{% block keywords %}حراج تبوك, أثاث مستعمل, حراج تبوك للأثاث, مكيف مستعمل, غرف نوم مستعملة, ثلاجة مستعملة, تبوك{% endblock %}">
   <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}">
   <meta name="author" content="Tabuk Haraj Furniture">
-  <meta name="generator" content="Django">
-  <meta name="generator" content="Mediaghor">
+  <meta name="designer" content="Mediaghor">
+  <meta name="generator" content="Django; Mediaghor (https://mediaghor.com)">
   <link rel="canonical" href="{% block canonical %}https://tabukharajfurniture.com/{% endblock %}">
   <link rel="alternate" hreflang="ar" href="https://tabukharajfurniture.com/">
   <link rel="alternate" hreflang="en" href="https://tabukharajfurniture.com/">
@@ -58,7 +58,7 @@
   <link rel="dns-prefetch" href="https://maps.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google.com">
 
-  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20261002b">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20261002c">
 
   <!-- JSON-LD Structured Data: Organization + LocalBusiness + WebSite + SearchAction -->
   <script type="application/ld+json">
@@ -205,6 +205,11 @@
           "query-input": "required name=search_term_string"
         },
         "inLanguage": ["ar", "en"],
+        "creator": {
+          "@type": "Organization",
+          "name": "Mediaghor",
+          "url": "https://mediaghor.com"
+        },
         "publisher": {
           "@id": "https://tabukharajfurniture.com/#organization"
         }
@@ -222,6 +227,11 @@
         },
         "about": {
           "@id": "https://tabukharajfurniture.com/#localbusiness"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "Mediaghor",
+          "url": "https://mediaghor.com"
         },
         "primaryImageOfPage": {
           "@type": "ImageObject",

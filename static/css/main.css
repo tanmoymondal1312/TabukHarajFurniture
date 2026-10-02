@@ -2151,6 +2151,21 @@ body.no-scroll {
   width: auto;
 }
 
+.sf-credit-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  border-radius: 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sf-credit-link:hover,
+.sf-credit-link:focus-visible {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+
 @media (max-width: 900px) {
   .sf-top {
     grid-template-columns: 1fr 1fr;
