@@ -47,9 +47,17 @@
       </span>
       <div><strong>{{ stats.categories }}</strong><small>Categories</small></div>
     </div>
+    <a class="stat stat--link{% if msg_unread %} stat--hot{% endif %}" href="{% url 'dashboard:inbox' %}">
+      <span class="stat__icon stat__icon--amber">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+      </span>
+      <div><strong>{{ msg_unread }}</strong><small>New messages</small></div>
+      {% if msg_unread %}<span class="stat__dot" aria-hidden="true"></span>{% endif %}
+    </a>
   </div>
 
   <div class="dash-grid">
+    <div class="dash-grid__main">
     <section class="panel">
       <header class="panel__head">
         <h2>Recent products</h2>
@@ -93,6 +101,44 @@
         </div>
       {% endif %}
     </section>
+
+    <section class="panel">
+      <header class="panel__head">
+        <div class="panel__title">
+          <h2>Latest messages</h2>
+          {% if msg_unread %}<span class="pill pill--reserved">{{ msg_unread }} new</span>{% endif %}
+        </div>
+        <a class="link" href="{% url 'dashboard:inbox' %}">Open inbox &rarr;</a>
+      </header>
+
+      {% if recent_msgs %}
+        <ul class="mini-msgs">
+          {% for m in recent_msgs %}
+            <li class="mini-msg{% if not m.is_read %} is-new{% endif %}">
+              <a class="mini-msg__main" href="{% url 'dashboard:inbox' %}">
+                <span class="mini-msg__top">
+                  <strong>{{ m.name }}</strong>
+                  {% if not m.is_read %}<span class="mini-msg__new">New</span>{% endif %}
+                  {% if m.subject %}<span class="pill">{{ m.subject }}</span>{% endif %}
+                  <time>{{ m.created_at|date:"d M" }} · {{ m.created_at|date:"H:i" }}</time>
+                </span>
+                <span class="mini-msg__body">{{ m.body|truncatechars:120 }}</span>
+              </a>
+              {% if m.phone %}
+                <a class="mini-msg__phone" href="tel:{{ m.phone }}" title="Call {{ m.name }}">Call</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="empty empty--compact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          <h3>No messages yet</h3>
+          <p>Messages sent from the contact page will show up here.</p>
+        </div>
+      {% endif %}
+    </section>
+    </div>
 
     <div class="dash-grid__side">
       <section class="panel">

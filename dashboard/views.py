@@ -51,12 +51,21 @@ def overview(request):
                     .aggregate(v=Sum("price"))["v"] or 0,
         "no_photo": products.filter(NO_PHOTO_Q).count(),
     }
+
+    msgs = ContactMessage.objects.all()
+    unread = msgs.filter(is_read=False)
+
     context = {
         "active": "overview",
         "stats": stats,
         "recent": products.select_related("category")[:8],
         "cat_stats": Category.objects.annotate(n=Count("products")).order_by("ordering"),
         "max_cat": max([c.n for c in Category.objects.annotate(n=Count("products"))] or [1]),
+        "msg_unread": unread.count(),
+        "msg_total": msgs.count(),
+        "msg_today": msgs.filter(created_at__date=timezone.localdate()).count(),
+        # unread first, then newest
+        "recent_msgs": list(msgs.order_by("is_read", "-created_at")[:5]),
     }
     return render(request, "dashboard/overview.html", context)
 
