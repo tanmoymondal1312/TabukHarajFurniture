@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static site_lang %}
 
-{% block html_lang %}ar{% endblock %}
-{% block html_dir %}rtl{% endblock %}
+{% block html_lang %}{% current_language %}{% endblock %}
+{% block html_dir %}{% current_direction %}{% endblock %}
 {% block title %}اتصل بنا | حراج تبوك للأثاث المستعمل{% endblock %}
 {% block meta_description %}تواصل مع حراج تبوك للأثاث المستعمل: اتصال مباشر 0582328389، واتساب، بريد إلكتروني، ونموذج رسالة يصلك مباشرة. معرضنا في المنشية القديمة، تبوك — السبت–الخميس 9:00–22:00.{% endblock %}
 {% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}

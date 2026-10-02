@@ -1,12 +1,13 @@
-{% load static %}
+{% load static site_lang %}
 <section class="hero" aria-label="Hero" itemscope itemtype="https://schema.org/LocalBusiness" itemref="business-name business-address business-phone business-url business-price business-hours business-geo business-area business-rating">
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="hero__eyebrow">30-Day Warranty • Free Delivery</p>
-      <h1 class="hero__title" id="business-name" itemprop="name">Tabuk Haraj for Used Furniture<br>Physical Showroom in <span class="hero__title-gold">Tabuk</span></h1>
+      <p class="hero__eyebrow">{% t "30-Day Warranty • Free Delivery" %}</p>
+      <h1 class="hero__title" id="business-name" itemprop="name">{% th "Tabuk Haraj for Used Furniture<br>Physical Showroom in <span class=\"hero__title-gold\">Tabuk</span>" %}</h1>
       <p class="hero__desc">
-        Buy tested used furniture & ACs — 30-day warranty & free delivery
-        <br>Also selling? We buy yours — instant cash, free pickup
+        {% t "Buy tested used furniture & ACs — 30-day warranty & free delivery" %}
+        <br>
+        {% t "Also selling? We buy yours — instant cash, free pickup" %}
       </p>
 
       <form class="search-bar" action="{% url 'pages:products' %}" method="get" role="search" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
@@ -17,35 +18,35 @@
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
           </svg>
         </span>
-        <input class="search-bar__input" type="search" name="q" value="{{ q }}" placeholder="Search for furniture, appliances, or categories..." aria-label="Search listings">
+        <input class="search-bar__input" type="search" name="q" value="{{ q }}" placeholder="{% t "Search for furniture, appliances, or categories..." %}" aria-label="{% t "Search listings" %}">
         <span class="search-bar__location">
           <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
-          <span>Tabuk</span>
+          <span>{% t "Tabuk" %}</span>
           <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="m6 9 6 6 6-6"/>
           </svg>
         </span>
-        <button type="submit" class="btn btn--gold search-bar__btn">Search</button>
+        <button type="submit" class="btn btn--gold search-bar__btn">{% t "Search" %}</button>
       </form>
 
       <div class="popular">
-        <span class="popular__label">Popular searches:</span>
+        <span class="popular__label">{% t "Popular searches:" %}</span>
         <div class="popular__tags">
-          <a href="{% url 'pages:products' %}?q=Used+Sofa" class="chip">Used Sofa</a>
-          <a href="{% url 'pages:products' %}?q=AC" class="chip">AC</a>
-          <a href="{% url 'pages:products' %}?q=Fridge" class="chip">Fridge</a>
-          <a href="{% url 'pages:products' %}?q=Majlis" class="chip">Majlis</a>
-          <a href="{% url 'pages:products' %}?q=Bedroom+Set" class="chip">Bedroom Set</a>
+          <a href="{% url 'pages:products' %}?q=Used+Sofa" class="chip">{% t "Used Sofa" %}</a>
+          <a href="{% url 'pages:products' %}?q=AC" class="chip">{% t "AC" %}</a>
+          <a href="{% url 'pages:products' %}?q=Fridge" class="chip">{% t "Fridge" %}</a>
+          <a href="{% url 'pages:products' %}?q=Majlis" class="chip">{% t "Majlis" %}</a>
+          <a href="{% url 'pages:products' %}?q=Bedroom+Set" class="chip">{% t "Bedroom Set" %}</a>
         </div>
       </div>
     </div>
   </div>
 
   <div class="hero__media" aria-hidden="false">
-    <div class="hero__slides" data-carousel>
+      <div class="hero__slides" data-carousel data-label-slide="{% t "Go to slide" %}">
       <figure class="hero__slide is-active">
         <img
           src="{% static 'images/clean-modern-room-with-beautifull-furniture.webp' %}"
@@ -58,13 +59,13 @@
       </figure>
     </div>
     <div class="hero__controls">
-      <div class="hero__dots" data-carousel-dots aria-label="Carousel pagination"></div>
-      <button type="button" class="carousel-btn" data-carousel-prev aria-label="Previous slide">
+      <div class="hero__dots" data-carousel-dots aria-label="{% t "Carousel pagination" %}"></div>
+      <button type="button" class="carousel-btn" data-carousel-prev aria-label="{% t "Previous slide" %}">
         <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m15 18-6-6 6-6"/>
         </svg>
       </button>
-      <button type="button" class="carousel-btn" data-carousel-next aria-label="Next slide">
+      <button type="button" class="carousel-btn" data-carousel-next aria-label="{% t "Next slide" %}">
         <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m9 18 6-6-6-6"/>
         </svg>

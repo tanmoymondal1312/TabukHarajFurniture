@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static site_lang %}
 
 {% block content %}
 <!-- Breadcrumb Structured Data -->
@@ -32,9 +32,9 @@
 
 <div class="container">
   <nav class="crumb" aria-label="Breadcrumb">
-    <a href="{% url 'pages:home' %}">Home</a>
+    <a href="{% url 'pages:home' %}">{% t "Home" %}</a>
     <span class="crumb__sep" aria-hidden="true">/</span>
-    <a href="{% url 'pages:products' %}">Products</a>
+    <a href="{% url 'pages:products' %}">{% t "Products" %}</a>
     {% if active_category %}
     <span class="crumb__sep" aria-hidden="true">/</span>
     <span class="crumb__current">{{ active_category.name }}</span>
@@ -44,18 +44,18 @@
 
 <section class="pp-hero">
   <div class="container pp-hero__inner">
-    <p class="section-eyebrow">Our Products</p>
-    <h1 class="pp-hero__title">{% if active_category %}{{ active_category.name }}{% else %}All Products{% endif %}</h1>
-    <p class="pp-hero__sub">Quality used furniture and appliances in Tabuk. Every item is tested, comes with a 30-day warranty and free delivery.</p>
-    <span class="pp-hero__count">{{ total_count }} product{{ total_count|pluralize }} in stock</span>
+    <p class="section-eyebrow">{% t "Our Products" %}</p>
+    <h1 class="pp-hero__title">{% if active_category %}{{ active_category.name }}{% else %}{% t "All Products" %}{% endif %}</h1>
+    <p class="pp-hero__sub">{% t "Quality used furniture and appliances in Tabuk. Every item is tested, comes with a 30-day warranty and free delivery." %}</p>
+    <span class="pp-hero__count">{% tf "%(n)s product%(plural)s in stock" n=total_count plural=total_count|pluralize %}</span>
   </div>
 </section>
 
 <section class="pp">
   <div class="container pp__layout">
 
-    <aside class="pp-cats" aria-label="Category filter">
-      <h2 class="pp-cats__head">Categories</h2>
+    <aside class="pp-cats" aria-label="{% t "Category filter" %}">
+      <h2 class="pp-cats__head">{% t "Categories" %}</h2>
       <div class="pp-cats__list">
         {% include "partials/product_categories.html" %}
       </div>
@@ -67,16 +67,16 @@
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>
           </svg>
-          Categories: <strong>{{ active_category.name|default:"All" }}</strong>
+          {% t "Categories:" %} <strong>{% if active_category %}{{ active_category.name }}{% else %}{% t "All" %}{% endif %}</strong>
           <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="m6 9 6 6 6-6"/>
           </svg>
         </button>
-        <p class="pp-tools__count">Showing <strong>{{ showing_count }}</strong> of {{ total_count }} product{{ total_count|pluralize }}</p>
+        <p class="pp-tools__count">{% t "Showing" %} <strong>{{ showing_count }}</strong> {% tf "of %(total)s product%(plural)s" total=total_count plural=total_count|pluralize %}</p>
         <form class="pp-search" action="{% url 'pages:products' %}" method="get" role="search">
           {% if active_category %}<input type="hidden" name="cat" value="{{ active_category.slug }}">{% endif %}
-          <input class="pp-search__input" type="search" name="q" value="{{ q }}" placeholder="Search…" aria-label="Search products" maxlength="60">
-          <button class="pp-search__btn" type="submit" aria-label="Search">
+          <input class="pp-search__input" type="search" name="q" value="{{ q }}" placeholder="{% t "Search…" %}" aria-label="{% t "Search products" %}" maxlength="60">
+          <button class="pp-search__btn" type="submit" aria-label="{% t "Search" %}">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
             </svg>
@@ -89,7 +89,7 @@
         {% for item in products %}
         <article class="listing-card pp-card">
           {% if item.is_featured %}
-          <span class="pp-card__ribbon">Featured</span>
+          <span class="pp-card__ribbon">{% t "Featured" %}</span>
           {% endif %}
           <a href="{{ item.get_absolute_url }}" class="listing-card__link">
             <div class="listing-card__media">
@@ -119,9 +119,9 @@
             <path d="M8 12h8"/><circle cx="8.5" cy="8.5" r="0.5" fill="currentColor"/>
           </svg>
         </span>
-        <h2 class="pp-empty__title">{% if q %}No products found{% else %}No products in this category yet{% endif %}</h2>
-        <p class="pp-empty__text">{% if q %}Nothing matches “{{ q }}”. Try another word, or browse all products.{% else %}This category is empty right now. Browse all products instead.{% endif %}</p>
-        <a href="{% url 'pages:products' %}" class="btn btn--gold pp-empty__btn">View All Products</a>
+        <h2 class="pp-empty__title">{% if q %}{% t "No products found" %}{% else %}{% t "No products in this category yet" %}{% endif %}</h2>
+        <p class="pp-empty__text">{% if q %}{% tf "Nothing matches “%(q)s”. Try another word, or browse all products." q=q %}{% else %}{% t "This category is empty right now. Browse all products instead." %}{% endif %}</p>
+        <a href="{% url 'pages:products' %}" class="btn btn--gold pp-empty__btn">{% t "View All Products" %}</a>
       </div>
       {% endif %}
     </div>
@@ -129,10 +129,10 @@
 </section>
 
 <div class="pp-overlay" data-cat-overlay></div>
-<aside class="pp-drawer" id="cat-drawer" data-cat-drawer aria-label="Category filter" aria-hidden="true">
+<aside class="pp-drawer" id="cat-drawer" data-cat-drawer aria-label="{% t "Category filter" %}" aria-hidden="true">
   <div class="pp-drawer__head">
-    <span>Categories</span>
-    <button type="button" class="pp-drawer__close" data-cat-close aria-label="Close categories">
+    <span>{% t "Categories" %}</span>
+    <button type="button" class="pp-drawer__close" data-cat-close aria-label="{% t "Close categories" %}">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
       </svg>

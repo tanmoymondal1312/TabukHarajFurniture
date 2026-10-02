@@ -1,4 +1,4 @@
-{% load static %}
+{% load static site_lang %}
 <header class="site-header" dir="ltr" itemscope itemtype="https://schema.org/Organization" itemref="org-name org-url org-logo org-telephone org-address org-sameas">
   <meta itemprop="name" content="Tabuk Haraj Furniture" id="org-name">
   <meta itemprop="url" content="https://tabukharajfurniture.com/" id="org-url">
@@ -22,23 +22,27 @@
       </span>
     </a>
 
-    <nav class="nav" id="site-nav" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <nav class="nav" id="site-nav" aria-label="{% t "Main" %}" itemscope itemtype="https://schema.org/SiteNavigationElement">
       <meta itemprop="name" content="Main Navigation">
-      <a href="{% url 'pages:home' %}" class="nav__link{% if request.resolver_match.url_name == 'home' %} is-active{% endif %}" itemprop="url"><span itemprop="name">Home</span></a>
-      <a href="{% url 'pages:products' %}" class="nav__link{% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product' %} is-active{% endif %}" itemprop="url"><span itemprop="name">Products</span></a>
-      <a href="{% url 'pages:about' %}" class="nav__link{% if request.resolver_match.url_name == 'about' %} is-active{% endif %}" itemprop="url"><span itemprop="name">About</span></a>
-      <a href="{% url 'pages:faq' %}" class="nav__link{% if request.resolver_match.url_name == 'faq' %} is-active{% endif %}" itemprop="url"><span itemprop="name">FAQ</span></a>
-      <a href="{% url 'pages:contact' %}" class="nav__link{% if request.resolver_match.url_name == 'contact' %} is-active{% endif %}" itemprop="url"><span itemprop="name">Contact</span></a>
+      <a href="{% url 'pages:home' %}" class="nav__link{% if request.resolver_match.url_name == 'home' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "Home" %}</span></a>
+      <a href="{% url 'pages:products' %}" class="nav__link{% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "Products" %}</span></a>
+      <a href="{% url 'pages:about' %}" class="nav__link{% if request.resolver_match.url_name == 'about' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "About" %}</span></a>
+      <a href="{% url 'pages:faq' %}" class="nav__link{% if request.resolver_match.url_name == 'faq' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "FAQ" %}</span></a>
+      <a href="{% url 'pages:contact' %}" class="nav__link{% if request.resolver_match.url_name == 'contact' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "Contact" %}</span></a>
     </nav>
 
     <div class="site-header__actions">
-      <a href="?lang=ar" class="header-util header-util--lang" hreflang="ar">
+      {% current_language as current_lang %}
+      <a href="?{% if request.GET %}{{ request.GET.urlencode }}&{% endif %}lang={% if current_lang == 'ar' %}en{% else %}ar{% endif %}"
+         class="header-util header-util--lang"
+         hreflang="{% if current_lang == 'ar' %}en{% else %}ar{% endif %}"
+         title="{% if current_lang == 'ar' %}Switch to English{% else %}التبديل إلى العربية{% endif %}">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
           <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
           <path d="M2 12h20"/>
         </svg>
-        <span lang="ar" dir="rtl">العربية</span>
+        {% if current_lang == 'ar' %}<span>English</span>{% else %}<span lang="ar" dir="rtl">العربية</span>{% endif %}
         <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m6 9 6 6 6-6"/>
         </svg>
@@ -56,10 +60,10 @@
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/>
           <circle cx="12" cy="10" r="3"/>
         </svg>
-        Visit Showroom
+        {% t "Visit Showroom" %}
       </a>
 
-      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="{% t "Open menu" %}" data-label-open="{% t "Open menu" %}" data-label-close="{% t "Close menu" %}">
         <svg class="icon icon--menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
           <path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>
         </svg>

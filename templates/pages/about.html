@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load site_lang %}
 
-{% block html_lang %}ar{% endblock %}
-{% block html_dir %}rtl{% endblock %}
+{% block html_lang %}{% current_language %}{% endblock %}
+{% block html_dir %}{% current_direction %}{% endblock %}
 {% block title %}من نحن | شراء وبيع الأثاث والمكيفات والثلاجات المستعملة في تبوك{% endblock %}
 {% block meta_description %}حراج تبوك للأثاث: نشتري ونبيع الأثاث والمكيفات والثلاجات والغسالات المستعملة في تبوك. قصة معرضنا، فحص القطع قبل البيع، ضمان 30 يوم، توصيل مجاني، وفريقنا.{% endblock %}
 {% block keywords %}حراج تبوك, أثاث مستعمل, بيع أثاث مستعمل, شراء أثاث مستعمل, مكيف مستعمل, مكيفات مستعملة, ثلاجة مستعملة, فريزر مستعمل, غسالة مستعملة, أجهزة منزلية مستعملة, صالونات, مجالس, غرف نوم, تبوك{% endblock %}

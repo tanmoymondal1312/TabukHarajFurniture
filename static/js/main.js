@@ -7,7 +7,12 @@
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      toggle.setAttribute(
+        "aria-label",
+        open
+          ? toggle.getAttribute("data-label-close") || "Close menu"
+          : toggle.getAttribute("data-label-open") || "Open menu"
+      );
     });
   }
 
@@ -74,12 +79,14 @@
     }
   }
 
+  var slideLabel = root.getAttribute("data-label-slide") || "Go to slide";
+
   if (dotsWrap && slides.length) {
     slides.forEach(function (_, i) {
       var dot = document.createElement("button");
       dot.type = "button";
       dot.className = "hero__dot" + (i === 0 ? " is-active" : "");
-      dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+      dot.setAttribute("aria-label", slideLabel + " " + (i + 1));
       dot.addEventListener("click", function () {
         index = i;
         render();

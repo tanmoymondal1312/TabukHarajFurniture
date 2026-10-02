@@ -1,15 +1,15 @@
-{% load static %}
+{% load static site_lang %}
 <section class="section categories" id="categories" itemscope itemtype="https://schema.org/ItemList">
   <meta itemprop="name" content="Used Furniture & Appliances Categories">
   <meta itemprop="description" content="Browse used furniture and appliance categories at Tabuk Haraj Furniture: Majlis & Sofas, Bedroom Sets, Dining & Tables, Home Appliances, Kitchen Furniture, and more. All items available at our physical Tabuk showroom.">
   <div class="container">
     <div class="section-head">
       <div class="section-head__left">
-        <p class="section-eyebrow">Explore Categories</p>
-        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-eyebrow">{% t "Explore Categories" %}</p>
+        <h2 class="section-title">{% t "Shop by Category" %}</h2>
       </div>
       <a href="#categories" class="section-link">
-        View All Categories
+        {% t "View All Categories" %}
         <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
         </svg>
@@ -46,7 +46,7 @@
           <div class="category-card__body">
             <p class="category-card__title" itemprop="name">{{ cat.name }}</p>
             {% if cat.item_count %}
-            <p class="category-card__count">{{ cat.item_count }} items</p>
+            <p class="category-card__count">{% tf "%(n)s items" n=cat.item_count %}</p>
             {% endif %}
             <span class="category-card__arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
