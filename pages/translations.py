@@ -19,6 +19,7 @@ TRANSLATIONS = {
         "FAQ": "الأسئلة الشائعة",
         "Contact": "تواصل معنا",
         "Visit Showroom": "زيارة المعرض",
+        "Call Now": "اتصل الآن",
         "Main": "القائمة الرئيسية",
         "Open menu": "فتح القائمة",
         "Close menu": "إغلاق القائمة",

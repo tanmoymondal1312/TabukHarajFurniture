@@ -58,7 +58,7 @@
   <link rel="dns-prefetch" href="https://maps.googleapis.com">
   <link rel="dns-prefetch" href="https://www.google.com">
 
-  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20261002c">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20261002d">
 
   <!-- JSON-LD Structured Data: Organization + LocalBusiness + WebSite + SearchAction -->
   <script type="application/ld+json">
@@ -281,6 +281,7 @@
     {% block content %}{% endblock %}
   </main>
   {% include "partials/footer.html" %}
-  <script src="{% static 'js/main.js' %}?v=20261002"></script>
+  {% include "partials/call_button.html" %}
+  <script src="{% static 'js/main.js' %}?v=20261002c"></script>
 </body>
 </html>

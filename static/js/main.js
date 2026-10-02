@@ -58,6 +58,26 @@
     });
   }
 
+  var callFab = document.querySelector("[data-call-fab]");
+  if (callFab) {
+    var fabCollapsed = false;
+    var collapseFab = function () {
+      if (fabCollapsed) return;
+      fabCollapsed = true;
+      callFab.classList.add("is-compact");
+    };
+    var checkFabScroll = function () {
+      if ((window.scrollY || document.documentElement.scrollTop) > 120) {
+        collapseFab();
+      }
+    };
+    window.addEventListener("scroll", checkFabScroll, { passive: true });
+    window.addEventListener("wheel", collapseFab, { passive: true, once: true });
+    window.addEventListener("touchstart", collapseFab, { passive: true, once: true });
+    window.addEventListener("keydown", collapseFab);
+    checkFabScroll();
+  }
+
   var root = document.querySelector("[data-carousel]");
   if (!root) return;
 
