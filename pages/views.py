@@ -31,7 +31,11 @@ def home(request):
     request.page_image = OG_COVER
 
     listings = (
-        Product.objects.filter(is_active=True, status=Product.STATUS_AVAILABLE)
+        Product.objects.filter(
+            is_active=True,
+            status=Product.STATUS_AVAILABLE,
+            category__is_active=True,
+        )
         .order_by("-is_featured", "-created_at")
     )
     return render(request, "pages/home.html", {
@@ -124,7 +128,9 @@ def products(request):
             request.page_image = CANONICAL + active_category.image.url
 
     items = Product.objects.filter(
-        is_active=True, status=Product.STATUS_AVAILABLE
+        is_active=True,
+        status=Product.STATUS_AVAILABLE,
+        category__is_active=True,
     )
     if active_category:
         items = items.filter(category=active_category)
@@ -140,7 +146,9 @@ def products(request):
     items = items.order_by("-is_featured", "-created_at")
 
     total = Product.objects.filter(
-        is_active=True, status=Product.STATUS_AVAILABLE
+        is_active=True,
+        status=Product.STATUS_AVAILABLE,
+        category__is_active=True,
     ).count()
 
     return render(request, "pages/products.html", {
@@ -155,7 +163,10 @@ def products(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(
-        Product.objects.select_related("category"), slug=slug, is_active=True
+        Product.objects.select_related("category"),
+        slug=slug,
+        is_active=True,
+        category__is_active=True,
     )
 
     description = (product.description or "").strip()
@@ -180,7 +191,9 @@ def product_detail(request, slug):
     if len(related) < 4:
         related += list(
             Product.objects.filter(
-                is_active=True, status=Product.STATUS_AVAILABLE
+                is_active=True,
+                status=Product.STATUS_AVAILABLE,
+                category__is_active=True,
             )
             .exclude(pk=product.pk)
             .exclude(pk__in=[p.pk for p in related])[: 4 - len(related)]
