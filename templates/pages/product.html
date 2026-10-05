@@ -108,6 +108,16 @@
         <li>{% t "Test the item before you buy" %}</li>
       </ul>
 
+      {% if request.GET.ordered %}
+      <p class="do-banner" role="status">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        {% t "Your order request has been sent. We will call you soon." %}
+      </p>
+      {% endif %}
+
       <div class="pdp__actions">
         <a href="tel:+966582328389" class="btn pdp__btn pdp__btn--call">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -121,6 +131,14 @@
           </svg>
           {% t "Chat on WhatsApp" %}
         </a>
+        <button type="button" class="btn pdp__btn pdp__btn--order" data-do-open>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <path d="M3 6h18"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          {% t "Direct Order" %}
+        </button>
       </div>
 
       <div class="pdp__meta">
@@ -232,4 +250,64 @@
   </div>
 </section>
 {% endif %}
+
+<!-- Direct Order modal -->
+<div class="do-modal{% if request.order_errors %} is-open{% endif %}" id="do-modal" aria-hidden="{% if request.order_errors %}false{% else %}true{% endif %}">
+  <div class="do-modal__backdrop" data-do-close></div>
+  <div class="do-modal__card" role="dialog" aria-modal="true" aria-labelledby="do-title">
+    <button type="button" class="do-modal__close" data-do-close aria-label="{% t "Close" %}">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+      </svg>
+    </button>
+
+    <h3 class="do-modal__title" id="do-title">{% t "Direct Order" %}</h3>
+    <p class="do-modal__sub">{% t "Fill your details and we will call you to confirm the order." %}</p>
+
+    <div class="do-product">
+      <span class="do-product__name" dir="rtl" lang="ar">{{ product.title|bidi_fix }}</span>
+      <span class="do-product__price">{{ product.price_display }}</span>
+    </div>
+
+    <form method="post" action="{% url 'pages:product_order' product.slug %}" class="do-form" id="do-form">
+      {% csrf_token %}
+      <input type="text" name="website" value="" tabindex="-1" autocomplete="off" class="contact-hp" aria-hidden="true">
+
+      <div class="do-field">
+        <label for="do-name">{% t "Full Name" %}</label>
+        <input id="do-name" name="name" type="text" maxlength="120" autocomplete="name" required value="{{ request.order_values.name }}">
+        <small class="field-err" data-err="name" {% if not request.order_errors.name %}hidden{% endif %}>{{ request.order_errors.name }}</small>
+      </div>
+
+      <div class="do-field">
+        <label for="do-phone">{% t "Phone Number" %}</label>
+        <input id="do-phone" name="phone" type="tel" dir="ltr" maxlength="30" autocomplete="tel" required pattern="[0-9+\s\-]{8,20}" title="{% t "Phone number is not valid. Example: 0582328389" %}" value="{{ request.order_values.phone }}">
+        <small class="field-err" data-err="phone" {% if not request.order_errors.phone %}hidden{% endif %}>{{ request.order_errors.phone }}</small>
+      </div>
+
+      <div class="do-field">
+        <label for="do-address">{% t "Delivery Address" %}</label>
+        <input id="do-address" name="address" type="text" maxlength="200" required value="{{ request.order_values.address }}">
+        <small class="field-err" data-err="address" {% if not request.order_errors.address %}hidden{% endif %}>{{ request.order_errors.address }}</small>
+      </div>
+
+      <div class="do-field">
+        <label for="do-notes">{% t "Notes (optional)" %}</label>
+        <textarea id="do-notes" name="notes" rows="2" maxlength="1000">{{ request.order_values.notes }}</textarea>
+      </div>
+
+      <p class="field-err do-form__error" data-do-error hidden>{% t "Something went wrong. Please try again." %}</p>
+      <button type="submit" class="btn btn--gold do-form__submit">{% t "Send Order Request" %}</button>
+    </form>
+
+    <div class="do-success" data-do-success hidden>
+      <svg class="do-success__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      <p>{% t "Your order request has been sent. We will call you soon." %}</p>
+      <button type="button" class="btn btn--gold" data-do-close>{% t "Close" %}</button>
+    </div>
+  </div>
+</div>
 {% endblock %}

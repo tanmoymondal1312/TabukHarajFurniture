@@ -7,8 +7,8 @@ from django.conf import settings
 from django.utils.translation import get_language
 
 # Query params that should never appear in a canonical URL:
-# search results (q), form feedback (sent) and tracking tags (utm_*).
-_DROP_PARAMS = {"q", "sent"}
+# search results (q), form feedback (sent, ordered) and tracking tags (utm_*).
+_DROP_PARAMS = {"q", "sent", "ordered"}
 
 
 def business_info(request):

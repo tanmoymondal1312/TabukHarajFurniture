@@ -148,6 +148,14 @@ class ContactMessage(models.Model):
         ("أمر آخر", "أمر آخر"),
     ]
 
+    KIND_CHOICES = [
+        ("message", "Message"),
+        ("order", "Direct Order"),
+    ]
+
+    kind = models.CharField(
+        max_length=10, choices=KIND_CHOICES, default="message"
+    )
     name = models.CharField(max_length=120)
     phone = models.CharField(max_length=30, blank=True)
     subject = models.CharField(max_length=60, blank=True, choices=SUBJECT_CHOICES)

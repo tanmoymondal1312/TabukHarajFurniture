@@ -401,6 +401,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; c
 .pill--sold { background: #EEEEEC; color: var(--muted); }
 .pill--reserved { background: var(--amber-soft); color: var(--amber); }
 .pill--hidden { background: var(--red-soft); color: var(--red); }
+.pill--order { background: var(--gold); color: #fff; font-weight: 700; }
 button.pill { border: 0; cursor: pointer; font-family: inherit; }
 .pill--click:hover { filter: brightness(0.95); }
 

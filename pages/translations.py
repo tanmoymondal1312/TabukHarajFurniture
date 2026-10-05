@@ -119,6 +119,25 @@ TRANSLATIONS = {
         "Free delivery across Tabuk": "توصيل مجاني في جميع أنحاء تبوك",
         "Test the item before you buy": "جرّب القطعة قبل الشراء",
         "%(n)s%% OFF": "خصم %(n)s٪",
+
+        # ---- Direct order (product page) ----
+        "Direct Order": "طلب مباشر",
+        "Fill your details and we will call you to confirm the order.":
+            "اكتب بياناتك وسنتصل بك لتأكيد الطلب.",
+        "Full Name": "الاسم الكامل",
+        "Phone Number": "رقم الجوال",
+        "Delivery Address": "عنوان التوصيل",
+        "Notes (optional)": "ملاحظات (اختياري)",
+        "Send Order Request": "إرسال الطلب",
+        "Your order request has been sent. We will call you soon.":
+            "تم إرسال طلبك. سنتصل بك قريباً.",
+        "Please write your name.": "اكتب اسمك من فضلك.",
+        "Please write your phone number.": "اكتب رقم الجوال من فضلك.",
+        "Phone number is not valid. Example: 0582328389":
+            "رقم الجوال غير صحيح. مثال: 0582328389",
+        "Please write your delivery address.": "اكتب عنوان التوصيل من فضلك.",
+        "Something went wrong. Please try again.": "حدث خطأ، حاول مرة أخرى.",
+        "Close": "إغلاق",
     },
 }
 

@@ -1,10 +1,13 @@
 import re
 
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import get_language
+
+from pages.templatetags.site_lang import translate
 
 from .models import Category, ContactMessage, Product
 
@@ -293,3 +296,79 @@ def product_detail(request, slug):
         "wa_text": wa_text,
         "discount": discount,
     })
+
+
+def product_order(request, slug):
+    """Accept a "Direct Order" request from the product page.
+
+    Saves it as a ContactMessage with kind="order", so it shows up in
+    the dashboard inbox like any other message, with an order badge.
+    JSON is returned for the Ajax form; a plain redirect for no-JS.
+    """
+    product = get_object_or_404(
+        Product.objects.select_related("category"),
+        slug=slug,
+        is_active=True,
+        category__is_active=True,
+    )
+    if request.method != "POST":
+        return redirect(product.get_absolute_url())
+
+    wants_json = request.headers.get("X-Requested-With") == "XMLHttpRequest"
+
+    def success():
+        if wants_json:
+            return JsonResponse({"ok": True, "errors": {}})
+        return redirect(product.get_absolute_url() + "?ordered=1")
+
+    if request.POST.get("website"):
+        # Honeypot: bots fill the hidden field — pretend success.
+        return success()
+
+    data = {
+        "name": (request.POST.get("name") or "").strip()[:120],
+        "phone": (request.POST.get("phone") or "").strip()[:30],
+        "address": (request.POST.get("address") or "").strip()[:200],
+        "notes": (request.POST.get("notes") or "").strip()[:1000],
+    }
+
+    errors = {}
+    if len(data["name"]) < 2:
+        errors["name"] = translate("Please write your name.")
+    if not data["phone"]:
+        errors["phone"] = translate("Please write your phone number.")
+    elif not re.fullmatch(r"[0-9+\s\-]{8,20}", data["phone"]):
+        errors["phone"] = translate(
+            "Phone number is not valid. Example: 0582328389"
+        )
+    if len(data["address"]) < 3:
+        errors["address"] = translate("Please write your delivery address.")
+
+    if errors:
+        if wants_json:
+            return JsonResponse({"ok": False, "errors": errors})
+        # No-JS: re-render the product page with the modal open.
+        request.order_errors = errors
+        request.order_values = data
+        return product_detail(request, slug)
+
+    body_lines = [
+        f"Product: {product.title}",
+        f"Price: {product.price_display}",
+        f"URL: {CANONICAL + product.get_absolute_url()}",
+        "",
+        f"Name: {data['name']}",
+        f"Phone: {data['phone']}",
+        f"Address: {data['address']}",
+    ]
+    if data["notes"]:
+        body_lines.append(f"Notes: {data['notes']}")
+
+    ContactMessage.objects.create(
+        kind="order",
+        name=data["name"],
+        phone=data["phone"],
+        subject=product.title[:60],
+        body="\n".join(body_lines)[:2000],
+    )
+    return success()

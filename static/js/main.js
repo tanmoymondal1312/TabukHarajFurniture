@@ -78,6 +78,102 @@
     checkFabScroll();
   }
 
+  // Direct Order modal on the product page. The form posts with fetch
+  // (JSON responses); without JS the same form falls back to a normal
+  // POST that re-renders the page with the modal open.
+  var doModal = document.getElementById("do-modal");
+  if (doModal) {
+    var doForm = document.getElementById("do-form");
+    var doLastFocus = null;
+
+    var setDoOpen = function (open) {
+      doModal.classList.toggle("is-open", open);
+      doModal.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.classList.toggle("no-scroll", open);
+      if (open) {
+        doLastFocus = document.activeElement;
+        var first = doForm && doForm.querySelector("input[name=name]");
+        if (first && !doForm.hidden) first.focus();
+      } else if (doLastFocus && doLastFocus.focus) {
+        doLastFocus.focus();
+      }
+    };
+
+    document.querySelectorAll("[data-do-open]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setDoOpen(true);
+      });
+    });
+    doModal.querySelectorAll("[data-do-close]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setDoOpen(false);
+      });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && doModal.classList.contains("is-open")) {
+        setDoOpen(false);
+      }
+    });
+
+    if (doForm) {
+      doForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var btn = doForm.querySelector("[type=submit]");
+        doForm.querySelectorAll("[aria-invalid]").forEach(function (el) {
+          el.removeAttribute("aria-invalid");
+        });
+        doForm.querySelectorAll("[data-err]").forEach(function (el) {
+          el.hidden = true;
+        });
+        if (btn) btn.disabled = true;
+        fetch(doForm.action, {
+          method: "POST",
+          body: new FormData(doForm),
+          headers: { "X-Requested-With": "XMLHttpRequest" },
+        })
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (data) {
+            if (data.ok) {
+              doForm.hidden = true;
+              var ok = doModal.querySelector("[data-do-success]");
+              if (ok) ok.hidden = false;
+              if (window.history && window.history.replaceState) {
+                window.history.replaceState(
+                  null,
+                  "",
+                  window.location.pathname + "?ordered=1"
+                );
+              }
+              return;
+            }
+            var firstField = null;
+            Object.keys(data.errors || {}).forEach(function (field) {
+              var input = doForm.querySelector("[name=" + field + "]");
+              var errEl = doForm.querySelector('[data-err="' + field + '"]');
+              if (errEl) {
+                errEl.textContent = data.errors[field];
+                errEl.hidden = false;
+              }
+              if (input) {
+                input.setAttribute("aria-invalid", "true");
+                if (!firstField) firstField = input;
+              }
+            });
+            if (firstField) firstField.focus();
+          })
+          .catch(function () {
+            var box = doModal.querySelector("[data-do-error]");
+            if (box) box.hidden = false;
+          })
+          .finally(function () {
+            if (btn) btn.disabled = false;
+          });
+      });
+    }
+  }
+
   var root = document.querySelector("[data-carousel]");
   if (!root) return;
 
