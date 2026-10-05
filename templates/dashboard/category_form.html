@@ -48,8 +48,17 @@
         </div>
 
         <label class="field">
-          <span class="field__label">Description</span>
+          <span class="field__label">Description (English)</span>
           {{ form.description }}
+          {% if form.description.errors %}<span class="field__error">{{ form.description.errors|striptags }}</span>{% endif %}
+          <span class="field__hint">Short SEO text shown under the category title and in Google results. Leave empty to use the default text.</span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Description (Arabic)</span>
+          {{ form.ar_description }}
+          {% if form.ar_description.errors %}<span class="field__error">{{ form.ar_description.errors|striptags }}</span>{% endif %}
+          <span class="field__hint">نفس الوصف بالعربية — يظهر لزوار النسخة العربية من الموقع.</span>
         </label>
       </section>
     </div>

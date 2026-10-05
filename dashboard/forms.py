@@ -56,7 +56,10 @@ class ProductForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ["name", "ar_name", "slug", "image", "description", "ordering", "is_active"]
+        fields = [
+            "name", "ar_name", "slug", "image",
+            "description", "ar_description", "ordering", "is_active",
+        ]
         widgets = {
             "name": forms.TextInput(attrs={**INPUT, "placeholder": "e.g. Air Conditioners"}),
             "ar_name": forms.TextInput(attrs={
@@ -69,7 +72,12 @@ class CategoryForm(forms.ModelForm):
                 "class": "input input--file", "accept": "image/*",
             }),
             "description": forms.Textarea(attrs={
-                **TEXTAREA, "rows": 4, "placeholder": "Short text for this category (optional)",
+                **TEXTAREA, "rows": 4,
+                "placeholder": "Short English text for search engines and the category page (optional)",
+            }),
+            "ar_description": forms.Textarea(attrs={
+                **TEXTAREA, "rows": 4, "dir": "rtl",
+                "placeholder": "وصف قصير بالعربية لمحركات البحث وصفحة القسم (اختياري)",
             }),
             "ordering": forms.NumberInput(attrs={**INPUT, "min": "0", "placeholder": "0"}),
             "is_active": forms.CheckboxInput(attrs={"class": "switch-input"}),

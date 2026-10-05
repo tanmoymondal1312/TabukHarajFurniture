@@ -46,7 +46,11 @@
   <div class="container pp-hero__inner">
     <p class="section-eyebrow">{% t "Our Products" %}</p>
     <h1 class="pp-hero__title">{% if active_category %}{{ active_category.display_name }}{% else %}{% t "All Products" %}{% endif %}</h1>
+    {% if active_category and active_category.display_description %}
+    <p class="pp-hero__sub" dir="auto">{{ active_category.display_description }}</p>
+    {% else %}
     <p class="pp-hero__sub">{% t "Quality used furniture and appliances in Tabuk. Every item is tested, comes with a 30-day warranty and free delivery." %}</p>
+    {% endif %}
     <span class="pp-hero__count">{% tf "%(n)s product%(plural)s in stock" n=total_count plural=total_count|pluralize %}</span>
   </div>
 </section>

@@ -11,7 +11,14 @@ class Category(models.Model):
     ar_name = models.CharField(max_length=100, blank=True, help_text="Arabic name (optional)")
     slug = models.SlugField(max_length=120, unique=True, blank=True)
     image = models.ImageField(upload_to="categories/", blank=True, null=True)
-    description = models.TextField(blank=True)
+    description = models.TextField(
+        blank=True,
+        help_text="Short SEO text in English for the category page",
+    )
+    ar_description = models.TextField(
+        blank=True,
+        help_text="Short SEO text in Arabic for the category page",
+    )
     ordering = models.PositiveIntegerField(default=0, help_text="Lower numbers show first")
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -39,6 +46,16 @@ class Category(models.Model):
         if get_language() == "ar" and self.ar_name:
             return self.ar_name
         return self.name
+
+    @property
+    def display_description(self):
+        """Category description in the active language.
+
+        Empty string means the page should show its default text.
+        """
+        if get_language() == "ar":
+            return self.ar_description
+        return self.description
 
 
 class Product(models.Model):

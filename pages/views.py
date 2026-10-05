@@ -179,6 +179,11 @@ def products(request):
                 f"{name} — مستعمل مختبر بضمان 30 يوم وتوصيل مجاني في تبوك. "
                 "تصفّح كل القطع المتاحة الآن."
             )
+        custom_desc = active_category.display_description.strip()
+        if custom_desc:
+            # Admin-written text wins for both the meta description
+            # and the short intro shown under the category title.
+            request.page_description = custom_desc[:155]
         if active_category.image:
             request.page_image = CANONICAL + active_category.image.url
 
