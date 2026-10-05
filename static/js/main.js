@@ -110,6 +110,7 @@
       dot.addEventListener("click", function () {
         index = i;
         render();
+        restartAutoplay();
       });
       dotsWrap.appendChild(dot);
     });
@@ -119,10 +120,41 @@
     if (!slides.length) return;
     index = (index + delta + slides.length) % slides.length;
     render();
+    restartAutoplay();
   }
+
+  // Auto-rotate the hero images every 3 seconds. Each switch (auto or
+  // manual) restarts the countdown, so the next change always comes
+  // 3 seconds later. Skipped for reduced-motion users and hidden tabs.
+  var AUTOPLAY_MS = 3000;
+  var autoplayTimer = null;
+  var reducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function restartAutoplay() {
+    stopAutoplay();
+    if (reducedMotion || slides.length < 2 || document.hidden) return;
+    autoplayTimer = setInterval(function () {
+      go(1);
+    }, AUTOPLAY_MS);
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) stopAutoplay();
+    else restartAutoplay();
+  });
 
   if (prevBtn) prevBtn.addEventListener("click", function () { go(-1); });
   if (nextBtn) nextBtn.addEventListener("click", function () { go(1); });
 
   render();
+  restartAutoplay();
 })();
