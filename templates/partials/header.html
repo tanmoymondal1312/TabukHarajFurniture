@@ -1,4 +1,5 @@
 {% load static site_lang %}
+{% current_language as current_lang %}
 <header class="site-header" itemscope itemtype="https://schema.org/Organization" itemref="org-name org-url org-logo org-telephone org-address org-sameas">
   <meta itemprop="name" content="Tabuk Haraj Furniture" id="org-name">
   <meta itemprop="url" content="https://tabukharajfurniture.com/" id="org-url">
@@ -29,10 +30,20 @@
       <a href="{% url 'pages:about' %}" class="nav__link{% if request.resolver_match.url_name == 'about' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "About" %}</span></a>
       <a href="{% url 'pages:faq' %}" class="nav__link{% if request.resolver_match.url_name == 'faq' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "FAQ" %}</span></a>
       <a href="{% url 'pages:contact' %}" class="nav__link{% if request.resolver_match.url_name == 'contact' %} is-active{% endif %}" itemprop="url"><span itemprop="name">{% t "Contact" %}</span></a>
+      <a href="{% if current_lang == 'ar' %}{% lang_url "en" %}{% else %}{% lang_url "ar" %}{% endif %}"
+         class="nav__link nav__link--lang"
+         hreflang="{% if current_lang == 'ar' %}en{% else %}ar{% endif %}"
+         title="{% if current_lang == 'ar' %}Switch to English{% else %}التبديل إلى العربية{% endif %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+          <path d="M2 12h20"/>
+        </svg>
+        {% if current_lang == 'ar' %}<span>English</span>{% else %}<span lang="ar" dir="rtl">العربية</span>{% endif %}
+      </a>
     </nav>
 
     <div class="site-header__actions">
-      {% current_language as current_lang %}
       <a href="{% if current_lang == 'ar' %}{% lang_url "en" %}{% else %}{% lang_url "ar" %}{% endif %}"
          class="header-util header-util--lang"
          hreflang="{% if current_lang == 'ar' %}en{% else %}ar{% endif %}"

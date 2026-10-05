@@ -200,6 +200,12 @@ section[id] {
   border-radius: 1px;
 }
 
+/* Language switch inside the menu card — mobile only
+   (desktop shows it in the top bar instead). */
+.nav__link--lang {
+  display: none;
+}
+
 .site-header__actions {
   display: flex;
   align-items: center;
@@ -873,6 +879,20 @@ section[id] {
     padding: 12px 0;
     font-size: 14px;
     border-bottom: 1px solid rgba(229, 229, 227, 0.7);
+  }
+
+  .nav__link--lang {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .nav__link--lang .icon {
+    width: 15px;
+    height: 15px;
+    color: var(--muted);
   }
 
   .nav__link:last-child {
