@@ -6,15 +6,25 @@
     {% tf "%(n)s items" n=count %}       -> translated with printf style values
     {% current_language as lang %}       -> "ar" or "en"
     {% current_direction %}              -> "rtl" or "ltr"
+    {{ title|bidi_fix }}                 -> keeps 3x4 / 9:00-22:00 readable in RTL
 """
 
+import re
+
 from django import template
+from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 
 from pages.translations import AVAILABLE_LANGUAGES, TRANSLATIONS
 
 register = template.Library()
+
+# A number group, optionally followed by more groups split by a separator
+# (dash, slash, colon-less x) or spaces:  180x200, 9:00-22:00, 058 232 8389
+_NUM_GROUP = re.compile(
+    r"\d[\d.,:]*+(?:\s*[–—\-−/×]\s*\d[\d.,:]*+|\s+\d[\d.,:]*+)+"
+)
 
 
 def current_lang():
@@ -46,6 +56,20 @@ def tf(msgid, **kwargs):
         return text % kwargs
     except Exception:
         return text
+
+
+@register.filter
+def bidi_fix(value):
+    """Wrap number groups (3x4, 9:00-22:00, 058 232 8389) in an LTR isolate.
+
+    Without this, RTL text renders them reversed: 4x3, 22:00-9:00.
+    """
+    if value is None:
+        return ""
+    text = escape(str(value))
+    return mark_safe(
+        _NUM_GROUP.sub(lambda m: '<bdi dir="ltr">%s</bdi>' % m.group(0), text)
+    )
 
 
 @register.simple_tag(takes_context=True)

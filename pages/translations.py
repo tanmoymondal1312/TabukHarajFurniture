@@ -95,6 +95,30 @@ TRANSLATIONS = {
         "This category is empty right now. Browse all products instead.":
             "هذا القسم فارغ حالياً. تصفح جميع المنتجات بدلاً من ذلك.",
         "Close categories": "إغلاق الأقسام",
+
+        # ---- Condition / status / product details ----
+        "Used": "مستعمل",
+        "Like New": "شبه جديد",
+        "New": "جديد",
+        "Available": "متوفر",
+        "Reserved": "محجوز",
+        "Sold": "مباع",
+        "Category": "القسم",
+        "Condition": "الحالة",
+        "Status": "التوفّر",
+        "Price": "السعر",
+        "Location": "الموقع",
+        "Listed": "تاريخ العرض",
+        "Product Description": "وصف المنتج",
+        "Item Details": "تفاصيل المنتج",
+        "You may also like": "قد يعجبك أيضاً",
+        "Related Products": "منتجات مشابهة",
+        "Chat on WhatsApp": "دردشة واتساب",
+        "30-day warranty": "ضمان 30 يوم",
+        "30-day warranty on every item": "ضمان 30 يوم على كل قطعة",
+        "Free delivery across Tabuk": "توصيل مجاني في جميع أنحاء تبوك",
+        "Test the item before you buy": "جرّب القطعة قبل الشراء",
+        "%(n)s%% OFF": "خصم %(n)s٪",
     },
 }
 

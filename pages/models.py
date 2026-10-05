@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.translation import get_language
 
 
 class Category(models.Model):
@@ -32,6 +33,12 @@ class Category(models.Model):
     @property
     def item_count(self):
         return self.products.filter(is_active=True, status=Product.STATUS_AVAILABLE).count()
+
+    @property
+    def display_name(self):
+        if get_language() == "ar" and self.ar_name:
+            return self.ar_name
+        return self.name
 
 
 class Product(models.Model):

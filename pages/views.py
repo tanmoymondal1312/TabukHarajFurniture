@@ -4,11 +4,24 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import get_language
 
 from .models import Category, ContactMessage, Product
 
 CANONICAL = "https://tabukharajfurniture.com"
 OG_COVER = CANONICAL + "/static/images/og-cover.jpg"
+
+_AR_MONTHS = {
+    1: "يناير", 2: "فبراير", 3: "مارس", 4: "أبريل", 5: "مايو", 6: "يونيو",
+    7: "يوليو", 8: "أغسطس", 9: "سبتمبر", 10: "أكتوبر", 11: "نوفمبر", 12: "ديسمبر",
+}
+
+
+def _listed_date(value):
+    d = timezone.localtime(value)
+    if get_language() == "ar":
+        return f"{d.day:02d} {_AR_MONTHS[d.month]} {d.year}"
+    return d.strftime("%d %b %Y")
 
 
 def home(request):
@@ -106,7 +119,7 @@ def products(request):
         active_category = get_object_or_404(Category, slug=cat_slug, is_active=True)
         if active_category.image:
             request.page_title = (
-                f"{active_category.ar_name or active_category.name} | حراج تبوك للأثاث"
+                f"{active_category.display_name} | حراج تبوك للأثاث"
             )
             request.page_image = CANONICAL + active_category.image.url
 
@@ -194,7 +207,7 @@ def product_detail(request, slug):
         "product": product,
         "related": related,
         "description": description,
-        "listed_date": timezone.localtime(product.created_at).strftime("%d %b %Y"),
+        "listed_date": _listed_date(product.created_at),
         "product_url": product_url,
         "product_image_url": product_image_url,
         "wa_text": wa_text,

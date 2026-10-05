@@ -302,7 +302,7 @@
           {% for cat in categories %}
           <li role="listitem">
             <a class="catalog-card" href="{% url 'pages:products' %}?cat={{ cat.slug }}">
-              <span class="catalog-card__name">{{ cat.ar_name|default:cat.name }}</span>
+              <span class="catalog-card__name">{{ cat.display_name }}</span>
               <span class="catalog-card__count">
                 {% if cat.item_count == 1 %}قطعة واحدة متاحة{% elif cat.item_count == 2 %}قطعتان متاحتان{% elif cat.item_count %}{{ cat.item_count }} قطعة متاحة{% else %}عرض الكل{% endif %}
               </span>

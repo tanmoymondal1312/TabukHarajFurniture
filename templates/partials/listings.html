@@ -27,10 +27,10 @@
               itemprop="image"
               id="listing-image"
             >
-            <span class="listing-card__badge">{{ item.get_condition_display }}</span>
+            <span class="listing-card__badge">{% t item.get_condition_display %}</span>
           </div>
           <div class="listing-card__body">
-            <p class="listing-card__title" dir="rtl" lang="ar" itemprop="name" id="listing-name">{{ item.title }}</p>
+            <p class="listing-card__title" dir="rtl" lang="ar" itemprop="name" id="listing-name">{{ item.title|bidi_fix }}</p>
             <p class="listing-card__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer" id="listing-price">
               <meta itemprop="priceCurrency" content="SAR">
               <meta itemprop="availability" content="https://schema.org/InStock" id="listing-availability">
