@@ -1226,3 +1226,52 @@ a.stat {
     margin-inline-start: 0;
   }
 }
+
+/* ===== Overview: messages (own blue vibe, apart from the product cards) =====
+   Kept at the end of the file so it wins over the base .panel / .stat rules. */
+.panel--msgs {
+  background: linear-gradient(160deg, rgba(37, 99, 235, 0.055), rgba(124, 58, 237, 0.045));
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.panel--msgs .panel__head h2 { color: var(--blue); }
+.panel--msgs .panel__head .link { color: var(--blue); }
+.panel--msgs .pill--reserved { background: var(--blue-soft); color: var(--blue); }
+
+.panel--msgs .mini-msg {
+  background: #fff;
+  border-color: rgba(37, 99, 235, 0.18);
+}
+
+.panel--msgs .mini-msg:hover {
+  border-color: var(--blue);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
+}
+
+.panel--msgs .mini-msg.is-new {
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow: inset 3px 0 0 var(--blue);
+}
+
+.panel--msgs .mini-msg__new { background: var(--blue); }
+
+.stat--hot-blue {
+  border-color: rgba(37, 99, 235, 0.55);
+  background: linear-gradient(150deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.03));
+}
+
+.stat--link.stat--hot-blue:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.14);
+}
+
+.stat--hot-blue .stat__dot {
+  background: var(--blue);
+  animation: statPulseBlue 1.9s ease-out infinite;
+}
+
+@keyframes statPulseBlue {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+  70% { box-shadow: 0 0 0 9px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}

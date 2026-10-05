@@ -54,8 +54,8 @@
       <div><strong>{{ ord_unread }}</strong><small>New orders</small></div>
       {% if ord_unread %}<span class="stat__dot" aria-hidden="true"></span>{% endif %}
     </a>
-    <a class="stat stat--link{% if msg_unread %} stat--hot{% endif %}" href="{% url 'dashboard:inbox' %}">
-      <span class="stat__icon stat__icon--amber">
+    <a class="stat stat--link{% if msg_unread %} stat--hot-blue{% endif %}" href="{% url 'dashboard:inbox' %}">
+      <span class="stat__icon stat__icon--blue">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
       </span>
       <div><strong>{{ msg_unread }}</strong><small>New messages</small></div>
@@ -109,7 +109,7 @@
       {% endif %}
     </section>
 
-    <section class="panel">
+    <section class="panel panel--msgs">
       <header class="panel__head">
         <div class="panel__title">
           <h2>Latest activity</h2>
