@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--=g+^a&r79mou8(&&mno7jcr4i+ze+g$ntf1*ug^$k&nw7w3y='
+# Production sets SECRET_KEY in the systemd unit; local dev keeps the default.
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure--=g+^a&r79mou8(&&mno7jcr4i+ze+g$ntf1*ug^$k&nw7w3y=",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Production sets DJANGO_DEBUG=False; local dev defaults to True.
+DEBUG = os.environ.get("DJANGO_DEBUG", "True").strip().lower() not in ("0", "false", "no", "off")
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "testserver", "192.168.56.2", "192.168.0.50"]
+ALLOWED_HOSTS += [h.strip() for h in os.environ.get("ALLOWED_HOSTS", "").split(",") if h.strip()]
+
+# HTTPS origins allowed to POST forms (set in production).
+CSRF_TRUSTED_ORIGINS = [
+    o.strip() for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",") if o.strip()
+]
 
 
 # Application definition
@@ -144,6 +156,14 @@ SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 # SECURE_SSL_REDIRECT = True
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
+
+if not DEBUG:
+    # Behind nginx + Cloudflare (HTTPS terminated at the proxy).
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 63072000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # Cache control for static assets
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
