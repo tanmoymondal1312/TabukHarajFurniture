@@ -202,6 +202,7 @@ TRANSLATIONS = {
         "Posted on Google": "منشور على جوجل",
         "See reviews on Google": "شاهد التقييمات على جوجل",
         "5 out of 5 stars": "5 من 5 نجوم",
+        "Google reviews": "تقييمات على جوجل",
     },
 }
 

@@ -37,6 +37,20 @@
       "about": {
         "@id": "https://tabukharajfurniture.com/#localbusiness"
       }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://tabukharajfurniture.com/#localbusiness",
+      "name": "Tabuk Haraj Furniture",
+      "alternateName": "حراج تبوك للأثاث المستعمل",
+      "url": "https://tabukharajfurniture.com/",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "7",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
     }
   ]
 }
@@ -81,6 +95,10 @@
     <p class="section-eyebrow">{% t "Customer Reviews" %}</p>
     <h1 class="pp-hero__title">{{ reviews_title }}</h1>
     <p class="pp-hero__sub" dir="auto">{{ reviews_lead }}</p>
+    <p class="pp-hero__count" dir="auto">
+      <span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
+      <strong>5.0</strong> (7 {% t "Google reviews" %})
+    </p>
     <div class="sell-hero__cta">
       <a href="{{ google_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--gold">
         {% t "See reviews on Google" %}

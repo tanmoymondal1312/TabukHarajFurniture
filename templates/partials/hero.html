@@ -10,6 +10,14 @@
         {% t "Also selling? We buy yours — instant cash, free pickup" %}
       </p>
 
+      <p class="hero__rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" id="business-rating">
+        <span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
+        <span itemprop="ratingValue">5.0</span>
+        <span class="hero__rating-count">(<span itemprop="reviewCount">7</span> {% t "Google reviews" %})</span>
+        <meta itemprop="bestRating" content="5">
+        <meta itemprop="worstRating" content="1">
+      </p>
+
       <form class="search-bar" action="{% url 'pages:products' %}" method="get" role="search" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
         <meta itemprop="target" content="https://tabukharajfurniture.com/products/?q={search_term_string}">
         <meta itemprop="query-input" content="required name=search_term_string">
@@ -92,9 +100,4 @@
   <meta itemprop="latitude" content="28.3816148">
   <meta itemprop="longitude" content="36.5592394">
   <meta itemprop="areaServed" content="Tabuk, Saudi Arabia" id="business-area">
-  <meta itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" id="business-rating">
-  <meta itemprop="ratingValue" content="4.8">
-  <meta itemprop="reviewCount" content="127">
-  <meta itemprop="bestRating" content="5">
-  <meta itemprop="worstRating" content="1">
 </section>
