@@ -13,8 +13,6 @@ Disallow: /*.json$
 Allow: /sitemap.xml
 Disallow: /*.xml$
 Disallow: /*?q=*
-Disallow: /*?lang=*
-Disallow: /?lang=*
 Disallow: /search/
 Disallow: /api/
 

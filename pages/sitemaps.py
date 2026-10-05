@@ -1,64 +1,82 @@
 """
-Sitemap configuration for Tabuk Haraj Furniture
+Sitemap configuration for Tabuk Haraj Furniture.
+
+Only pages a visitor can actually open are listed:
+active categories and products whose category is active.
 """
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
+from .models import Category, Product
+
+# (view name, priority, changefreq) for the static pages.
+_STATIC_PAGES = [
+    ("pages:home", "1.0", "daily"),
+    ("pages:products", "0.9", "daily"),
+    ("pages:about", "0.6", "monthly"),
+    ("pages:faq", "0.6", "monthly"),
+    ("pages:contact", "0.6", "monthly"),
+]
+
 
 class StaticViewSitemap(Sitemap):
-    """Sitemap for static pages"""
-    priority = 1.0
-    changefreq = 'daily'
+    """Sitemap for the static pages (home, products, about, faq, contact)."""
+    protocol = "https"
 
     def items(self):
-        return ['pages:home']
+        return [name for name, _, _ in _STATIC_PAGES]
 
     def location(self, item):
         return reverse(item)
 
+    def priority(self, item):
+        return dict((name, p) for name, p, _ in _STATIC_PAGES)[item]
+
+    def changefreq(self, item):
+        return dict((name, c) for name, _, c in _STATIC_PAGES)[item]
+
 
 class CategorySitemap(Sitemap):
-    """Sitemap for category pages"""
-    priority = 0.8
-    changefreq = 'weekly'
+    """Sitemap for active category pages (/products/?cat=slug)."""
+
+    protocol = "https"
+    priority = 0.7
+    changefreq = "weekly"
 
     def items(self):
-        return [
-            'majlis-sofas',
-            'bedroom-sets',
-            'dining-tables',
-            'home-appliances',
-            'kitchen-furniture',
-            'other-furniture',
-        ]
+        return Category.objects.filter(is_active=True)
 
     def location(self, item):
-        return f'/?q={item}'
+        return f"{reverse('pages:products')}?cat={item.slug}"
 
     def lastmod(self, item):
-        from django.utils import timezone
-        return timezone.now()
+        return item.updated_at
 
 
-class ListingSitemap(Sitemap):
-    """Sitemap for individual listings"""
+class ProductSitemap(Sitemap):
+    """Sitemap for product pages that are visible on the site."""
+
+    protocol = "https"
     priority = 0.6
-    changefreq = 'daily'
+    changefreq = "weekly"
 
     def items(self):
-        # This would be replaced with actual database listings
-        return []
+        return Product.objects.filter(
+            is_active=True,
+            status=Product.STATUS_AVAILABLE,
+            category__is_active=True,
+        )
 
     def location(self, item):
         return item.get_absolute_url()
 
     def lastmod(self, item):
-        return item.updated_at if hasattr(item, 'updated_at') else None
+        return item.updated_at
 
 
 # Sitemaps dictionary
 sitemaps = {
-    'static': StaticViewSitemap,
-    'categories': CategorySitemap,
-    'listings': ListingSitemap,
+    "static": StaticViewSitemap,
+    "categories": CategorySitemap,
+    "products": ProductSitemap,
 }
