@@ -1,5 +1,5 @@
 {% load static site_lang %}
-<section class="hero" aria-label="Hero" itemscope itemtype="https://schema.org/LocalBusiness" itemref="business-name business-address business-phone business-url business-price business-hours business-geo business-area business-rating">
+<section class="hero" aria-label="Hero" itemscope itemtype="https://schema.org/LocalBusiness" itemref="business-name business-address business-phone business-url business-price business-hours business-geo business-area">
   <div class="container hero__inner">
     <div class="hero__content">
       <p class="hero__eyebrow">{% t "30-Day Warranty • Free Delivery" %}</p>
@@ -8,14 +8,6 @@
         {% t "Buy tested used furniture & ACs — 30-day warranty & free delivery" %}
         <br>
         {% t "Also selling? We buy yours — instant cash, free pickup" %}
-      </p>
-
-      <p class="hero__rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" id="business-rating">
-        <span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
-        <span itemprop="ratingValue">5.0</span>
-        <span class="hero__rating-count">(<span itemprop="reviewCount">7</span> {% t "Google reviews" %})</span>
-        <meta itemprop="bestRating" content="5">
-        <meta itemprop="worstRating" content="1">
       </p>
 
       <form class="search-bar" action="{% url 'pages:products' %}" method="get" role="search" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">

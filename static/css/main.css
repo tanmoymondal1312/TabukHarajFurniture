@@ -4621,35 +4621,11 @@ html[dir="rtl"] .carousel-btn svg {
   max-width: 640px;
 }
 
-/* ===== Google rating badge (real listing numbers: 5.0 / 7) ===== */
-.hero__rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 18px;
-  padding: 7px 14px;
-  border: 1px solid rgba(190, 132, 63, 0.35);
-  border-radius: 999px;
-  background: rgba(190, 132, 63, 0.08);
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
+/* ===== Star rating (reviews page chip) ===== */
 .hero__rating-stars {
   color: #eab308;
   letter-spacing: 1.5px;
   font-size: 12px;
-}
-
-.hero__rating [itemprop="ratingValue"] {
-  font-weight: 800;
-  color: var(--gold-dark);
-}
-
-.hero__rating-count {
-  color: var(--text);
-  font-weight: 500;
 }
 
 .pp-hero__count {
