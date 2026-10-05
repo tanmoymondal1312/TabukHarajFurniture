@@ -311,6 +311,74 @@ def sell(request):
     })
 
 
+# ---- /reviews/ page: real reviews from our Google listing ----
+# Only reviews the owner confirmed are shown. No rating totals are
+# claimed here until the real Google number is verified.
+
+_CUSTOMER_REVIEWS = [
+    {"name": "SAMSUL ARIF", "text": ""},
+    {"name": "محمد راكب", "text": "Very good condeshon"},
+    {"name": "Md Nobin", "text": ""},
+    {"name": "Nosrat", "text": "Good Very nice"},
+    {"name": "Arpi Sikder", "text": "Very nice"},
+    {"name": "Nesar Ahammad", "text": "Onk vlo.... 🤭"},
+]
+
+# Public Google Maps listing (same link the contact page uses).
+GOOGLE_PLACES_URL = (
+    "https://www.google.com/maps/place/%D8%AD%D8%B1%D8%A7%D8%AC+%D8%AA%D8%A8%D9%88%D9%83+"
+    "%D9%84%D9%84%D8%A3%D8%AB%D8%A7%D8%AB+%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B9%D9%85%D9%84%E2%80%AD"
+    "/@28.3816175,36.5591715,21z/data=!4m6!3m5!1s0x15a9ad3dc0a4ef8b:0x8d7c12f750a94059"
+    "!8m2!3d28.3816148!4d36.5592394!16s%2Fg%2F11zcjfx9k0"
+)
+
+_REVIEWS_PAGE = {
+    "seo": {
+        "ar_title": "تقييمات العملاء | حراج تبوك للأثاث المستعمل",
+        "en_title": "Customer Reviews | Tabuk Haraj Furniture",
+        "ar_desc": (
+            "آراء حقيقية من عملائنا على جوجل عن حراج تبوك للأثاث المستعمل — تقييمات "
+            "عملاء فضّلوا كتابة تجربتهم بعد الشراء من المعرض في تبوك."
+        ),
+        "en_desc": (
+            "Real reviews from our customers on Google about Tabuk Haraj Furniture — "
+            "customers who chose to share their experience after buying from our Tabuk showroom."
+        ),
+    },
+    "ar": {
+        "title": "تقييمات العملاء",
+        "lead": (
+            "تقييمات حقيقية من صفحتنا على جوجل — شكراً لكل عميل تفضل بكتابة تقييمه بعد الشراء."
+        ),
+        "more": "هذه مختارات من تقييماتنا على جوجل. تابع كل التقييمات على صفحتنا على خرائط جوجل.",
+    },
+    "en": {
+        "title": "Customer Reviews",
+        "lead": (
+            "Real reviews from our Google listing — thank you to every customer who took "
+            "the time to write one."
+        ),
+        "more": (
+            "These are a few reviews from our Google listing. See all of them on our "
+            "Google Maps page."
+        ),
+    },
+}
+
+
+def reviews(request):
+    """Page with the real Google reviews of the showroom."""
+    _set_seo(request, **_REVIEWS_PAGE["seo"])
+    body = _REVIEWS_PAGE["en"] if _is_en() else _REVIEWS_PAGE["ar"]
+    return render(request, "pages/reviews.html", {
+        "reviews_title": body["title"],
+        "reviews_lead": body["lead"],
+        "reviews_more": body["more"],
+        "customer_reviews": _CUSTOMER_REVIEWS,
+        "google_url": GOOGLE_PLACES_URL,
+    })
+
+
 # ---- District landing pages: /nakheel/ /hasah/ ... ----
 # One page per Tabuk district we deliver to, aimed at searches like
 # "used furniture in Al Nakheel". Facts are the same as the shipping

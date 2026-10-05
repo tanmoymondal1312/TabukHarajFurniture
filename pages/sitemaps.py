@@ -18,6 +18,7 @@ _STATIC_PAGES = [
     ("pages:faq", "0.6", "monthly"),
     ("pages:contact", "0.6", "monthly"),
     ("pages:sell", "0.8", "weekly"),
+    ("pages:reviews", "0.8", "weekly"),
     ("pages:shipping", "0.6", "yearly"),
     ("pages:returns", "0.6", "yearly"),
     ("pages:privacy", "0.4", "yearly"),

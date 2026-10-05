@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static site_lang %}
+
+{% block content %}
+<!-- BreadcrumbList + WebPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "{% t "Home" %}",
+          "item": "https://tabukharajfurniture.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ reviews_title|escapejs }}",
+          "item": "https://tabukharajfurniture.com/reviews/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tabukharajfurniture.com/reviews/#webpage",
+      "name": "{{ reviews_title|escapejs }}",
+      "description": "{{ page_description|escapejs }}",
+      "url": "https://tabukharajfurniture.com/reviews/",
+      "inLanguage": ["ar", "en"],
+      "isPartOf": {
+        "@id": "https://tabukharajfurniture.com/#website"
+      },
+      "about": {
+        "@id": "https://tabukharajfurniture.com/#localbusiness"
+      }
+    }
+  ]
+}
+</script>
+
+{% for r in customer_reviews %}
+<!-- Review {{ forloop.counter }}: real review from our Google listing -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "author": {
+    "@type": "Person",
+    "name": "{{ r.name|escapejs }}"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1"
+  }{% if r.text %},
+  "reviewBody": "{{ r.text|escapejs }}"{% endif %},
+  "itemReviewed": {
+    "@type": "LocalBusiness",
+    "name": "حراج تبوك للأثاث المستعمل",
+    "url": "https://tabukharajfurniture.com/"
+  }
+}
+</script>
+{% endfor %}
+
+<div class="container">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="{% url 'pages:home' %}">{% t "Home" %}</a>
+    <span class="crumb__sep" aria-hidden="true">/</span>
+    <span class="crumb__current">{{ reviews_title }}</span>
+  </nav>
+</div>
+
+<section class="pp-hero">
+  <div class="container pp-hero__inner">
+    <p class="section-eyebrow">{% t "Customer Reviews" %}</p>
+    <h1 class="pp-hero__title">{{ reviews_title }}</h1>
+    <p class="pp-hero__sub" dir="auto">{{ reviews_lead }}</p>
+    <div class="sell-hero__cta">
+      <a href="{{ google_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+        {% t "See reviews on Google" %}
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+      </a>
+      <a href="{% url 'pages:contact' %}" class="btn btn--outline">{% t "Contact" %}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="rv-grid">
+      {% for r in customer_reviews %}
+      <article class="rv-card">
+        <div class="rv-card__head">
+          <span class="rv-card__avatar" aria-hidden="true">{{ r.name|first }}</span>
+          <div class="rv-card__who">
+            <span class="rv-card__name" dir="auto">{{ r.name }}</span>
+            <span class="rv-card__stars" role="img" aria-label="{% t "5 out of 5 stars" %}">★★★★★</span>
+          </div>
+          <span class="rv-card__chip">
+            <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            {% t "Posted on Google" %}
+          </span>
+        </div>
+        {% if r.text %}
+        <p class="rv-card__text" dir="auto" lang="en">{{ r.text }}</p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="rv-more">
+      <p class="rv-more__text" dir="auto">{{ reviews_more }}</p>
+      <a href="{{ google_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+        {% t "See reviews on Google" %}
+      </a>
+    </div>
+
+    <div class="policy__cta">
+      <a href="tel:+966582328389" class="btn btn--gold">{% t "Call Now" %}</a>
+      <a href="https://wa.me/966582328389" target="_blank" rel="noopener noreferrer" class="btn btn--wa">{% t "WhatsApp Chat" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
