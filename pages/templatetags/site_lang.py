@@ -6,7 +6,7 @@
     {% tf "%(n)s items" n=count %}       -> translated with printf style values
     {% current_language as lang %}       -> "ar" or "en"
     {% current_direction %}              -> "rtl" or "ltr"
-    {{ title|bidi_fix }}                 -> keeps 3x4 / 9:00-22:00 readable in RTL
+    {{ title|bidi_fix }}                 -> keeps phone numbers like 058 232 8389 readable in RTL
 """
 
 import re
@@ -20,10 +20,12 @@ from pages.translations import AVAILABLE_LANGUAGES, TRANSLATIONS
 
 register = template.Library()
 
-# A number group, optionally followed by more groups split by a separator
-# (dash, slash, colon-less x) or spaces:  180x200, 9:00-22:00, 058 232 8389
+# Phone-style numbers: digit groups split only by spaces (058 232 8389).
+# Ranges joined by punctuation (3x4, 9:00-22:00) are NOT matched:
+# Arabic readers read ranges right-to-left, which is the default
+# bidi behaviour, so they must stay un-isolated (W3C i18n advice).
 _NUM_GROUP = re.compile(
-    r"\d[\d.,:]*+(?:\s*[–—\-−/×]\s*\d[\d.,:]*+|\s+\d[\d.,:]*+)+"
+    r"\+?[0-9][0-9.,:]*+(?:\s+[0-9][0-9.,:]*+)+"
 )
 
 
@@ -60,9 +62,11 @@ def tf(msgid, **kwargs):
 
 @register.filter
 def bidi_fix(value):
-    """Wrap number groups (3x4, 9:00-22:00, 058 232 8389) in an LTR isolate.
+    """Wrap phone-style numbers (058 232 8389) in an LTR isolate.
 
-    Without this, RTL text renders them reversed: 4x3, 22:00-9:00.
+    Phone numbers must read left-to-right, so the groups are isolated.
+    Ranges (3x4, 9:00-22:00) are left alone: Arabic readers read them
+    right-to-left, which is what the bidi algorithm already does.
     """
     if value is None:
         return ""
