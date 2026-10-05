@@ -175,6 +175,21 @@ TRANSLATIONS = {
         "Returns & Exchanges": "الاسترجاع والاستبدال",
         "Privacy Policy": "سياسة الخصوصية",
         "Terms of Service": "الشروط والأحكام",
+
+        # ---- /sell/ page (we buy used furniture) ----
+        "Sell to us": "نشتري منك",
+        "Simple steps": "خطوات بسيطة",
+        "Reply within an hour": "رد خلال ساعة",
+        "Your name": "اسمك",
+        "What do you want to sell?": "ماذا تريد أن تبيع؟",
+        "Example: 3-seat sofa in good condition, Al Nakheel district":
+            "مثال: كنب 3 مقاعد بحالة جيدة، حي النخيل",
+        "Send Price Request": "إرسال طلب السعر",
+        "Your request has been sent": "تم إرسال طلبك",
+        "We will contact you soon with a price offer.": "سنتواصل معك قريباً مع عرض السعر.",
+        "Check the required fields": "راجع الحقول المطلوبة",
+        "Your details reach us only — we never share them.":
+            "بياناتك تصل إلينا فقط — لا نشاركها مع أي جهة.",
     },
 }
 

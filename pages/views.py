@@ -154,6 +154,163 @@ def contact(request):
     })
 
 
+# ---- /sell/ page: we buy used furniture from people in Tabuk ----
+
+_SELL = {
+    "seo": {
+        "ar_title": "نشتري الأثاث المستعمل في تبوك | عرض سعر فوري",
+        "en_title": "We Buy Used Furniture in Tabuk | Instant Cash Offer",
+        "ar_desc": (
+            "نشتري الأثاث والأجهزة المستعملة في تبوك: كنب، غرف نوم، مكيفات، "
+            "ثلاجات، غسالات. أرسل صور القطعة واحصل على عرض سعر فوري — استلام "
+            "مجاني داخل تبوك ودفع كاش في نفس الزيارة."
+        ),
+        "en_desc": (
+            "We buy used furniture and appliances in Tabuk: sofas, bedroom sets, "
+            "ACs, fridges, washers. Send photos for an instant offer — free "
+            "pickup across Tabuk and cash paid on the spot."
+        ),
+    },
+    "ar": {
+        "eyebrow": "نشتري منك",
+        "title": "نشتري أثاثك المستعمل في تبوك",
+        "lead": (
+            "تبي تبيع كنب، غرفة نوم، مكيف، ثلاجة أو أي جهاز مستعمل؟ أرسل صور "
+            "القطعة على واتساب واحصل على عرض سعر فوري — استلام مجاني من أي حي "
+            "في تبوك ودفع كاش في نفس الزيارة."
+        ),
+        "steps_title": "كيف نعمل",
+        "steps": [
+            ("أرسل صور القطعة",
+             "راسلنا على واتساب 058 232 8389 مع صور القطعة وحالتها، أو املأ "
+             "النموذج في هذه الصفحة."),
+            ("احصل على عرض سعر",
+             "نقيّم القطعة بسرعة ونرسل لك سعراً عادلاً حسب الحالة والعمر والماركة."),
+            ("نستلم وندفع كاش",
+             "بعد موافقتك نستلم القطعة من موقعك مجاناً داخل تبوك وندفع لك كاش "
+             "في نفس الزيارة."),
+        ],
+        "buy_title": "ماذا نشتري؟",
+        "buy_items": [
+            "كنب ومجالس", "غرف نوم", "خزائن ودواليب", "طاولات وكراسي",
+            "مطابخ", "مكيفات", "ثلاجات وفريزر", "غسالات", "أفران ومايكروويف",
+        ],
+        "form_title": "اطلب عرض سعر",
+        "form_sub": (
+            "اكتب تفاصيل القطع وسنتواصل معك بسرعة — عادة خلال ساعة في أوقات العمل."
+        ),
+        "schema_name": "نشتري الأثاث المستعمل في تبوك",
+        "schema_desc": (
+            "خدمة شراء الأثاث والأجهزة المستعملة في تبوك: عرض سعر فوري، "
+            "استلام مجاني، ودفع كاش."
+        ),
+    },
+    "en": {
+        "eyebrow": "We buy from you",
+        "title": "We Buy Your Used Furniture in Tabuk",
+        "lead": (
+            "Want to sell a sofa, bedroom set, AC, fridge or any used item? Send "
+            "us photos on WhatsApp for an instant offer — free pickup from any "
+            "district in Tabuk and cash paid on the spot."
+        ),
+        "steps_title": "How it works",
+        "steps": [
+            ("Send us photos",
+             "Message us on WhatsApp 058 232 8389 with photos of the item and "
+             "its condition, or fill in the form on this page."),
+            ("Get a price offer",
+             "We check the item quickly and send you a fair price based on "
+             "condition, age and brand."),
+            ("We pick up, you get cash",
+             "After you agree, we collect the item from your location for free "
+             "anywhere in Tabuk and pay you cash on the spot."),
+        ],
+        "buy_title": "What do we buy?",
+        "buy_items": [
+            "Sofas & majlis sets", "Bedroom sets", "Wardrobes", "Tables & chairs",
+            "Kitchen sets", "Air conditioners", "Fridges & freezers",
+            "Washing machines", "Ovens & microwaves",
+        ],
+        "form_title": "Request a price offer",
+        "form_sub": (
+            "Tell us about your items and we will get back to you fast — usually "
+            "within an hour during opening hours."
+        ),
+        "schema_name": "We Buy Used Furniture in Tabuk",
+        "schema_desc": (
+            "We buy used furniture and appliances in Tabuk: instant price offer, "
+            "free pickup, and cash payment."
+        ),
+    },
+}
+
+
+def sell(request):
+    """Lead-capture page for people who want to sell used furniture."""
+    _set_seo(request, **_SELL["seo"])
+    body = _SELL["en"] if _is_en() else _SELL["ar"]
+    sell_url = CANONICAL + reverse("pages:sell")
+
+    errors = {}
+    form = {"name": "", "phone": "", "items": ""}
+
+    if request.method == "POST":
+        if request.POST.get("website"):
+            # Honeypot: bots fill the hidden field — pretend success.
+            return redirect(reverse("pages:sell") + "?sent=1")
+
+        for key in form:
+            form[key] = (request.POST.get(key) or "").strip()[:2000]
+
+        if len(form["name"]) < 2:
+            errors["name"] = (
+                "Please write your name." if _is_en() else "اكتب اسمك من فضلك."
+            )
+        if not form["phone"]:
+            errors["phone"] = (
+                "Please write your phone number." if _is_en() else "اكتب رقم جوالك من فضلك."
+            )
+        elif not re.fullmatch(r"[0-9+\s\-]{8,20}", form["phone"]):
+            errors["phone"] = (
+                "Invalid phone number. Example: 0582328389" if _is_en()
+                else "رقم الجوال غير صحيح. مثال: 0582328389"
+            )
+        if len(form["items"]) < 5:
+            errors["items"] = (
+                "Tell us what you want to sell (5 characters minimum)."
+                if _is_en() else "اكتب ما تريد بيعه (5 أحرف على الأقل)."
+            )
+
+        if not errors:
+            # Shows in the dashboard Messages tab as a normal message.
+            ContactMessage.objects.create(
+                name=form["name"][:120],
+                phone=form["phone"][:30],
+                subject="Sell request",
+                body=form["items"][:2000],
+            )
+            return redirect(reverse("pages:sell") + "?sent=1")
+
+    return render(request, "pages/sell.html", {
+        "sent": request.GET.get("sent") == "1",
+        "errors": errors,
+        "form": form,
+        "has_errors": bool(errors),
+        "sell_url": sell_url,
+        "sell_eyebrow": body["eyebrow"],
+        "sell_title": body["title"],
+        "sell_lead": body["lead"],
+        "sell_steps_title": body["steps_title"],
+        "sell_steps": [{"h": h, "p": p} for h, p in body["steps"]],
+        "sell_buy_title": body["buy_title"],
+        "sell_buy_items": body["buy_items"],
+        "sell_form_title": body["form_title"],
+        "sell_form_sub": body["form_sub"],
+        "sell_schema_name": body["schema_name"],
+        "sell_schema_desc": body["schema_desc"],
+    })
+
+
 # ---- Static policy pages: /shipping/ /returns/ /privacy/ /terms/ ----
 # Content lives here (not in translations.py) because these are long
 # page bodies, not small UI labels. Facts come from the FAQ page, so
