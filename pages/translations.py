@@ -166,6 +166,15 @@ TRANSLATIONS = {
         "How can I order this item?": "كيف أطلب هذه القطعة؟",
         "Press the Direct Order button on this page, or contact us on WhatsApp at 0582328389 or by phone. We will confirm the item and delivery with you.":
             "اضغط زر الطلب المباشر في هذه الصفحة، أو تواصل معنا على واتساب 0582328389 أو بالهاتف. سنؤكد لك القطعة والتوصيل.",
+
+        # ---- Policy pages + footer info column ----
+        "Information": "معلومات",
+        "Customer Care": "خدمة العملاء",
+        "Related pages": "صفحات ذات صلة",
+        "Delivery & Pickup": "التوصيل والاستلام",
+        "Returns & Exchanges": "الاسترجاع والاستبدال",
+        "Privacy Policy": "سياسة الخصوصية",
+        "Terms of Service": "الشروط والأحكام",
     },
 }
 

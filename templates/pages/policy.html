@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static site_lang %}
+
+{% block content %}
+<!-- BreadcrumbList + WebPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "{% t "Home" %}",
+          "item": "https://tabukharajfurniture.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ policy_title|escapejs }}",
+          "item": "{{ policy_url }}"
+        }
+      ]
+    },
+    {
+      "@type": "{{ policy_schema_type }}",
+      "@id": "{{ policy_url }}#webpage",
+      "name": "{{ policy_title|escapejs }}",
+      "description": "{{ page_description|escapejs }}",
+      "url": "{{ policy_url }}",
+      "inLanguage": ["ar", "en"],
+      "isPartOf": {
+        "@id": "https://tabukharajfurniture.com/#website"
+      },
+      "about": {
+        "@id": "https://tabukharajfurniture.com/#localbusiness"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://tabukharajfurniture.com/static/images/og-cover.jpg"
+      }
+    }
+  ]
+}
+</script>
+
+<div class="container">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="{% url 'pages:home' %}">{% t "Home" %}</a>
+    <span class="crumb__sep" aria-hidden="true">/</span>
+    <span class="crumb__current">{{ policy_title }}</span>
+  </nav>
+</div>
+
+<section class="pp-hero">
+  <div class="container pp-hero__inner">
+    <p class="section-eyebrow">{% t "Customer Care" %}</p>
+    <h1 class="pp-hero__title">{{ policy_title }}</h1>
+    <p class="pp-hero__sub" dir="auto">{{ page_description }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="policy">
+      {% for s in policy_sections %}
+      <article class="policy__card">
+        <h2 class="policy__h">{{ s.h }}</h2>
+        <p class="policy__p" dir="auto">{{ s.p }}</p>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="policy__related">
+      <span class="policy__related-label">{% t "Related pages" %}</span>
+      <nav class="policy__related-links" aria-label="{% t "Related pages" %}">
+        <a href="{% url 'pages:shipping' %}">{% t "Delivery & Pickup" %}</a>
+        <a href="{% url 'pages:returns' %}">{% t "Returns & Exchanges" %}</a>
+        <a href="{% url 'pages:privacy' %}">{% t "Privacy Policy" %}</a>
+        <a href="{% url 'pages:terms' %}">{% t "Terms of Service" %}</a>
+      </nav>
+    </div>
+
+    <div class="policy__cta">
+      <a href="tel:+966582328389" class="btn btn--gold">{% t "Call Now" %}</a>
+      <a href="https://wa.me/966582328389" target="_blank" rel="noopener noreferrer" class="btn btn--wa">{% t "WhatsApp Chat" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -12,4 +12,8 @@ urlpatterns = [
     path("product/<slug:slug>/order/", views.product_order, name="product_order"),
     path("about/", views.about, name="about"),
     path("contact/", views.contact, name="contact"),
+    path("shipping/", views.policy, {"page": "shipping"}, name="shipping"),
+    path("returns/", views.policy, {"page": "returns"}, name="returns"),
+    path("privacy/", views.policy, {"page": "privacy"}, name="privacy"),
+    path("terms/", views.policy, {"page": "terms"}, name="terms"),
 ]

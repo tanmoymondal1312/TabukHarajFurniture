@@ -154,6 +154,251 @@ def contact(request):
     })
 
 
+# ---- Static policy pages: /shipping/ /returns/ /privacy/ /terms/ ----
+# Content lives here (not in translations.py) because these are long
+# page bodies, not small UI labels. Facts come from the FAQ page, so
+# every promise on the site stays the same.
+
+_POLICIES = {
+    "shipping": {
+        "seo": {
+            "ar_title": "التوصيل والاستلام | حراج تبوك للأثاث المستعمل",
+            "en_title": "Delivery & Pickup | Tabuk Haraj Furniture",
+            "ar_desc": (
+                "توصيل مجاني لجميع أحياء تبوك عادةً في نفس اليوم أو اليوم التالي، "
+                "واستلام من المعرض في المنشية القديمة، طريق معاوية. لا يوجد توصيل خارج تبوك."
+            ),
+            "en_desc": (
+                "Free delivery across all Tabuk districts, usually the same day or the "
+                "next day. Pick up from our showroom in Al Munshiyah Al Qadimah. No "
+                "delivery outside Tabuk city."
+            ),
+        },
+        "ar": {
+            "title": "التوصيل والاستلام",
+            "sections": [
+                ("التوصيل مجاني داخل تبوك",
+                 "التوصيل مجاني لجميع أحياء تبوك: النخيل، الحصاة، المروج، الشروق، الخالدية، "
+                 "العزيزية، البوادي، الروضة، المنشية القديمة وغيرها. معظم الطلبات تصل في نفس "
+                 "اليوم أو اليوم التالي حسب الوقت."),
+                ("التوصيل داخل مدينة تبوك فقط",
+                 "نوصل ونستلم داخل مدينة تبوك فقط. إذا كنت خارج تبوك، يمكنك الاستلام من "
+                 "المعرض مباشرة."),
+                ("الاستلام من المعرض",
+                 "معرضنا في المنشية القديمة، طريق معاوية، تبوك 47914، السعودية. ساعات العمل: "
+                 "السبت–الخميس 9:00 صباحاً حتى 10:00 مساءً، والجمعة من 4:00 مساءً حتى 10:00 مساءً."),
+                ("ساعدنا في التوصيل السريع",
+                 "عند الطلب، اكتب الحي والشارع والدور بوضوح. إذا كان لديك وقت مفضل، أخبرنا على "
+                 "واتساب 058 232 8389."),
+            ],
+        },
+        "en": {
+            "title": "Delivery & Pickup",
+            "sections": [
+                ("Free delivery in Tabuk",
+                 "Delivery is free to all districts of Tabuk: Al Nakheel, Al Hasah, Al Muruj, "
+                 "Al Shuruq, Al Khalidiyah, Al Aziziyah, Al Bawadi, Al Rawdah, Al Munshiyah Al "
+                 "Qadimah and more. Most orders arrive the same day or the next day."),
+                ("Inside Tabuk city only",
+                 "We deliver and pick up inside Tabuk city only. If you are outside Tabuk, you "
+                 "are welcome to pick up your item from the showroom."),
+                ("Pick up from the showroom",
+                 "Our showroom is in Al Munshiyah Al Qadimah, Muawiyah Road, Tabuk 47914, Saudi "
+                 "Arabia. Open Saturday to Thursday 9:00-22:00 and Friday 16:00-22:00."),
+                ("Help us deliver faster",
+                 "When you place an order, write your district, street and floor clearly. If you "
+                 "have a preferred time, tell us on WhatsApp 058 232 8389."),
+            ],
+        },
+    },
+    "returns": {
+        "seo": {
+            "ar_title": "الاسترجاع والاستبدال | حراج تبوك للأثاث المستعمل",
+            "en_title": "Returns & Exchanges | Tabuk Haraj Furniture",
+            "ar_desc": (
+                "ضمان استبدال 30 يوم على كل قطعة بدون استرداد نقدي — كيف تطلب الاستبدال "
+                "وما الذي يغطيه الضمان في حراج تبوك للأثاث."
+            ),
+            "en_desc": (
+                "30-day exchange warranty on every item, no cash refund. How to request an "
+                "exchange and what the warranty covers at Tabuk Haraj Furniture."
+            ),
+        },
+        "ar": {
+            "title": "الاسترجاع والاستبدال",
+            "sections": [
+                ("ضمان استبدال 30 يوم",
+                 "كل قطعة تباع بضمان استبدال 30 يوماً. الضمان استبدال فقط ولا يوجد استرداد نقدي."),
+                ("كيف تطلب الاستبدال",
+                 "إذا ظهرت مشكلة في القطعة خلال 30 يوماً، اتصل بنا أو راسلنا على واتساب "
+                 "058 232 8389. بعد التأكيد، تحضر القطعة إلى المعرض أو نأتي نحن لاستلامها "
+                 "للإصلاح أو الاستبدال."),
+                ("ما الذي يغطيه الضمان",
+                 "الضمان يغطي الأعطال في القطعة أثناء استخدامك لها. لا يغطي الضمان الكسر أو "
+                 "الضرر الناتج عن سوء الاستخدام."),
+                ("جرّب قبل ما تشتري",
+                 "يمكنك تجربة القطع في المعرض قبل الشراء — المكيفات (تبريد وتسخين) والثلاجات "
+                 "(تبريد وتجميد). التجربة قبل الشراء تمنع أغلب حالات الاستبدال."),
+            ],
+        },
+        "en": {
+            "title": "Returns & Exchanges",
+            "sections": [
+                ("30-day exchange warranty",
+                 "Every item comes with a 30-day exchange warranty. The warranty is exchange "
+                 "only — there is no cash refund."),
+                ("How to request an exchange",
+                 "If a problem appears within 30 days, call us or write to us on WhatsApp "
+                 "058 232 8389. After we confirm, bring the item to the showroom, or we pick "
+                 "it up from you for repair or exchange."),
+                ("What the warranty covers",
+                 "The warranty covers faults in the item while it is in your use. It does not "
+                 "cover breakage or damage caused by misuse."),
+                ("Test before you buy",
+                 "You can test items at the showroom before buying — ACs (cooling and heating) "
+                 "and fridges (cooling and freezing). Testing before buying prevents most "
+                 "returns."),
+            ],
+        },
+    },
+    "privacy": {
+        "seo": {
+            "ar_title": "سياسة الخصوصية | حراج تبوك للأثاث المستعمل",
+            "en_title": "Privacy Policy | Tabuk Haraj Furniture",
+            "ar_desc": (
+                "نجمع فقط ما تكتبه في نماذجنا: الاسم والجوال والعنوان والرسالة — ولا نبيع "
+                "بياناتك لأحد. تعرف على حقوقك في هذه الصفحة."
+            ),
+            "en_desc": (
+                "We only collect what you type in our forms: name, phone, address and "
+                "message — and we never sell your data. Learn about your rights here."
+            ),
+        },
+        "ar": {
+            "title": "سياسة الخصوصية",
+            "sections": [
+                ("ما الذي نجمعه",
+                 "فقط ما تكتبه في نماذجنا: اسمك ورقم جوالك وعنوان التوصيل ورسالتك. كما نحفظ "
+                 "ملف تعريف صغير (cookie) يتذكر لغتك المختارة (العربية أو الإنجليزية)."),
+                ("كيف نستخدمه",
+                 "نستخدم بياناتك للرد عليك فقط، وتأكيد طلبك، وتوصيله إليك."),
+                ("لا نبيع بياناتك أبداً",
+                 "لا نبيع بياناتك الشخصية ولا نؤجرها ولا نشاركها مع المعلنين أو شركات أخرى."),
+                ("مدة الاحتفاظ",
+                 "تبقى الرسائل في نظامنا لكي نخدمك. يمكنك طلب حذفها في أي وقت."),
+                ("خياراتك",
+                 "يمكنك معرفة بياناتنا لديك، أو طلب تصحيحها، أو طلب حذفها: "
+                 "info@tabukharajfurniture.com أو اتصل على 058 232 8389."),
+                ("تحديث هذه الصفحة",
+                 "عند تغيير هذه السياسة نحدّث هذه الصفحة. آخر تحديث: أكتوبر 2026."),
+            ],
+        },
+        "en": {
+            "title": "Privacy Policy",
+            "sections": [
+                ("What we collect",
+                 "Only what you type into our forms: your name, phone number, delivery address "
+                 "and message. We also store one small cookie that remembers your language "
+                 "choice (Arabic or English)."),
+                ("How we use it",
+                 "We use your details only to answer you, confirm your order and deliver to you."),
+                ("We never sell your data",
+                 "We do not sell, rent or share your personal data with advertisers or other "
+                 "companies."),
+                ("How long we keep it",
+                 "Messages stay in our system while we need them to serve you. You can ask us "
+                 "to delete them at any time."),
+                ("Your choices",
+                 "You can ask what data we hold, ask for a correction, or ask us to delete it: "
+                 "info@tabukharajfurniture.com or call 058 232 8389."),
+                ("Changes to this page",
+                 "If this policy changes, we update this page. Last updated: October 2026."),
+            ],
+        },
+    },
+    "terms": {
+        "seo": {
+            "ar_title": "الشروط والأحكام | حراج تبوك للأثاث المستعمل",
+            "en_title": "Terms of Service | Tabuk Haraj Furniture",
+            "ar_desc": (
+                "شروط الشراء من حراج تبوك للأثاث: المنتجات والأسعار، طلبات الشراء، طرق الدفع، "
+                "الضمان 30 يوم، والتوصيل داخل تبوك."
+            ),
+            "en_desc": (
+                "Shopping terms for Tabuk Haraj Furniture: products and prices, order requests, "
+                "payment methods, 30-day warranty and delivery inside Tabuk."
+            ),
+        },
+        "ar": {
+            "title": "الشروط والأحكام",
+            "sections": [
+                ("من نحن",
+                 "حراج تبوك للأثاث معرض لأثاث وأجهزة مستعملة في تبوك، السعودية. رقم الرخصة "
+                 "التجارية 470220635950. المعرض: المنشية القديمة، طريق معاوية، تبوك 47914."),
+                ("المنتجات والأسعار",
+                 "جميع القطع مستعملة وتُفحص قبل البيع. الأسعار بالريال السعودي وقد تتغير دون "
+                 "إشعار. القطع متوفرة حسب المخزون — صفحة المنتج تعرض حالة القطع الحالية "
+                 "(متوفر، محجوز، أو مباع)."),
+                ("طلبات الشراء",
+                 "إرسال طلب مباشر أو رسالة أو واتساب يعتبر طلباً وليس عملية شراء مؤكدة. نتصل "
+                 "بك أو نراسلك لتأكيد القطعة والسعر النهائي والتوصيل."),
+                ("طرق الدفع",
+                 "نقبل النقد، مدى وفيزا، التحويل البنكي، STC Pay، Apple Pay، والتقسيط عبر تمارا."),
+                ("الضمان والتوصيل",
+                 "كل قطعة بضمان استبدال 30 يوماً والتوصيل مجاني داخل تبوك. راجع صفحتي التوصيل "
+                 "والاسترجاع للتفاصيل."),
+                ("تواصل معنا",
+                 "الهاتف والواتساب: 058 232 8389. البريد الإلكتروني: "
+                 "info@tabukharajfurniture.com. المعرض: المنشية القديمة، طريق معاوية، تبوك 47914."),
+            ],
+        },
+        "en": {
+            "title": "Terms of Service",
+            "sections": [
+                ("Who we are",
+                 "Tabuk Haraj Furniture is a used furniture and appliances showroom in Tabuk, "
+                 "Saudi Arabia. Commercial license 470220635950. Showroom: Al Munshiyah Al "
+                 "Qadimah, Muawiyah Road, Tabuk 47914."),
+                ("Products and prices",
+                 "All items are used and checked before sale. Prices are in Saudi Riyals (SAR) "
+                 "and may change without notice. Items are subject to availability — the product "
+                 "page always shows the current status (available, reserved or sold)."),
+                ("Order requests",
+                 "Sending a Direct Order, a message or a WhatsApp is a request, not a confirmed "
+                 "purchase. We call or message you to confirm the item, the final price and the "
+                 "delivery."),
+                ("Payment methods",
+                 "We accept cash, mada and Visa cards, bank transfer, STC Pay, Apple Pay, and "
+                 "installments with Tamara."),
+                ("Warranty and delivery",
+                 "Every item comes with a 30-day exchange warranty and delivery is free inside "
+                 "Tabuk. See our Delivery and Returns pages for details."),
+                ("Contact us",
+                 "Phone and WhatsApp: 058 232 8389. Email: info@tabukharajfurniture.com. "
+                 "Showroom: Al Munshiyah Al Qadimah, Muawiyah Road, Tabuk 47914."),
+            ],
+        },
+    },
+}
+
+_POLICY_SCHEMA_TYPE = {"privacy": "PrivacyPolicy", "terms": "TermsOfService"}
+
+
+def policy(request, page):
+    """Render one of the four static policy pages (shipping, returns,
+    privacy, terms) with its own title, body and WebPage schema."""
+    data = _POLICIES[page]
+    _set_seo(request, **data["seo"])
+    body = data["en"] if _is_en() else data["ar"]
+    page_url = CANONICAL + reverse(f"pages:{page}")
+    return render(request, "pages/policy.html", {
+        "policy_title": body["title"],
+        "policy_sections": [{"h": h, "p": p} for h, p in body["sections"]],
+        "policy_url": page_url,
+        "policy_schema_type": _POLICY_SCHEMA_TYPE.get(page, "WebPage"),
+    })
+
+
 def products(request):
     _set_seo(
         request,
