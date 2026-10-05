@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load static site_lang %}
+{% load l10n %}
+
+{% block content %}
+<!-- BreadcrumbList + WebPage + ItemList Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "{% t "Home" %}",
+          "item": "https://tabukharajfurniture.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ district_title|escapejs }}",
+          "item": "{{ district_url }}"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ district_url }}#webpage",
+      "name": "{{ district_title|escapejs }}",
+      "description": "{{ page_description|escapejs }}",
+      "url": "{{ district_url }}",
+      "inLanguage": ["ar", "en"],
+      "isPartOf": {
+        "@id": "https://tabukharajfurniture.com/#website"
+      },
+      "about": {
+        "@id": "https://tabukharajfurniture.com/#localbusiness"
+      }
+    }{% if district_products %},
+    {
+      "@type": "ItemList",
+      "name": "{{ district_title|escapejs }}",
+      "url": "{{ district_url }}",
+      "numberOfItems": {{ district_products|length }},
+      "itemListElement": [
+        {% for item in district_products %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.counter }},
+          "url": "https://tabukharajfurniture.com{{ item.get_absolute_url }}",
+          "name": "{{ item.title|escapejs }}",
+          "item": {
+            "@type": "Product",
+            "name": "{{ item.title|escapejs }}",
+            "url": "https://tabukharajfurniture.com{{ item.get_absolute_url }}",
+            "image": "{% if item.image %}https://tabukharajfurniture.com{{ item.image.url }}{% else %}https://tabukharajfurniture.com/static/images/placeholder.webp{% endif %}",
+            "itemCondition": "https://schema.org/{% if item.condition == 'new' %}NewCondition{% elif item.condition == 'like_new' %}LikeNewCondition{% else %}UsedCondition{% endif %}",
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "SAR",
+              "price": "{{ item.price|unlocalize }}",
+              "availability": "https://schema.org/InStock",
+              "url": "https://tabukharajfurniture.com{{ item.get_absolute_url }}"
+            }
+          }
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
+
+<div class="container">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="{% url 'pages:home' %}">{% t "Home" %}</a>
+    <span class="crumb__sep" aria-hidden="true">/</span>
+    <span class="crumb__current">{{ district_title }}</span>
+  </nav>
+</div>
+
+<section class="pp-hero">
+  <div class="container pp-hero__inner">
+    <p class="section-eyebrow">{% t "Districts we serve" %}</p>
+    <h1 class="pp-hero__title">{{ district_title }}</h1>
+    <p class="pp-hero__sub" dir="auto">{{ district_lead }}</p>
+    <span class="pp-hero__count">{% t "Free delivery • 30-day warranty • Cash on delivery" %}</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="policy">
+      {% for s in district_sections %}
+      <article class="policy__card">
+        <h2 class="policy__h">{{ s.h }}</h2>
+        <p class="policy__p" dir="auto">{{ s.p }}</p>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="policy__related">
+      <span class="policy__related-label">{% t "Districts we serve" %}</span>
+      <nav class="policy__related-links" aria-label="{% t "Districts we serve" %}">
+        {% for d in district_links %}
+        <a href="{% url d.url_name %}" {% if d.slug == district_slug %}aria-current="page"{% endif %}>{{ d.name }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="policy__related">
+      <span class="policy__related-label">{% t "Related pages" %}</span>
+      <nav class="policy__related-links" aria-label="{% t "Related pages" %}">
+        <a href="{% url 'pages:products' %}">{% t "All Products" %}</a>
+        <a href="{% url 'pages:shipping' %}">{% t "Delivery & Pickup" %}</a>
+        <a href="{% url 'pages:sell' %}">{% t "Sell to us" %}</a>
+      </nav>
+    </div>
+
+    <div class="policy__cta">
+      <a href="tel:+966582328389" class="btn btn--gold">{% t "Call Now" %}</a>
+      <a href="https://wa.me/966582328389" target="_blank" rel="noopener noreferrer" class="btn btn--wa">{% t "WhatsApp Chat" %}</a>
+      <a href="{% url 'pages:products' %}" class="btn btn--outline">{% t "View All Products" %}</a>
+    </div>
+  </div>
+</section>
+
+{% if district_products %}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__left">
+        <p class="section-eyebrow">{% t "Available now" %}</p>
+        <h2 class="section-title">{% t "Products" %}</h2>
+      </div>
+    </div>
+    <div class="pp-grid">
+      {% for item in district_products %}
+      <article class="listing-card pp-card">
+        {% if item.is_featured %}
+        <span class="pp-card__ribbon">{% t "Featured" %}</span>
+        {% endif %}
+        <a href="{{ item.get_absolute_url }}" class="listing-card__link">
+          <div class="listing-card__media">
+            <img
+              src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/placeholder.webp' %}{% endif %}"
+              data-fallback="{% static 'images/placeholder.webp' %}"
+              alt="{{ item.title }} - Quality used item at Tabuk Haraj Furniture showroom"
+              width="296"
+              height="160"
+              loading="lazy"
+            >
+            <span class="listing-card__badge">{% t item.get_condition_display %}</span>
+          </div>
+          <div class="listing-card__body">
+            <p class="listing-card__title" dir="rtl" lang="ar">{{ item.title|bidi_fix }}</p>
+            <p class="listing-card__price">{{ item.price_display }}</p>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

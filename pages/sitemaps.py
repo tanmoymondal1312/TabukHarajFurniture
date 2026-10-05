@@ -8,6 +8,7 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 from .models import Category, Product
+from .views import _DISTRICT_SLUGS
 
 # (view name, priority, changefreq) for the static pages.
 _STATIC_PAGES = [
@@ -21,6 +22,8 @@ _STATIC_PAGES = [
     ("pages:returns", "0.6", "yearly"),
     ("pages:privacy", "0.4", "yearly"),
     ("pages:terms", "0.4", "yearly"),
+] + [
+    (f"pages:district_{slug}", "0.7", "weekly") for slug in _DISTRICT_SLUGS
 ]
 
 

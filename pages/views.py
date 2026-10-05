@@ -1,7 +1,7 @@
 import re
 
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
@@ -308,6 +308,124 @@ def sell(request):
         "sell_form_sub": body["form_sub"],
         "sell_schema_name": body["schema_name"],
         "sell_schema_desc": body["schema_desc"],
+    })
+
+
+# ---- District landing pages: /nakheel/ /hasah/ ... ----
+# One page per Tabuk district we deliver to, aimed at searches like
+# "used furniture in Al Nakheel". Facts are the same as the shipping
+# page; only the district name changes, so no promise is invented.
+
+
+def _district_pages():
+    names = [
+        ("nakheel", "النخيل", "Al Nakheel"),
+        ("hasah", "الحصاة", "Al Hasah"),
+        ("muruj", "المروج", "Al Muruj"),
+        ("shuruq", "الشروق", "Al Shuruq"),
+        ("khalidiyah", "الخالدية", "Al Khalidiyah"),
+        ("aziziyah", "العزيزية", "Al Aziziyah"),
+        ("bawadi", "البوادي", "Al Bawadi"),
+        ("rawdah", "الروضة", "Al Rawdah"),
+    ]
+    pages = {}
+    for slug, ar_n, en_n in names:
+        pages[slug] = {
+            "ar_name": ar_n,
+            "en_name": en_n,
+            "seo": {
+                "ar_title": f"أثاث مستعمل في حي {ar_n} تبوك | توصيل مجاني",
+                "en_title": f"Used Furniture in {en_n}, Tabuk | Free Delivery",
+                "ar_desc": (
+                    f"أثاث وأجهزة مستعملة مفحوصة لحي {ar_n} في تبوك: توصيل مجاني، ضمان 30 يوم، "
+                    f"ودفع عند الاستلام. معرضنا في المنشية القديمة — ونشتري أيضاً أثاثك في {ar_n}."
+                ),
+                "en_desc": (
+                    f"Tested used furniture and appliances for {en_n}, Tabuk: free delivery, "
+                    f"30-day warranty and cash on delivery. We also buy your used furniture in {en_n}."
+                ),
+            },
+            "ar": {
+                "title": f"أثاث مستعمل في حي {ar_n} تبوك",
+                "lead": (
+                    f"نوصل أثاثنا وأجهزتنا المستعملة إلى حي {ar_n} في تبوك مجاناً — معظم الطلبات "
+                    f"تصل في نفس اليوم أو اليوم التالي. كل قطعة مفحوصة، بضمان 30 يوم، وتدفع عند الاستلام."
+                ),
+                "sections": [
+                    (f"توصيل مجاني إلى حي {ar_n}",
+                     f"التوصيل مجاني إلى حي {ar_n} وجميع أحياء تبوك. اكتب الشارع والدور بوضوح ونوصل "
+                     f"القطعة إلى بابك. يمكنك أيضاً الاستلام من المعرض في المنشية القديمة، طريق معاوية، "
+                     f"تبوك 47914 — السبت–الخميس 9:00–22:00 والجمعة 16:00–22:00."),
+                    ("قطع مفحوصة بضمان 30 يوم",
+                     "كل قطعة تُفحص وتُختبر قبل عرضها: كنب، غرف نوم، خزائن، مكيفات، ثلاجات وغسالات. "
+                     "الضمان 30 يوم استبدال، والدفع كاش أو مدى عند وصول القطعة."),
+                    (f"نشتري أيضاً أثاثك في {ar_n}",
+                     f"تنتقل أو تريد تجديد أثاثك؟ نشتري الأثاث والأجهزة المستعملة في {ar_n} أيضاً. "
+                     f"أرسل صور القطعة على واتساب 058 232 8389 واحصل على عرض سعر فوري — استلام مجاني "
+                     f"من {ar_n} ودفع كاش في نفس الزيارة."),
+                ],
+            },
+            "en": {
+                "title": f"Used Furniture in {en_n}, Tabuk",
+                "lead": (
+                    f"We deliver our used furniture and appliances to {en_n} in Tabuk for free — "
+                    f"most orders arrive the same day or the next day. Every item is tested, comes "
+                    f"with a 30-day warranty, and you pay on delivery."
+                ),
+                "sections": [
+                    (f"Free delivery to {en_n}",
+                     f"Delivery is free to {en_n} and all districts of Tabuk. Write your street and "
+                     f"floor clearly and we bring the item to your door. You are also welcome to pick "
+                     f"up from the showroom in Al Munshiyah Al Qadimah, Muawiyah Road, Tabuk 47914 — "
+                     f"Saturday to Thursday 9:00-22:00, Friday 16:00-22:00."),
+                    ("Tested items with a 30-day warranty",
+                     "Every item is checked and tested before we list it: sofas, bedroom sets, "
+                     "wardrobes, ACs, fridges and washing machines. You get a 30-day exchange "
+                     "warranty and pay cash or by Mada when the item arrives."),
+                    (f"We also buy your used furniture in {en_n}",
+                     f"Moving or upgrading? We buy used furniture and appliances in {en_n} too. "
+                     f"Send photos on WhatsApp at 058 232 8389 for an instant price offer — free "
+                     f"pickup from {en_n} and cash paid on the spot."),
+                ],
+            },
+        }
+    return pages
+
+
+_DISTRICTS = _district_pages()
+_DISTRICT_SLUGS = list(_DISTRICTS)
+
+
+def district(request, slug):
+    """Landing page for one Tabuk district."""
+    data = _DISTRICTS.get(slug)
+    if data is None:
+        raise Http404("District not found")
+    _set_seo(request, **data["seo"])
+    is_en = _is_en()
+    body = data["en"] if is_en else data["ar"]
+    district_url = CANONICAL + reverse(f"pages:district_{slug}")
+
+    products = list(Product.objects.filter(
+        is_active=True,
+        status=Product.STATUS_AVAILABLE,
+        category__is_active=True,
+    ).order_by("-is_featured", "-created_at")[:6])
+
+    links = [{
+        "slug": s,
+        "name": _DISTRICTS[s]["en_name"] if is_en else _DISTRICTS[s]["ar_name"],
+        "url_name": f"pages:district_{s}",
+    } for s in _DISTRICT_SLUGS]
+
+    return render(request, "pages/district.html", {
+        "district_slug": slug,
+        "district_url": district_url,
+        "district_title": body["title"],
+        "district_lead": body["lead"],
+        "district_sections": [{"h": h, "p": p} for h, p in body["sections"]],
+        "district_links": links,
+        "district_products": products,
     })
 
 

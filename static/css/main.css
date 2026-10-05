@@ -4518,3 +4518,9 @@ html[dir="rtl"] .carousel-btn svg {
 .sell-form-wrap {
   max-width: 760px;
 }
+
+.policy__related-links a[aria-current="page"] {
+  color: var(--gold-dark);
+  border-color: var(--gold);
+  font-weight: 700;
+}

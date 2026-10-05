@@ -18,3 +18,9 @@ urlpatterns = [
     path("privacy/", views.policy, {"page": "privacy"}, name="privacy"),
     path("terms/", views.policy, {"page": "terms"}, name="terms"),
 ]
+
+# One landing page per Tabuk district: /nakheel/, /hasah/, ...
+for _slug in views._DISTRICT_SLUGS:
+    urlpatterns.append(
+        path(f"{_slug}/", views.district, {"slug": _slug}, name=f"district_{_slug}")
+    )

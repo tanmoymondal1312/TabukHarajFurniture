@@ -190,6 +190,12 @@ TRANSLATIONS = {
         "Check the required fields": "راجع الحقول المطلوبة",
         "Your details reach us only — we never share them.":
             "بياناتك تصل إلينا فقط — لا نشاركها مع أي جهة.",
+
+        # ---- District landing pages ----
+        "Districts we serve": "الأحياء التي نخدمها",
+        "Free delivery • 30-day warranty • Cash on delivery":
+            "توصيل مجاني • ضمان 30 يوم • الدفع عند الاستلام",
+        "Available now": "متاح الآن",
     },
 }
 
