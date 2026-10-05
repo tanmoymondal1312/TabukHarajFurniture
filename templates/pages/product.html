@@ -21,7 +21,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "{{ product.category.display_name|escapejs }}",
-          "item": "https://tabukharajfurniture.com/#categories"
+          "item": "https://tabukharajfurniture.com/products/?cat={{ product.category.slug }}"
         },
         {
           "@type": "ListItem",
@@ -64,7 +64,7 @@
   <nav class="crumb" aria-label="Breadcrumb">
     <a href="{% url 'pages:home' %}">{% t "Home" %}</a>
     <span class="crumb__sep" aria-hidden="true">/</span>
-    <a href="{% url 'pages:home' %}#categories">{{ product.category.display_name }}</a>
+    <a href="{% url 'pages:products' %}?cat={{ product.category.slug }}">{{ product.category.display_name }}</a>
     <span class="crumb__sep" aria-hidden="true">/</span>
     <span class="crumb__current" dir="rtl">{{ product.title|bidi_fix }}</span>
   </nav>
@@ -88,7 +88,7 @@
 
     <div class="pdp__info">
       <p class="pdp__cat">
-        <a href="{% url 'pages:home' %}#categories">{{ product.category.display_name }}</a>
+        <a href="{% url 'pages:products' %}?cat={{ product.category.slug }}">{{ product.category.display_name }}</a>
       </p>
       <h1 class="pdp__title" dir="rtl" lang="ar">{{ product.title|bidi_fix }}</h1>
 
