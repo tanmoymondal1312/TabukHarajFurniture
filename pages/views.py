@@ -24,11 +24,32 @@ def _listed_date(value):
     return d.strftime("%d %b %Y")
 
 
+def _is_en():
+    return (get_language() or "ar").split("-")[0].lower() == "en"
+
+
+def _set_seo(request, *, ar_title, en_title, ar_desc, en_desc, image=None):
+    """Set the page <title>, meta description and OG image for the
+    active language, so Arabic and English pages each get their own
+    search-engine snippet."""
+    if _is_en():
+        request.page_title = en_title
+        request.page_description = en_desc
+    else:
+        request.page_title = ar_title
+        request.page_description = ar_desc
+    request.page_image = image or OG_COVER
+
+
 def home(request):
     # Set SEO context for the homepage
-    request.page_title = "حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني"
-    request.page_description = "حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد."
-    request.page_image = OG_COVER
+    _set_seo(
+        request,
+        ar_title="حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني",
+        en_title="Used Furniture & Appliances in Tabuk | 30-Day Warranty • Free Delivery",
+        ar_desc="حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد.",
+        en_desc="Physical showroom in Tabuk for tested used furniture and appliances: sofas, bedroom sets, ACs, fridges and washing machines. 30-day warranty, free delivery across Tabuk, instant cash for sellers.",
+    )
 
     listings = (
         Product.objects.filter(
@@ -46,20 +67,32 @@ def home(request):
 
 
 def faq(request):
-    request.page_title = "الأسئلة الشائعة | حراج تبوك للأثاث المستعمل"
-    request.page_description = "أسئلة وأجوبة كاملة عن حراج تبوك للأثاث المستعمل في تبوك: موقع المعرض وساعات العمل، ضمان 30 يوم، التوصيل المجاني، طرق الدفع، تجربة الأجهزة قبل الشراء، والبيع والشراء."
-    request.page_image = OG_COVER
+    _set_seo(
+        request,
+        ar_title="الأسئلة الشائعة | حراج تبوك للأثاث المستعمل",
+        en_title="Frequently Asked Questions | Tabuk Haraj Furniture",
+        ar_desc="أسئلة وأجوبة كاملة عن حراج تبوك للأثاث المستعمل في تبوك: موقع المعرض وساعات العمل، ضمان 30 يوم، التوصيل المجاني، طرق الدفع، تجربة الأجهزة قبل الشراء، والبيع والشراء.",
+        en_desc="Answers about Tabuk Haraj Furniture: showroom location and hours, 30-day warranty, free delivery, payment methods, testing items before buying, and selling your used furniture.",
+    )
 
     return render(request, "pages/faq.html", {})
 
 
 def about(request):
-    request.page_title = "من نحن | شراء وبيع الأثاث والمكيفات والثلاجات المستعملة في تبوك"
-    request.page_description = (
-        "حراج تبوك للأثاث: نشتري ونبيع الأثاث والمكيفات والثلاجات والغسالات المستعملة في تبوك. "
-        "قصة معرضنا، فحص القطع قبل البيع، ضمان 30 يوم، توصيل مجاني، وخدماتنا للمنازل والشركات."
+    _set_seo(
+        request,
+        ar_title="من نحن | شراء وبيع الأثاث والمكيفات والثلاجات المستعملة في تبوك",
+        en_title="About Us | Used Furniture & Appliances in Tabuk",
+        ar_desc=(
+            "حراج تبوك للأثاث: نشتري ونبيع الأثاث والمكيفات والثلاجات والغسالات المستعملة في تبوك. "
+            "قصة معرضنا، فحص القطع قبل البيع، ضمان 30 يوم، توصيل مجاني، وخدماتنا للمنازل والشركات."
+        ),
+        en_desc=(
+            "Tabuk Haraj Furniture buys and sells used furniture, ACs, fridges and washing "
+            "machines in Tabuk. Our story, how we check every item, 30-day warranty, free "
+            "delivery and our services for homes and businesses."
+        ),
     )
-    request.page_image = OG_COVER
 
     return render(request, "pages/about.html", {
         "categories": Category.objects.filter(is_active=True),
@@ -67,13 +100,21 @@ def about(request):
 
 
 def contact(request):
-    request.page_title = "اتصل بنا | حراج تبوك للأثاث المستعمل"
-    request.page_description = (
-        "تواصل مع حراج تبوك للأثاث المستعمل: اتصال مباشر 0582328389، واتساب، "
-        "بريد إلكتروني، ونموذج رسالة يصلك مباشرة. معرضنا في المنشية القديمة، تبوك — "
-        "السبت–الخميس 9:00–22:00."
+    _set_seo(
+        request,
+        ar_title="اتصل بنا | حراج تبوك للأثاث المستعمل",
+        en_title="Contact Us | Tabuk Haraj Furniture",
+        ar_desc=(
+            "تواصل مع حراج تبوك للأثاث المستعمل: اتصال مباشر 0582328389، واتساب، "
+            "بريد إلكتروني، ونموذج رسالة يصلك مباشرة. معرضنا في المنشية القديمة، تبوك — "
+            "السبت–الخميس 9:00–22:00."
+        ),
+        en_desc=(
+            "Contact Tabuk Haraj Furniture: call 0582328389, WhatsApp, email, or send a "
+            "message that reaches us directly. Showroom in Al Munshiyah Al Qadimah, Tabuk — "
+            "Sat-Thu 9:00-22:00."
+        ),
     )
-    request.page_image = OG_COVER
 
     errors = {}
     form = {"name": "", "phone": "", "subject": "", "body": ""}
@@ -111,9 +152,13 @@ def contact(request):
 
 
 def products(request):
-    request.page_title = "كل المنتجات | حراج تبوك للأثاث المستعمل"
-    request.page_description = "تصفح جميع المنتجات في حراج تبوك للأثاث المستعمل: أثاث، مكيفات، ثلاجات، غسالات وأكثر. كل قطعة مختبرة بضمان 30 يوم وتوصيل مجاني في تبوك."
-    request.page_image = OG_COVER
+    _set_seo(
+        request,
+        ar_title="كل المنتجات | حراج تبوك للأثاث المستعمل",
+        en_title="All Products | Used Furniture & Appliances in Tabuk",
+        ar_desc="تصفح جميع المنتجات في حراج تبوك للأثاث المستعمل: أثاث، مكيفات، ثلاجات، غسالات وأكثر. كل قطعة مختبرة بضمان 30 يوم وتوصيل مجاني في تبوك.",
+        en_desc="Browse all used furniture and appliances in Tabuk: sofas, bedroom sets, ACs, fridges, washers and more. Every item tested, 30-day warranty, free delivery in Tabuk.",
+    )
 
     categories = Category.objects.filter(is_active=True)
 
@@ -121,10 +166,20 @@ def products(request):
     cat_slug = request.GET.get("cat", "")
     if cat_slug:
         active_category = get_object_or_404(Category, slug=cat_slug, is_active=True)
-        if active_category.image:
-            request.page_title = (
-                f"{active_category.display_name} | حراج تبوك للأثاث"
+        name = active_category.display_name
+        if _is_en():
+            request.page_title = f"{name} | Tabuk Haraj Furniture"
+            request.page_description = (
+                f"Browse used {name.lower()} in Tabuk — tested items with "
+                "30-day warranty and free delivery."
             )
+        else:
+            request.page_title = f"{name} | حراج تبوك للأثاث"
+            request.page_description = (
+                f"{name} — مستعمل مختبر بضمان 30 يوم وتوصيل مجاني في تبوك. "
+                "تصفّح كل القطع المتاحة الآن."
+            )
+        if active_category.image:
             request.page_image = CANONICAL + active_category.image.url
 
     items = Product.objects.filter(
@@ -173,8 +228,15 @@ def product_detail(request, slug):
     if not description:
         description = f"{product.title} — متجر حراج تبوك للأثاث المستعمل. تواصل معنا للسؤال عن هذه القطعة."
 
-    request.page_title = f"{product.title} | حراج تبوك للأثاث المستعمل"
-    request.page_description = description[:155]
+    if _is_en():
+        request.page_title = f"{product.title} | Tabuk Haraj Furniture"
+        request.page_description = (
+            f"{product.title} — tested used item at Tabuk Haraj Furniture in "
+            "Tabuk. 30-day warranty, free delivery. Call 0582328389."
+        )[:155]
+    else:
+        request.page_title = f"{product.title} | حراج تبوك للأثاث المستعمل"
+        request.page_description = description[:155]
     if product.image:
         request.page_image = CANONICAL + product.image.url
     else:

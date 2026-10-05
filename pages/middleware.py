@@ -42,6 +42,25 @@ class LanguageSwitchMiddleware:
         param = request.GET.get("lang")
         valid = param in self.available
 
+        # English always lives at ?lang=en. If a visitor with the English
+        # cookie lands on a clean URL, redirect once so the address bar,
+        # canonical tag and hreflang all show the same stable URL.
+        if (
+            request.method == "GET"
+            and "lang" not in request.GET
+            and not request.path.startswith("/admin/")
+            and not request.path.startswith("/dashboard/")
+        ):
+            cookie_lang = request.COOKIES.get(self.cookie_name, "")
+            if cookie_lang in self.available and cookie_lang != self.default:
+                params = request.GET.copy()
+                params["lang"] = cookie_lang
+                redirect = HttpResponseRedirect(
+                    request.path + "?" + params.urlencode()
+                )
+                self._set_cookie(redirect, request, cookie_lang)
+                return redirect
+
         # Rebuild the query string with at most one lang value. Arabic
         # (the default) and unknown codes are dropped, English stays.
         # If the URL was dirty (grown or default lang), redirect once.

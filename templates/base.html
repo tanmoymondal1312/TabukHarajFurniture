@@ -2,30 +2,31 @@
 <!DOCTYPE html>
 <html lang="{% block html_lang %}{% current_language %}{% endblock %}" dir="{% block html_dir %}{% current_direction %}{% endblock %}" itemscope itemtype="https://schema.org/WebSite">
 <head>
+  {% current_language as cur %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني{% endblock %}</title>
-  <meta name="description" content="{% block meta_description %}حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد.{% endblock %}">
+  <title>{% block title %}{{ page_title|default:"حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني" }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ page_description|default:"حراج تبوك للأثاث المستعمل — معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار: صالونات، غرف نوم، مكيفات والمزيد." }}{% endblock %}">
   <meta name="keywords" content="{% block keywords %}حراج تبوك, أثاث مستعمل, حراج تبوك للأثاث, مكيف مستعمل, غرف نوم مستعملة, ثلاجة مستعملة, تبوك{% endblock %}">
   <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}">
   <meta name="author" content="Tabuk Haraj Furniture">
   <meta name="designer" content="Mediaghor">
   <meta name="generator" content="Django; Mediaghor (https://mediaghor.com)">
-  <link rel="canonical" href="{% block canonical %}https://tabukharajfurniture.com/{% endblock %}">
-  <link rel="alternate" hreflang="ar" href="https://tabukharajfurniture.com/">
-  <link rel="alternate" hreflang="en" href="https://tabukharajfurniture.com/">
-  <link rel="alternate" hreflang="x-default" href="https://tabukharajfurniture.com/">
+  <link rel="canonical" href="{% block canonical %}{{ canonical_url }}{% endblock %}">
+  <link rel="alternate" hreflang="ar" href="{{ hreflang_ar }}">
+  <link rel="alternate" hreflang="en" href="{{ hreflang_en }}">
+  <link rel="alternate" hreflang="x-default" href="{{ hreflang_ar }}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="حراج تبوك للأثاث">
+  <meta property="og:site_name" content="{% if cur == 'ar' %}حراج تبوك للأثاث{% else %}Tabuk Haraj Furniture{% endif %}">
   <meta property="og:title" content="{{ page_title|default:'حراج تبوك للأثاث المستعمل | معرض فعلي • ضمان 30 يوم • توصيل مجاني' }}">
   <meta property="og:description" content="{{ page_description|default:'معرض فعلي في تبوك، ضمان 30 يوم وتوصيل مجاني. أثاث وأجهزة مستعملة موثوقة بأفضل الأسعار.' }}">
-  <meta property="og:url" content="{{ current_url }}">
+  <meta property="og:url" content="{{ canonical_url }}">
   <meta property="og:image" content="{{ page_image|default:'https://tabukharajfurniture.com/static/images/og-cover.jpg' }}">
   <meta property="og:image:alt" content="Tabuk Haraj Furniture showroom - quality used furniture and appliances">
-  <meta property="og:locale" content="ar_AR">
-  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale" content="{% if cur == 'ar' %}ar_AR{% else %}en_US{% endif %}">
+  <meta property="og:locale:alternate" content="{% if cur == 'ar' %}en_US{% else %}ar_AR{% endif %}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -217,10 +218,10 @@
       {
         "@type": "WebPage",
         "@id": "https://tabukharajfurniture.com/#webpage",
-        "url": "https://tabukharajfurniture.com/",
-        "name": "Tabuk Haraj Furniture - Used Furniture & Appliances in Tabuk",
+        "url": "{{ canonical_url|escapejs }}",
+        "name": "{{ page_title|default:'Tabuk Haraj Furniture - Used Furniture & Appliances in Tabuk'|escapejs }}",
         "alternateName": "حراج تبوك للأثاث المستعمل - أثاث وأجهزة مستعملة في تبوك",
-        "description": "Physical showroom for quality used furniture and appliances in Tabuk. Buy tested ACs, fridges, sofas, bedroom sets with 30-day warranty and free delivery. Sell your used items for instant cash.",
+        "description": "{{ page_description|default:'Physical showroom for quality used furniture and appliances in Tabuk. Buy tested ACs, fridges, sofas, bedroom sets with 30-day warranty and free delivery. Sell your used items for instant cash.'|escapejs }}",
         "inLanguage": ["ar", "en"],
         "isPartOf": {
           "@id": "https://tabukharajfurniture.com/#website"
@@ -242,9 +243,6 @@
         },
         "datePublished": "2024-01-01",
         "dateModified": "2025-12-15",
-        "breadcrumb": {
-          "@id": "https://tabukharajfurniture.com/#breadcrumb"
-        },
         "potentialAction": [
           {
             "@type": "SearchAction",
