@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static site_lang %}
+{% load l10n %}
 
 {% block content %}
 <!-- Breadcrumb Structured Data -->
@@ -26,6 +27,94 @@
       "name": "{{ active_category.display_name|escapejs }}",
       "item": "https://tabukharajfurniture.com/products/?cat={{ active_category.slug }}"
     }{% endif %}
+  ]
+}
+</script>
+
+{% if products %}
+<!-- ItemList Structured Data (product grid) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{% if active_category %}{{ active_category.display_name|escapejs }}{% else %}{% t "Products" %}{% endif %}",
+  "url": "https://tabukharajfurniture.com/products/{% if active_category %}?cat={{ active_category.slug }}{% endif %}",
+  "numberOfItems": {{ products|length }},
+  "itemListElement": [
+    {% for item in products %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "url": "https://tabukharajfurniture.com{{ item.get_absolute_url }}",
+      "name": "{{ item.title|escapejs }}",
+      "item": {
+        "@type": "Product",
+        "name": "{{ item.title|escapejs }}",
+        "url": "https://tabukharajfurniture.com{{ item.get_absolute_url }}",
+        "image": "{% if item.image %}https://tabukharajfurniture.com{{ item.image.url }}{% else %}https://tabukharajfurniture.com/static/images/placeholder.webp{% endif %}",
+        "itemCondition": "https://schema.org/{% if item.condition == 'new' %}NewCondition{% elif item.condition == 'like_new' %}LikeNewCondition{% else %}UsedCondition{% endif %}",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "SAR",
+          "price": "{{ item.price|unlocalize }}",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tabukharajfurniture.com{{ item.get_absolute_url }}"
+        }
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+<!-- FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "{% t "Frequently Asked Questions" %}",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{% t "Do your items come with a warranty?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "Yes — every item comes with a 30-day exchange warranty. There is no cash refund. If a problem appears within 30 days, bring the item to the showroom or we pick it up for repair or exchange." %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{% t "Is delivery free?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "Yes — delivery is free across all Tabuk districts, usually the same day or the next day." %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{% t "Can I test an item before buying?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "Yes — you can test items at the showroom before buying. ACs are tested for cooling and heating, and fridges for cooling and freezing." %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{% t "What payment methods do you accept?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "We accept cash, mada and Visa cards, bank transfer, STC Pay, Apple Pay, and installments with Tamara." %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{% t "Are the items new or used?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "All items are used but checked and cleaned. Every piece is tested before listing, ready to use with a 30-day warranty." %}"
+      }
+    }
   ]
 }
 </script>
@@ -128,6 +217,56 @@
         <a href="{% url 'pages:products' %}" class="btn btn--gold pp-empty__btn">{% t "View All Products" %}</a>
       </div>
       {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__left">
+        <p class="section-eyebrow">{% t "Quick answers" %}</p>
+        <h2 class="section-title">{% t "Common questions" %}</h2>
+      </div>
+    </div>
+
+    <div class="faq faq-list" itemscope itemtype="https://schema.org/FAQPage">
+      <meta itemprop="name" content="{% t "Frequently Asked Questions" %}">
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" open>
+        <summary class="faq__question" itemprop="name" aria-controls="pa1">{% t "Do your items come with a warranty?" %}</summary>
+        <div class="faq__answer" id="pa1" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "Yes — every item comes with a 30-day exchange warranty. There is no cash refund. If a problem appears within 30 days, bring the item to the showroom or we pick it up for repair or exchange." %}</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="pa2">{% t "Is delivery free?" %}</summary>
+        <div class="faq__answer" id="pa2" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "Yes — delivery is free across all Tabuk districts, usually the same day or the next day." %}</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="pa3">{% t "Can I test an item before buying?" %}</summary>
+        <div class="faq__answer" id="pa3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "Yes — you can test items at the showroom before buying. ACs are tested for cooling and heating, and fridges for cooling and freezing." %}</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="pa4">{% t "What payment methods do you accept?" %}</summary>
+        <div class="faq__answer" id="pa4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "We accept cash, mada and Visa cards, bank transfer, STC Pay, Apple Pay, and installments with Tamara." %}</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="pa5">{% t "Are the items new or used?" %}</summary>
+        <div class="faq__answer" id="pa5" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "All items are used but checked and cleaned. Every piece is tested before listing, ready to use with a 30-day warranty." %}</div>
+        </div>
+      </details>
     </div>
   </div>
 </section>

@@ -138,6 +138,34 @@ TRANSLATIONS = {
         "Please write your delivery address.": "اكتب عنوان التوصيل من فضلك.",
         "Something went wrong. Please try again.": "حدث خطأ، حاول مرة أخرى.",
         "Close": "إغلاق",
+
+        # ---- FAQ blocks (products + product page) ----
+        "Frequently Asked Questions": "الأسئلة الشائعة",
+        "Quick answers": "إجابات سريعة",
+        "Common questions": "أسئلة متكررة",
+        "Do your items come with a warranty?": "هل القطع المتوفرة لديكم تحتوي على ضمان؟",
+        "Yes — every item comes with a 30-day exchange warranty. There is no cash refund. If a problem appears within 30 days, bring the item to the showroom or we pick it up for repair or exchange.":
+            "نعم — كل قطعة تأتي بضمان استبدال 30 يوماً ولا يوجد استرداد نقدي. إذا ظهرت مشكلة خلال 30 يوماً، تحضر القطعة إلى المعرض أو نستلمها نحن للإصلاح أو الاستبدال.",
+        "Is delivery free?": "هل التوصيل مجاني؟",
+        "Yes — delivery is free across all Tabuk districts, usually the same day or the next day.":
+            "نعم — التوصيل مجاني لجميع أحياء تبوك، عادةً في نفس اليوم أو اليوم التالي.",
+        "Can I test an item before buying?": "هل يمكن تجربة القطعة قبل الشراء؟",
+        "Yes — you can test items at the showroom before buying. ACs are tested for cooling and heating, and fridges for cooling and freezing.":
+            "نعم — يمكنكم تجربة القطع داخل المعرض قبل الشراء. تُجرب المكيفات (تبريد وتسخين) والثلاجات (تبريد وتجميد).",
+        "What payment methods do you accept?": "ما هي طرق الدفع المقبولة؟",
+        "We accept cash, mada and Visa cards, bank transfer, STC Pay, Apple Pay, and installments with Tamara.":
+            "نقبل النقد، مدى وفيزا، التحويل البنكي، STC Pay، Apple Pay، والتقسيط عبر تمارا.",
+        "Are the items new or used?": "هل القطع جديدة أم مستعملة؟",
+        "All items are used but checked and cleaned. Every piece is tested before listing, ready to use with a 30-day warranty.":
+            "جميع القطع مستعملة لكنها مفحوصة ونظيفة. كل قطعة تُختبر قبل عرضها، وجاهزة للاستخدام مع ضمان 30 يوم.",
+        "Before you buy": "قبل الشراء",
+        "Questions about this item": "أسئلة عن هذه القطعة",
+        "Is %(t)s under warranty?": "هل يشمل %(t)s ضماناً؟",
+        "Can I test this item before buying?": "هل يمكنني تجربة هذه القطعة قبل الشراء؟",
+        "Is delivery free for this item?": "هل التوصيل مجاني لهذه القطعة؟",
+        "How can I order this item?": "كيف أطلب هذه القطعة؟",
+        "Press the Direct Order button on this page, or contact us on WhatsApp at 0582328389 or by phone. We will confirm the item and delivery with you.":
+            "اضغط زر الطلب المباشر في هذه الصفحة، أو تواصل معنا على واتساب 0582328389 أو بالهاتف. سنؤكد لك القطعة والتوصيل.",
     },
 }
 

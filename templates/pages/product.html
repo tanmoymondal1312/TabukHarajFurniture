@@ -60,6 +60,49 @@
 }
 </script>
 
+<!-- FAQPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "{% t "Questions about this item" %}",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{% tf "Is %(t)s under warranty?" t=product.title|escapejs %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "Yes — every item comes with a 30-day exchange warranty. There is no cash refund. If a problem appears within 30 days, bring the item to the showroom or we pick it up for repair or exchange." %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{% t "Can I test this item before buying?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "Yes — you can test items at the showroom before buying. ACs are tested for cooling and heating, and fridges for cooling and freezing." %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{% t "Is delivery free for this item?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "Yes — delivery is free across all Tabuk districts, usually the same day or the next day." %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{% t "How can I order this item?" %}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% t "Press the Direct Order button on this page, or contact us on WhatsApp at 0582328389 or by phone. We will confirm the item and delivery with you." %}"
+      }
+    }
+  ]
+}
+</script>
+
 <div class="container">
   <nav class="crumb" aria-label="Breadcrumb">
     <a href="{% url 'pages:home' %}">{% t "Home" %}</a>
@@ -204,6 +247,49 @@
           <dd>{{ listed_date }}</dd>
         </div>
       </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__left">
+        <p class="section-eyebrow">{% t "Before you buy" %}</p>
+        <h2 class="section-title">{% t "Questions about this item" %}</h2>
+      </div>
+    </div>
+
+    <div class="faq faq-list" itemscope itemtype="https://schema.org/FAQPage">
+      <meta itemprop="name" content="{% t "Questions about this item" %}">
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" open>
+        <summary class="faq__question" itemprop="name" aria-controls="qa1">{% tf "Is %(t)s under warranty?" t=product.title %}</summary>
+        <div class="faq__answer" id="qa1" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "Yes — every item comes with a 30-day exchange warranty. There is no cash refund. If a problem appears within 30 days, bring the item to the showroom or we pick it up for repair or exchange." %}</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="qa2">{% t "Can I test this item before buying?" %}</summary>
+        <div class="faq__answer" id="qa2" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "Yes — you can test items at the showroom before buying. ACs are tested for cooling and heating, and fridges for cooling and freezing." %}</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="qa3">{% t "Is delivery free for this item?" %}</summary>
+        <div class="faq__answer" id="qa3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "Yes — delivery is free across all Tabuk districts, usually the same day or the next day." %}</div>
+        </div>
+      </details>
+
+      <details class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="faq__question" itemprop="name" aria-controls="qa4">{% t "How can I order this item?" %}</summary>
+        <div class="faq__answer" id="qa4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{% t "Press the Direct Order button on this page, or contact us on WhatsApp at 0582328389 or by phone. We will confirm the item and delivery with you." %}</div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
