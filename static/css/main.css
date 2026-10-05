@@ -34,7 +34,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Inter", "Tajawal", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: var(--text);
@@ -4131,4 +4131,44 @@ a.contact-card--wa:hover .contact-card__go {
   .call-fab__label {
     transition: none;
   }
+}
+
+/* ===== Arabic typography & RTL icons ===== */
+html[lang="ar"] .hero__eyebrow,
+html[lang="ar"] .hero__title,
+html[lang="ar"] .section-eyebrow,
+html[lang="ar"] .section-title,
+html[lang="ar"] .listing-card__badge,
+html[lang="ar"] .pdp__pill,
+html[lang="ar"] .pdp__cat,
+html[lang="ar"] .pdp__title,
+html[lang="ar"] .pdp__price-main,
+html[lang="ar"] .pp-hero__title,
+html[lang="ar"] .pp-cats__head,
+html[lang="ar"] .pp-card__ribbon,
+html[lang="ar"] .sf-head,
+html[lang="ar"] .about-hero__eyebrow,
+html[lang="ar"] .about-hero__title,
+html[lang="ar"] .about-catalog__eyebrow,
+html[lang="ar"] .team-member__role,
+html[lang="ar"] .contact-hero__eyebrow,
+html[lang="ar"] .contact-hero__title,
+html[lang="ar"] .contact-card__label,
+html[lang="ar"] .contact-map__eyebrow {
+  letter-spacing: normal;
+}
+
+html[lang="ar"] .hero__title,
+html[lang="ar"] .section-title,
+html[lang="ar"] .pdp__title,
+html[lang="ar"] .pp-hero__title,
+html[lang="ar"] .about-hero__title,
+html[lang="ar"] .contact-hero__title {
+  line-height: 1.35;
+}
+
+html[dir="rtl"] .section-link svg,
+html[dir="rtl"] .category-card__arrow svg,
+html[dir="rtl"] .carousel-btn svg {
+  transform: scaleX(-1);
 }
