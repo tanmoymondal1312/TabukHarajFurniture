@@ -1,8 +1,12 @@
 def inbox_unread(request):
-    """Unread contact-message count for the dashboard sidebar badge."""
+    """Unread counts for the dashboard sidebar badges (messages + orders)."""
     if not request.path.startswith("/dashboard"):
         return {}
 
     from pages.models import ContactMessage
 
-    return {"inbox_unread": ContactMessage.objects.filter(is_read=False).count()}
+    unread = ContactMessage.objects.filter(is_read=False)
+    return {
+        "inbox_unread": unread.filter(kind="message").count(),
+        "orders_unread": unread.filter(kind="order").count(),
+    }

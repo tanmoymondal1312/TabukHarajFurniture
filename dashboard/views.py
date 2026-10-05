@@ -52,8 +52,11 @@ def overview(request):
         "no_photo": products.filter(NO_PHOTO_Q).count(),
     }
 
-    msgs = ContactMessage.objects.all()
+    msgs = ContactMessage.objects.filter(kind="message")
     unread = msgs.filter(is_read=False)
+    orders_unread = ContactMessage.objects.filter(
+        kind="order", is_read=False
+    ).count()
 
     context = {
         "active": "overview",
@@ -64,8 +67,11 @@ def overview(request):
         "msg_unread": unread.count(),
         "msg_total": msgs.count(),
         "msg_today": msgs.filter(created_at__date=timezone.localdate()).count(),
-        # unread first, then newest
-        "recent_msgs": list(msgs.order_by("is_read", "-created_at")[:5]),
+        "ord_unread": orders_unread,
+        # unread first, then newest — messages and orders mixed together
+        "recent_msgs": list(
+            ContactMessage.objects.order_by("is_read", "-created_at")[:5]
+        ),
     }
     return render(request, "dashboard/overview.html", context)
 
@@ -347,9 +353,24 @@ def visitors(request):
     return render(request, "dashboard/visitor_list.html", context)
 
 
+def _order_details(msg):
+    """Pull address / notes / price / product URL out of the saved body."""
+    details = {"address": "", "notes": "", "price": "", "url": ""}
+    for line in (msg.body or "").splitlines():
+        if line.startswith("Address: "):
+            details["address"] = line[len("Address: "):].strip()
+        elif line.startswith("Notes: "):
+            details["notes"] = line[len("Notes: "):].strip()
+        elif line.startswith("Price: "):
+            details["price"] = line[len("Price: "):].strip()
+        elif line.startswith("URL: "):
+            details["url"] = line[len("URL: "):].strip()
+    return details
+
+
 @login_required
 def inbox(request):
-    qs = ContactMessage.objects.all()
+    qs = ContactMessage.objects.filter(kind="message")
     paginator = Paginator(qs, 20)
     page = paginator.get_page(request.GET.get("page"))
     context = {
@@ -363,24 +384,47 @@ def inbox(request):
     return render(request, "dashboard/inbox.html", context)
 
 
+@login_required
+def orders(request):
+    """Direct Order requests — kept apart from the regular messages."""
+    qs = ContactMessage.objects.filter(kind="order")
+    page = Paginator(qs, 10).get_page(request.GET.get("page"))
+    for obj in page:
+        obj.details = _order_details(obj)
+    context = {
+        "active": "orders",
+        "page": page,
+        "total": qs.count(),
+        "unread": qs.filter(is_read=False).count(),
+        "today": qs.filter(created_at__date=timezone.localdate()).count(),
+        "with_phone": qs.exclude(phone="").count(),
+    }
+    return render(request, "dashboard/orders.html", context)
+
+
 @require_POST
 @login_required
 def inbox_action(request, pk):
     msg = get_object_or_404(ContactMessage, pk=pk)
     action = request.POST.get("action")
+    is_order = msg.kind == "order"
+    noun = "Order" if is_order else "Message"
 
     if action == "read":
         msg.is_read = True
         msg.save(update_fields=["is_read"])
-        messages.success(request, "Message marked as handled.")
+        messages.success(request, f"{noun} marked as handled.")
     elif action == "unread":
         msg.is_read = False
         msg.save(update_fields=["is_read"])
-        messages.success(request, "Message marked as new.")
+        messages.success(request, f"{noun} marked as new.")
     elif action == "delete":
         msg.delete()
-        messages.success(request, "Message deleted.")
+        messages.success(request, f"{noun} deleted.")
     else:
         messages.error(request, "Unknown action.")
 
+    # Send each kind back to its own page (orders and messages are split).
+    if is_order:
+        return redirect("dashboard:orders")
     return redirect("dashboard:inbox")

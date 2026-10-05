@@ -47,6 +47,13 @@
       </span>
       <div><strong>{{ stats.categories }}</strong><small>Categories</small></div>
     </div>
+    <a class="stat stat--link{% if ord_unread %} stat--hot{% endif %}" href="{% url 'dashboard:orders' %}">
+      <span class="stat__icon stat__icon--gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </span>
+      <div><strong>{{ ord_unread }}</strong><small>New orders</small></div>
+      {% if ord_unread %}<span class="stat__dot" aria-hidden="true"></span>{% endif %}
+    </a>
     <a class="stat stat--link{% if msg_unread %} stat--hot{% endif %}" href="{% url 'dashboard:inbox' %}">
       <span class="stat__icon stat__icon--amber">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
@@ -105,7 +112,7 @@
     <section class="panel">
       <header class="panel__head">
         <div class="panel__title">
-          <h2>Latest messages</h2>
+          <h2>Latest activity</h2>
           {% if msg_unread %}<span class="pill pill--reserved">{{ msg_unread }} new</span>{% endif %}
         </div>
         <a class="link" href="{% url 'dashboard:inbox' %}">Open inbox &rarr;</a>
@@ -115,9 +122,10 @@
         <ul class="mini-msgs">
           {% for m in recent_msgs %}
             <li class="mini-msg{% if not m.is_read %} is-new{% endif %}">
-              <a class="mini-msg__main" href="{% url 'dashboard:inbox' %}">
+              <a class="mini-msg__main" href="{% if m.kind == 'order' %}{% url 'dashboard:orders' %}{% else %}{% url 'dashboard:inbox' %}{% endif %}">
                 <span class="mini-msg__top">
                   <strong>{{ m.name }}</strong>
+                  {% if m.kind == 'order' %}<span class="pill pill--order">Direct Order</span>{% endif %}
                   {% if not m.is_read %}<span class="mini-msg__new">New</span>{% endif %}
                   {% if m.subject %}<span class="pill">{{ m.subject }}</span>{% endif %}
                   <time>{{ m.created_at|date:"d M" }} · {{ m.created_at|date:"H:i" }}</time>

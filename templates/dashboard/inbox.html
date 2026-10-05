@@ -47,7 +47,6 @@
             <header class="msg-card__head">
               <div class="msg-card__who">
                 <strong>{{ m.name }}</strong>
-                {% if m.kind == "order" %}<span class="pill pill--order">Direct Order</span>{% endif %}
                 {% if m.subject %}<span class="pill">{{ m.subject }}</span>{% endif %}
                 {% if not m.is_read %}<span class="msg-card__new">New</span>{% endif %}
               </div>
@@ -89,8 +88,8 @@
       <div class="empty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
         <h3>No messages yet</h3>
-        <p>Messages from the contact page and Direct Order requests will appear here.</p>
-        <a class="btn btn--gold" href="{% url 'pages:contact' %}" target="_blank" rel="noopener">Open contact page</a>
+        <p>Messages from the contact page will appear here. Direct Order requests are in the Orders tab.</p>
+        <a class="btn btn--gold" href="{% url 'dashboard:orders' %}">Open Orders</a>
       </div>
     {% endif %}
   </section>

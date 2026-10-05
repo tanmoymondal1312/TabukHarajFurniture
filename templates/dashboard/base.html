@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon/favicon.svg' %}">
-  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=20261002">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=20261005">
 </head>
 <body class="dash">
   <div class="app">
@@ -43,6 +43,11 @@
         <a class="side-link{% if active == 'visitors' %} is-active{% endif %}" href="{% url 'dashboard:visitors' %}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.8"/></svg>
           <span>Visitors</span>
+        </a>
+        <a class="side-link{% if active == 'orders' %} is-active{% endif %}" href="{% url 'dashboard:orders' %}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span>Orders</span>
+          {% if orders_unread %}<span class="side-link__badge">{{ orders_unread }}</span>{% endif %}
         </a>
         <a class="side-link{% if active == 'inbox' %} is-active{% endif %}" href="{% url 'dashboard:inbox' %}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>

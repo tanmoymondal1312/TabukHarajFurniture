@@ -26,4 +26,6 @@ urlpatterns = [
 
     path("inbox/", views.inbox, name="inbox"),
     path("inbox/<int:pk>/action/", views.inbox_action, name="inbox_action"),
+
+    path("orders/", views.orders, name="orders"),
 ]
