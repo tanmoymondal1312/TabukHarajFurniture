@@ -4,23 +4,13 @@
 User-agent: *
 Allow: /
 
-# Disallow admin and private areas
+# Disallow admin, private and low-value areas
 Disallow: /admin/
-Disallow: /media/
-Disallow: /static/
-Disallow: /*.json$
-# Allow the sitemap before the xml disallow
-Allow: /sitemap.xml
-Disallow: /*.xml$
-Disallow: /*?q=*
-Disallow: /search/
 Disallow: /api/
+Disallow: /search/
+Disallow: /dashboard/
+Disallow: /*.json$
+Disallow: /*?q=*
 
 # Sitemap location
 Sitemap: https://tabukharajfurniture.com/sitemap.xml
-
-# Host directive for Google
-Host: https://tabukharajfurniture.com
-
-# Crawl-delay for respectful crawling (optional)
-Crawl-delay: 10
