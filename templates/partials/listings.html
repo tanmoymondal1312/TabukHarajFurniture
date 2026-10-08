@@ -1,4 +1,5 @@
 {% load static site_lang %}
+{% load l10n %}
 {% if listings %}
 <section class="section listings" id="listings" itemscope itemtype="https://schema.org/ItemList">
   <meta itemprop="name" content="Featured Used Furniture & Appliances Listings">
@@ -13,8 +14,19 @@
 
     <div class="listings__grid">
       {% for item in listings %}
-      <article class="listing-card" itemscope itemtype="https://schema.org/Product" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" itemref="listing-image listing-name listing-price listing-condition listing-availability listing-seller" data-position="{{ forloop.counter }}">
+      <article class="listing-card" itemscope itemtype="https://schema.org/Product" itemprop="itemListElement" itemref="listing-image listing-name listing-price listing-condition listing-availability listing-seller" data-position="{{ forloop.counter }}">
         <meta itemprop="position" content="{{ forloop.counter }}">
+        <meta itemprop="description" content="{{ item.description|default:item.title|truncatechars:160|escape }}">
+        <span itemprop="brand" itemscope itemtype="https://schema.org/Brand" hidden>
+          <meta itemprop="name" content="Tabuk Haraj Furniture">
+        </span>
+        <span itemprop="hasMerchantReturnPolicy" itemscope itemtype="https://schema.org/MerchantReturnPolicy" hidden>
+          <meta itemprop="applicableCountry" content="SA">
+          <meta itemprop="returnPolicyCategory" content="https://schema.org/MerchantReturnFiniteReturnWindow">
+          <meta itemprop="merchantReturnDays" content="30">
+          <meta itemprop="returnMethod" content="https://schema.org/ReturnAtStoreLocation">
+          <meta itemprop="returnFees" content="https://schema.org/FreeReturn">
+        </span>
         <a href="{% url 'pages:product' item.slug %}" class="listing-card__link" itemprop="url">
           <div class="listing-card__media">
             <img
@@ -32,12 +44,35 @@
           <div class="listing-card__body">
             <p class="listing-card__title" dir="rtl" lang="ar" itemprop="name" id="listing-name">{{ item.title|bidi_fix }}</p>
             <p class="listing-card__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer" id="listing-price">
+              <meta itemprop="price" content="{{ item.price|unlocalize }}">
               <meta itemprop="priceCurrency" content="SAR">
               <meta itemprop="availability" content="https://schema.org/InStock" id="listing-availability">
               <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" id="listing-condition">
-              <meta itemprop="seller" itemscope itemtype="https://schema.org/LocalBusiness" id="listing-seller">
-              <meta itemprop="name" content="Tabuk Haraj Furniture">
-              <meta itemprop="url" content="https://tabukharajfurniture.com/">
+              <span itemprop="seller" itemscope itemtype="https://schema.org/LocalBusiness" id="listing-seller" hidden>
+                <meta itemprop="name" content="Tabuk Haraj Furniture">
+                <meta itemprop="url" content="https://tabukharajfurniture.com/">
+              </span>
+              <span itemprop="shippingDetails" itemscope itemtype="https://schema.org/OfferShippingDetails" hidden>
+                <span itemprop="shippingRate" itemscope itemtype="https://schema.org/MonetaryAmount" hidden>
+                  <meta itemprop="value" content="0">
+                  <meta itemprop="currency" content="SAR">
+                </span>
+                <span itemprop="shippingDestination" itemscope itemtype="https://schema.org/DefinedRegion" hidden>
+                  <meta itemprop="addressCountry" content="SA">
+                </span>
+                <span itemprop="deliveryTime" itemscope itemtype="https://schema.org/ShippingDeliveryTime" hidden>
+                  <span itemprop="handlingTime" itemscope itemtype="https://schema.org/QuantitativeValue" hidden>
+                    <meta itemprop="minValue" content="0">
+                    <meta itemprop="maxValue" content="0">
+                    <meta itemprop="unitCode" content="DAY">
+                  </span>
+                  <span itemprop="transitTime" itemscope itemtype="https://schema.org/QuantitativeValue" hidden>
+                    <meta itemprop="minValue" content="0">
+                    <meta itemprop="maxValue" content="1">
+                    <meta itemprop="unitCode" content="DAY">
+                  </span>
+                </span>
+              </span>
               {{ item.price_display }}
             </p>
           </div>

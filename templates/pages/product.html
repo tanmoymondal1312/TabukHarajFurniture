@@ -43,6 +43,14 @@
         "name": "Tabuk Haraj Furniture"
       },
       "itemCondition": "https://schema.org/{% if product.condition == 'new' %}NewCondition{% elif product.condition == 'like_new' %}LikeNewCondition{% else %}UsedCondition{% endif %}",
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "SA",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnAtStoreLocation",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
       "offers": {
         "@type": "Offer",
         "url": "{{ product_url }}",
@@ -53,6 +61,33 @@
           "@type": "LocalBusiness",
           "name": "Tabuk Haraj Furniture",
           "url": "https://tabukharajfurniture.com/"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "SAR"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "SA"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            }
+          }
         }
       }
     }
