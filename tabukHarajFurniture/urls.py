@@ -26,6 +26,13 @@ from pages.sitemaps import sitemaps
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', include('dashboard.urls')),
+
+    # Bing Webmaster site verification (must be at exact site root)
+    path(
+        'BingSiteAuth.xml',
+        TemplateView.as_view(template_name='BingSiteAuth.xml', content_type='application/xml'),
+        name='bing_site_auth'
+    ),
     path('', include('pages.urls')),
 
     # SEO URLs
